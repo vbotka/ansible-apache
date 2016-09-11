@@ -19,12 +19,6 @@
     - apache-config_httpd_conf
     - apache
 
-- include: config_httpd_conf.yml
-  tags:
-    - config_httpd_conf
-    - apache-config_httpd_conf
-    - apache
-
 - include: config_httpd-ssl_conf.yml
   tags:
     - config_httpd-ssl_conf
