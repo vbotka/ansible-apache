@@ -1,0 +1,169 @@
+---
+
+- name: Configure {{apache_conf_path}}/httpd.conf
+  lineinfile: >
+    dest="{{apache_conf_path})/httpd.conf"
+    regexp="{{item.regexp}}"
+    line="{{item.line}}"
+    insertbefore="BOF"
+    backup="yes"
+  with_items:
+    - { regexp: "^ServerName ", line: "ServerName {{ServerName}}"}
+    - { regexp: "^ServerAdmin ", line: "ServerAdmin {{ServerAdmin}}"}
+    - { regexp: "^LoadModule ssl_module ",
+        line: "LoadModule ssl_module libexec/{{apache_version}}/mod_ssl.so"}
+    - { regexp: "^LoadModule socache_shmcb_module ",
+        line: "LoadModule socache_shmcb_module libexec/{{apache_version}}/mod_socache_shmcb.so"}
+#    - { regexp: "^Include etc/apache24/extra/httpd-ssl.conf",
+#        line: "Include etc/apache24/extra/httpd-ssl.conf"}
+  notify: reload apache
+  tags: config_httpd_conf
+
+- name: Configure {{apache_conf_path}}/extra/httpd-ssl.conf
+  lineinfile: >
+    dest="{{apache_conf_path}}/extra/httpd-ssl.conf"
+    regexp="{{item.regexp}}"
+    line="{{item.line}}"
+    insertbefore="BOF"
+    backup="yes"
+  with_items:
+    - { regexp: "^Listen 443", line: "Listen 443"}
+    - { regexp: "^SSLEngine on", line: "SSLEngine on"}
+    - { regexp: "^SSLProtocol ", line: "SSLProtocol {{SSLProtocol}}"}
+    - { regexp: "^SSLCipherSuite ", line: "SSLCipherSuite {{SSLCipherSuite}}"}
+    - { regexp: "^SSLCompression ", line: "SSLCompression {{SSLCompression}}"}
+  notify: reload apache
+  tags: config_httpd-ssl_conf
+
+#    - { regexp: "^",  line: " {{}}"}
+#   - { regexp: "^",  line: " {{}}"}
+
+# <VirtualHost *:80>
+# ServerName netng.co
+# ServerAlias *.netng.co
+# Redirect permanent / https://netng.co/
+# </VirtualHost>
+#
+# <VirtualHost *:80>
+# ServerName netng.org
+# ServerAlias *.netng.org
+# Redirect permanent / https://netng.org/
+# </VirtualHost>
+#
+# <VirtualHost *:80>
+# ServerName botka.link
+# ServerAlias *.botka.link
+# Redirect permanent / https://botka.link/
+# </VirtualHost>
+#
+# <VirtualHost *:80>
+# ServerName preklady-botkova.cz
+# ServerAlias *.preklady-botkova.cz
+# Redirect permanent / https://preklady-botkova.cz/
+# </VirtualHost>
+#
+# <VirtualHost *:80>
+# ServerName botkova.cz
+# ServerAlias *.botkova.cz
+# Redirect permanent / https://botkova.cz/
+# </VirtualHost>
+#
+
+# Listen 443
+# #
+# SSLStrictSNIVHostCheck off
+# <VirtualHost *:443>
+#     ServerName netng.co
+#     DocumentRoot "/usr/local/www/apache24/data/netng.co/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/netng.co/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/netng.co/privkey.pem
+#     Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains;"
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName www.netng.co
+#     DocumentRoot "/usr/local/www/apache24/data/netng.co/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/www.netng.co/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/www.netng.co/privkey.pem
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName netng.org
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/netng.org/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/netng.org/privkey.pem
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName www.netng.org
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/www.netng.org/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/www.netng.org/privkey.pem
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName mail.netng.org
+#     DocumentRoot "/usr/local/www/roundcube/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/mail.netng.org/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/mail.netng.org/privkey.pem
+# </VirtualHost>
+# #<VirtualHost *:443>
+# #    ServerName owncloud.netng.org
+# #    DocumentRoot "/usr/local/www/owncloud/"
+# #    SSLEngine on
+# #    SSLCertificateFile /usr/local/etc/apache24/ssl.cert/www_netng_org.crt
+# #    SSLCertificateFile /usr/local/etc/apache24/ssl.cert/www_netng_org_intermediate_root.crt
+# #    SSLCertificateKeyFile /usr/local/etc/apache24/ssl.key/www_netng_org.key
+# #</VirtualHost>
+#
+# <VirtualHost *:443>
+#     ServerName botkova.cz
+#     DocumentRoot "/usr/local/www/apache24/data/preklady-botkova.cz/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/botkova.cz/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/botkova.cz/privkey.pem
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName www.botkova.cz
+#     DocumentRoot "/usr/local/www/apache24/data/preklady-botkova.cz/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/www.botkova.cz/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/www.botkova.cz/privkey.pem
+# </VirtualHost>
+#
+# <VirtualHost *:443>
+#     ServerName preklady-botkova.cz
+#     DocumentRoot "/usr/local/www/apache24/data/preklady-botkova.cz/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/preklady-botkova.cz/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/preklady-botkova.cz/privkey.pem
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName www.preklady-botkova.cz
+#     DocumentRoot "/usr/local/www/apache24/data/preklady-botkova.cz/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/www.preklady-botkova.cz/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/www.preklady-botkova.cz/privkey.pem
+# </VirtualHost>
+#
+# <VirtualHost *:443>
+#     ServerName botka.link
+#     DocumentRoot "/usr/local/www/apache24/data/botka.link/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/botka.link/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/botka.link/privkey.pem
+# </VirtualHost>
+# <VirtualHost *:443>
+#     ServerName www.botka.link
+#     DocumentRoot "/usr/local/www/apache24/data/botka.link/"
+#     SSLEngine on
+#     SSLCertificateFile /usr/local/etc/letsencrypt/live/www.botka.link/fullchain.pem
+#     SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/www.botka.link/privkey.pem
+# </VirtualHost>
+#
+# Alias /joomla /usr/local/www/joomla3/
+# AcceptPathInfo On
+# <Directory /usr/local/www/joomla3>
+#     AllowOverride None
+#     Order Allow,Deny
+#     Allow from all
+# </Directory>

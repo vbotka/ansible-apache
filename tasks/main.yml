@@ -1,0 +1,38 @@
+---
+# tasks for apache
+
+- include: packages.yml
+  tags:
+    - packages
+    - apache-packages
+    - apache
+
+- include: config_rc_conf.yml
+  tags:
+    - config_rc_conf
+    - apache-config_rc_conf
+    - apache
+
+- include: config_httpd_conf.yml
+  tags:
+    - config_httpd_conf
+    - apache-config_httpd_conf
+    - apache
+
+- include: config_httpd_conf.yml
+  tags:
+    - config_httpd_conf
+    - apache-config_httpd_conf
+    - apache
+
+- include: config_httpd-ssl_conf.yml
+  tags:
+    - config_httpd-ssl_conf
+    - apache-config_httpd-ssl_conf
+    - apache
+
+- include: config_httpd-vhosts_conf.yml
+  tags:
+    - config_httpd-vhosts_conf
+    - apache-config_httpd-vhosts_conf
+    - apache
