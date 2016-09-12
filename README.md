@@ -93,13 +93,13 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+> ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role.
 
 ```
-ansible-galaxy install vbotka.ansible-apache
+> ansible-galaxy install vbotka.ansible-apache
 ```
 
 3) Fit variables.
