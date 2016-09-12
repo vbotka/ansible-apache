@@ -5,7 +5,7 @@ apache
 
 Ansible role. Install and configure apache on FreeBSD.
 
-https://galaxy.ansible.com/vbotka/ansible-apache/
+[galaxy.ansible.com/vbotka/ansible-apache/](https://galaxy.ansible.com/vbotka/ansible-apache/)
 
 Tested with FreeBSD 10.3 at [digitalocean.com](https://cloud.digitalocean.com)
 
