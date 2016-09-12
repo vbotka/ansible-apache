@@ -138,7 +138,7 @@ ansible_perl_interpreter=/usr/local/bin/perl
 ansible-playbook ~/.ansible/playbooks/apache.yml
 ```
 
-6) Consider to test the webserver with:
+6) Consider to test the webserver
 
    - http://validator.w3.org
    - https://www.ssllabs.com
