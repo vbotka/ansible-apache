@@ -1,6 +1,6 @@
 ---
 
-- name: Configure {{apache_conf_path}}/httpd.conf
+- name: Configure parameters in{{apache_conf_path}}/httpd.conf
   lineinfile: >
     dest="{{apache_conf_path}}/httpd.conf"
     regexp="{{item.regexp}}"
@@ -16,3 +16,15 @@
         line: "LoadModule socache_shmcb_module libexec/{{apache_version}}/mod_socache_shmcb.so"}
   notify: reload apache
   tags: config_httpd_conf
+
+- name: Configure Direcotries in {{apache_conf_path}}/httpd.conf
+  blockinfile:
+    dest: "{{apache_conf_path}}/httpd.conf"
+    backup: "yes"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    insertafter: "# <Directory> blocks below."
+    block: |
+      {{item}}
+  with_items: "{{apache_Directory_blocks}}"
+  notify: reload apache
+  tags: config_https_conf_directory_blocks
