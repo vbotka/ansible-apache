@@ -36,6 +36,35 @@ apache_SSLCertificateKeyFile: "/usr/local/etc/apache24/server.key"
 Virtual hosts are configured with manadtory SSL. Both 80/443 virtual hosts will be created and 80 permanently redirected to
 443. SEE example in vars.
 
+Example of variable apache_vhost:
+
+```
+apache_vhost:
+  - { ServerName: "example.net",
+      DocumentRoot: "/usr/local/www/apache24/data/example.net/",
+      SSLCertificateFile: "/usr/local/etc/letsencrypt/live/example.net/fullchain.pem",
+      SSLCertificateKeyFile: "/usr/local/etc/letsencrypt/live/example.net/privkey.pem"
+      }                                                                                                                      
+```
+
+Example of created file with virtual host:
+
+```
+# cat /usr/local/etc/apache24/extra/example.net.conf
+<VirtualHost *:80>
+ServerName example.net
+DocumentRoot /usr/local/www/apache24/data/example.net/
+Redirect permanent / https://example.net/
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName example.net
+DocumentRoot /usr/local/www/apache24/data/example.net/
+SSLCertificateFile /usr/local/etc/letsencrypt/live/example.net/fullchain.pem
+SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/example.net/privkey.pem
+</VirtualHost>
+```
+
 
 **Defaults**
 
