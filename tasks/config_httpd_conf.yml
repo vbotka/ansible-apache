@@ -10,10 +10,6 @@
   with_items:
     - { regexp: "^ServerName ", line: "ServerName {{apache_ServerName}}"}
     - { regexp: "^ServerAdmin ", line: "ServerAdmin {{apache_ServerAdmin}}"}
-    - { regexp: "^LoadModule ssl_module ",
-        line: "LoadModule ssl_module libexec/{{apache_version}}/mod_ssl.so"}
-    - { regexp: "^LoadModule socache_shmcb_module ",
-        line: "LoadModule socache_shmcb_module libexec/{{apache_version}}/mod_socache_shmcb.so"}
   notify: reload apache
   tags: config_httpd_conf
 
