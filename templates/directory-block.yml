@@ -1,0 +1,5 @@
+<Directory "{{item.Directory}}">
+  Options {{item.Options}}
+  AllowOverride {{item.AllowOverride}}
+  Require {{item.Require}}
+</Directory>

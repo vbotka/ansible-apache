@@ -19,6 +19,18 @@
     - apache-config_httpd_conf
     - apache
 
+- include: config_httpd-dirs_conf.yml
+  tags:
+    - config_httpd-dirs_conf
+    - apache-config_httpd-dirs_conf
+    - apache
+
+- include: config_httpd-modules_conf.yml
+  tags:
+    - config_httpd-modules_conf
+    - apache-config_httpd-modules_conf
+    - apache
+
 - include: config_httpd-ssl_conf.yml
   tags:
     - config_httpd-ssl_conf

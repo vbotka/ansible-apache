@@ -1,0 +1,12 @@
+---
+
+- name: Configure directories in {{apache_conf_path}}/Includes/
+  template: >
+    src="directory-block.yml"
+    dest="{{apache_conf_path}}/Includes/{{item.Includefile}}"
+    owner="root"
+    group="www"
+    mode="0644"
+  with_items: apache_directory_blocks
+  notify: reload apache
+  tags: config_dirs

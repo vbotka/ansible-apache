@@ -21,6 +21,6 @@
     insertafter: "# <Directory> blocks below."
     block: |
       {{item}}
-  with_items: "{{apache_Directory_blocks}}"
+  with_items: "{{apache_directory_blocks}}"
   notify: reload apache
   tags: config_https_conf_directory_blocks

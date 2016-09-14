@@ -13,7 +13,6 @@
   notify: reload apache
   tags: config_httpd-modules_conf
 
-
 - name: Configure SSL module in{{apache_conf_path}}/httpd.conf
   lineinfile: >
     dest="{{apache_conf_path}}/httpd.conf"
@@ -28,7 +27,6 @@
   notify: reload apache
   tags: config_httpd-module-ssl_conf
 
-
 - name: Configure PHP module in{{apache_conf_path}}/httpd.conf
   lineinfile: >
     dest="{{apache_conf_path}}/httpd.conf"
@@ -39,6 +37,35 @@
   with_items:
     - { regexp: "^LoadModule php5_module ",
         line: "LoadModule php5_module        libexec//{{apache_version}}/libphp5.so"}
+  when: apache_php == "yes"
+  notify: reload apache
+  tags: config_httpd-module-php_conf
+
+# marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+# Including the marker resulted in error:
+# "httpd: Syntax error on line 530 of
+# /usr/local/etc/apache24/httpd.conf: Syntax error on line 1 of
+# /usr/local/etc/apache24/Includes/php.conf:
+# /usr/local/etc/apache24/Includes/php.conf:11: <!--> was not
+# closed.\\n/usr/local/etc/apache24/Includes/php.conf:1: <!--> was not
+# closed.\n"
+- name: Configure PHP in {{apache_conf_path}}/Includes/php.conf
+  blockinfile:
+    dest: "{{apache_conf_path}}/Includes/php.conf"
+    block: |
+      <IfModule dir_module>
+        DirectoryIndex index.html index.php
+      </IfModule>
+      <FilesMatch "\.php$">
+        SetHandler application/x-httpd-php
+      </FilesMatch>
+      <FilesMatch "\.phps$">
+        SetHandler application/x-httpd-php-source
+      </FilesMatch>
+    create: "yes"
+    owner: "root"
+    group: "www"
+    mode: "0640"
   when: apache_php == "yes"
   notify: reload apache
   tags: config_httpd-module-php_conf
