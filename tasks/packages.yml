@@ -1,12 +1,12 @@
 ---
 
 - name: Install apache
-  pkgng: name='{{item}}' state='present'
+  portinstall: name='{{item}}' state='present' use_packages="yes"
   with_items:
     - '{{ apache_version }}'
 
 - name: Install mod_php
-  pkgng: name='{{item}}' state='present'
+  portinstall: name='{{item}}' state='present' use_packages="yes"
   with_items:
     - mod_php{{ apache_php_version }}
   when: apache_php == "yes"

@@ -10,7 +10,7 @@
   with_items: apache_vhost
   when: apache_vhosts == "yes"
   notify: reload apache
-  tags: config_vhosts
+  tags: config_httpd-vhosts_conf
 
 - name: Include virtual hosts in {{apache_conf_path}}/httpd.conf
   lineinfile: >
@@ -22,4 +22,4 @@
   with_items: apache_vhost
   when: apache_vhosts == "yes"
   notify: reload apache
-  tags: config_vhosts
+  tags: config_httpd-vhosts_conf

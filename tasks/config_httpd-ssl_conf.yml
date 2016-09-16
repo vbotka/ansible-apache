@@ -12,7 +12,7 @@
         line: "Include etc/apache24/extra/httpd-ssl.conf"}
   when: apache_ssl == "yes"
   notify: reload apache
-  tags: config_httpd_conf
+  tags: config_httpd-ssl_conf
 
 - name: Configure {{apache_conf_path}}/extra/httpd-ssl.conf
   lineinfile: >

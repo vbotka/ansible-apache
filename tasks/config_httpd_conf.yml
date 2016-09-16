@@ -12,15 +12,3 @@
     - { regexp: "^ServerAdmin ", line: "ServerAdmin {{apache_ServerAdmin}}"}
   notify: reload apache
   tags: config_httpd_conf
-
-- name: Configure Direcotries in {{apache_conf_path}}/httpd.conf
-  blockinfile:
-    dest: "{{apache_conf_path}}/httpd.conf"
-    backup: "yes"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    insertafter: "# <Directory> blocks below."
-    block: |
-      {{item}}
-  with_items: "{{apache_directory_blocks}}"
-  notify: reload apache
-  tags: config_https_conf_directory_blocks

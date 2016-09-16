@@ -9,3 +9,13 @@
   notify: enable and start apache
   when: apache_enable == 'yes'
   tags: config_rc_conf_apache
+
+- name: Disable and stop apache
+  lineinfile: >
+    dest='/etc/rc.conf'
+    regexp='^{{apache_version}}_enable'
+    line='{{apache_version}}_enable=\"{{ apache_enable }}\"'
+    backup='yes'
+  notify: disable and stop apache
+  when: apache_enable == 'no'
+  tags: config_rc_conf_apache
