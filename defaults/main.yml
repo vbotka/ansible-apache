@@ -1,6 +1,10 @@
 ---
 # defaults for ansible-apache
 
+freebsd_install_method: "packages"
+#freebsd_install_method: "ports"
+#freebsd_use_packages: "yes"
+
 apache_enable: "yes"
 apache_version: "apache24"
 apache_conf_path: "/usr/local/etc/apache24"
