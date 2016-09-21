@@ -2,17 +2,17 @@
 
 - name: Install apache
   pkgng: >
-    name='{{item}}'
-    state='present'
+    name="{{item}}"
+    state="present"
   with_items:
-    - '{{ apache_version }}'
+    - "{{ apache_version }}"
   when: freebsd_install_method == "packages"
   tags: packages
 
 - name: Install mod_php
   pkgng: >
-    name='{{item}}'
-    state='present'
+    name="{{item}}"
+    state="present"
   with_items:
     - mod_php{{ apache_php_version }}
   when: ((freebsd_install_method == "packages") and (apache_php == "yes"))
@@ -20,20 +20,22 @@
 
 - name: Install apache (from ports)
   portinstall: >
-    name='{{item}}'
-    state='present'
-    use_packages=="{{freebsd_use_packages}}"
+    name="{{item}}"
+    state="present"
+    use_packages="{{freebsd_use_packages}}"
   with_items:
-    - '{{ apache_version }}'
+    - "www/{{ apache_version }}"
   when: freebsd_install_method == "ports"
   tags: ports
 
 - name: Install mod_php (from ports)
   portinstall: >
-    name='{{item}}'
-    state='present'
-    use_packages=="{{freebsd_use_packages}}"
+    name="{{item}}"
+    state="present"
+    use_packages="{{freebsd_use_packages}}"
   with_items:
-    - mod_php{{ apache_php_version }}
+    - "www/mod_php{{ apache_php_version }}"
   when: ((freebsd_install_method == "ports") and (apache_php == "yes"))
   tags: ports
+
+# EOF
