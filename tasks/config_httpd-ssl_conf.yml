@@ -23,6 +23,8 @@
     backup="yes"
   with_items:
     - { regexp: "^Listen 443", line: "Listen 443"}
+    - { regexp: "^ServerName", line: "ServerName {{apache_ServerName}}"}
+    - { regexp: "^ServerAdmin", line: "ServerName {{apache_ServerAdmin}}"}
     - { regexp: "^SSLEngine on", line: "SSLEngine on"}
     - { regexp: "^SSLProtocol ", line: "SSLProtocol {{apache_SSLProtocol}}"}
     - { regexp: "^SSLCipherSuite ", line: "SSLCipherSuite {{apache_SSLCipherSuite}}"}
