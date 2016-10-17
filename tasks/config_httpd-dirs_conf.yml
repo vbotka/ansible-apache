@@ -2,7 +2,7 @@
 
 - name: Configure directories in {{apache_conf_path}}/Includes/
   template: >
-    src="directory-block.yml"
+    src="directory-block.j2"
     dest="{{apache_conf_path}}/Includes/{{item.Includefile}}"
     owner="root"
     group="www"

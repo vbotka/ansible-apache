@@ -2,7 +2,7 @@
 
 - name: Configure virtual hosts in {{apache_conf_path}}/extra/
   template: >
-    src="vhost.conf"
+    src="vhost.j2"
     dest="{{apache_conf_path}}/extra/{{item.ServerName}}.conf"
     owner="root"
     group="www"
