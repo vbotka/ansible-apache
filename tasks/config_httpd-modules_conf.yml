@@ -1,5 +1,6 @@
 ---
 
+# socache_shmcb_module
 - name: Configure modules in{{apache_conf_path}}/httpd.conf
   lineinfile: >
     dest="{{apache_conf_path}}/httpd.conf"
@@ -9,11 +10,12 @@
     backup="yes"
   with_items:
     - { regexp: "^LoadModule socache_shmcb_module ",
-        line: "LoadModule socache_shmcb_module libexec/{{apache_version}}/mod_socache_shmcb.so"}
+        line: "LoadModule socache_shmcb_module libexec/{{apache_package}}/mod_socache_shmcb.so"}
   notify: reload apache
   tags:
     - config_httpd-modules_conf
 
+# ssl_module
 - name: Configure SSL module in{{apache_conf_path}}/httpd.conf
   lineinfile: >
     dest="{{apache_conf_path}}/httpd.conf"
@@ -23,13 +25,14 @@
     backup="yes"
   with_items:
     - { regexp: "^LoadModule ssl_module ",
-        line: "LoadModule ssl_module libexec/{{apache_version}}/mod_ssl.so"}
+        line: "LoadModule ssl_module libexec/{{apache_package}}/mod_ssl.so"}
   when: apache_ssl == "yes"
   notify: reload apache
   tags:
     - config_httpd-modules_conf
     - config_httpd-module-ssl_conf
 
+# php5_module
 - name: Configure PHP module in{{apache_conf_path}}/httpd.conf
   lineinfile: >
     dest="{{apache_conf_path}}/httpd.conf"
@@ -39,7 +42,7 @@
     backup="yes"
   with_items:
     - { regexp: "^LoadModule php5_module ",
-        line: "LoadModule php5_module        libexec/{{apache_version}}/libphp5.so"}
+        line: "LoadModule php5_module libexec/{{apache_package}}/libphp5.so"}
   when: apache_php == "yes"
   notify: reload apache
   tags:

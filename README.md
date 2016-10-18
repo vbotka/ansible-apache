@@ -68,7 +68,7 @@ SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/example.net/privkey.pem
 
 ```
 apache_enable: "yes"
-apache_version: "apache24"
+apache_version: "24"
 apache_ssl: "no"
 apache_vhosts: "no"
 apache_vhost: []

@@ -1,40 +1,40 @@
 ---
 
-- name: Install apache
+- name: Install {{apache_package}}
   pkgng: >
     name="{{item}}"
     state="present"
   with_items:
-    - "{{ apache_version }}"
+    - "{{apache_package}}"
   when: freebsd_install_method == "packages"
   tags: packages
 
-- name: Install mod_php
+- name: Install mod_php{{apache_php_version}}
   pkgng: >
     name="{{item}}"
     state="present"
   with_items:
-    - mod_php{{ apache_php_version }}
+    - mod_php{{apache_php_version}}
   when: ((freebsd_install_method == "packages") and (apache_php == "yes"))
   tags: packages
 
-- name: Install apache (from ports)
+- name: Install {{apache_package}} (ports)
   portinstall: >
     name="{{item}}"
     state="present"
     use_packages="{{freebsd_use_packages}}"
   with_items:
-    - "www/{{ apache_version }}"
+    - "{{apache_package}}"
   when: freebsd_install_method == "ports"
   tags: ports
 
-- name: Install mod_php (from ports)
+- name: Install mod_php{{apache_php_version}} (ports)
   portinstall: >
     name="{{item}}"
     state="present"
     use_packages="{{freebsd_use_packages}}"
   with_items:
-    - "www/mod_php{{ apache_php_version }}"
+    - "mod_php{{apache_php_version}}"
   when: ((freebsd_install_method == "ports") and (apache_php == "yes"))
   tags: ports
 
