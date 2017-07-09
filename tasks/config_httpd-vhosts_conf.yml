@@ -7,7 +7,7 @@
     owner="root"
     group="www"
     mode="0644"
-  with_items: apache_vhost
+  with_items: "{{ apache_vhost }}"
   when: apache_vhosts == "yes"
   notify: reload apache
   tags: config_httpd-vhosts_conf
@@ -19,7 +19,7 @@
     line="Include etc/apache24/extra/{{item.ServerName}}.conf"
     insertbefore="BOF"
     backup="yes"
-  with_items: apache_vhost
+  with_items: "{{ apache_vhost }}"
   when: apache_vhosts == "yes"
   notify: reload apache
   tags: config_httpd-vhosts_conf

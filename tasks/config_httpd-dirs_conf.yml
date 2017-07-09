@@ -7,6 +7,6 @@
     owner="root"
     group="www"
     mode="0644"
-  with_items: apache_directory_blocks
+  with_items: "{{ apache_directory_blocks }}"
   notify: reload apache
   tags: config_dirs
