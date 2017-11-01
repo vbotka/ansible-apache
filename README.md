@@ -5,7 +5,7 @@ apache
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure apache on FreeBSD.
 
-Tested with FreeBSD 10.3 at [digitalocean.com](https://cloud.digitalocean.com)
+Tested with FreeBSD 10.3 and 11.1
 
 
 Requirements
@@ -45,7 +45,7 @@ apache_vhost:
       }                                                                                                                      
 ```
 
-Example of created file with virtual host:
+Example of a created file with virtual host:
 
 ```
 # cat /usr/local/etc/apache24/extra/example.net.conf
@@ -97,13 +97,13 @@ Workflow
 2) Install role.
 
 ```
-> ansible-galaxy install vbotka.ansible-apache
+> ansible-galaxy install vbotka.apache
 ```
 
 3) Fit variables.
 
 ```
-~/.ansible/roles/vbotka.ansible-apache/vars/main.yml
+~/.ansible/roles/vbotka.apache/vars/main.yml
 ```
 
 4) Create playbook and inventory.
@@ -115,7 +115,7 @@ Workflow
   become: yes
   become_method: sudo
   roles:
-    - role: vbotka.ansible-apache
+    - role: vbotka.apache
 ```
 
 ```

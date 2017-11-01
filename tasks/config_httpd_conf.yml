@@ -1,14 +1,17 @@
 ---
 
-- name: Configure parameters in{{apache_conf_path}}/httpd.conf
+- name: Configure parameters in {{ apache_conf_path }}/httpd.conf
   lineinfile: >
-    dest="{{apache_conf_path}}/httpd.conf"
-    regexp="{{item.regexp}}"
-    line="{{item.line}}"
+    dest="{{ apache_conf_path }}/httpd.conf"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
     insertbefore="BOF"
     backup="yes"
   with_items:
-    - { regexp: "^ServerName ", line: "ServerName {{apache_ServerName}}"}
-    - { regexp: "^ServerAdmin ", line: "ServerAdmin {{apache_ServerAdmin}}"}
+    - { regexp: "^ServerName ", line: "ServerName {{ apache_ServerName }}"}
+    - { regexp: "^ServerAdmin ", line: "ServerAdmin {{ apache_ServerAdmin }}"}
   notify: reload apache
   tags: config_httpd_conf
+
+# EOF
+...

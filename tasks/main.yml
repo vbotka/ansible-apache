@@ -1,9 +1,10 @@
 ---
-# tasks for apache
+# tasks for vbotka.apache
 
 - include: packages.yml
   tags:
-    - packages
+    - bsd_packages
+    - bsd_ports
     - apache-packages
     - apache
 
@@ -42,3 +43,6 @@
     - config_httpd-vhosts_conf
     - apache-config_httpd-vhosts_conf
     - apache
+
+# EOF
+...
