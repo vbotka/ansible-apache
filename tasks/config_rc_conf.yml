@@ -3,22 +3,22 @@
 - name: Enable and start apache
   lineinfile: >
     dest="/etc/rc.conf"
-    regexp="^{{ apache_package }}_enable"
-    line="{{ apache_package }}_enable=\"YES\""
+    regexp="^{{ apache_service }}_enable"
+    line="{{ apache_service }}_enable=\"YES\""
     backup="yes"
   notify: enable and start apache
-  when: apache_enable == "YES"
-  tags: config_rc_conf_apache
+  when: apache_enable|lower == "yes"
+  tags: rc_conf_apache
 
 - name: Disable and stop apache
   lineinfile: >
     dest="/etc/rc.conf"
-    regexp="^{{ apache_package }}_enable"
-    line="{{ apache_package }}_enable=\"NO\""
+    regexp="^{{ apache_service }}_enable"
+    line="{{ apache_service }}_enable=\"NO\""
     backup="yes"
   notify: disable and stop apache
-  when: apache_enable == "NO"
-  tags: config_rc_conf_apache
+  when: apache_enable|lower == "no"
+  tags: rc_conf_apache
 
 # EOF
 ...
