@@ -13,5 +13,7 @@
 - name: reload apache
   service: name="{{ apache_service }}" state="reloaded"
 
+# TODO: add graceful handler
+
 # EOF
 ...

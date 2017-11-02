@@ -10,7 +10,7 @@
     backup="yes"
   with_items:
     - { regexp: "^LoadModule socache_shmcb_module ",
-        line: "LoadModule socache_shmcb_module libexec/{{ apache_package }}/mod_socache_shmcb.so"}
+        line: "LoadModule socache_shmcb_module libexec/{{ apache_dir }}/mod_socache_shmcb.so"}
   notify: reload apache
   tags: config_httpd-modules_conf
 
@@ -24,7 +24,7 @@
     backup="yes"
   with_items:
     - { regexp: "^LoadModule ssl_module ",
-        line: "LoadModule ssl_module libexec/{{ apache_package }}/mod_ssl.so"}
+        line: "LoadModule ssl_module libexec/{{ apache_dir }}/mod_ssl.so"}
   when: apache_ssl == "yes"
   notify: reload apache
   tags:
@@ -41,7 +41,7 @@
     backup="yes"
   with_items:
     - { regexp: "^LoadModule php5_module ",
-        line: "LoadModule php5_module libexec/{{ apache_package }}/libphp5.so"}
+        line: "LoadModule php5_module libexec/{{ apache_dir }}/libphp5.so"}
   when: apache_php == "yes"
   notify: reload apache
   tags:
