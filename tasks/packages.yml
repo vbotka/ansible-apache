@@ -1,6 +1,6 @@
 ---
 
-- name: Install {{ apache_package }}
+- name: Install {{ apache_package }} (package)
   pkgng: >
     name="{{ item }}"
     state="present"
@@ -9,7 +9,7 @@
   when: freebsd_install_method == "packages"
   tags: bsd_packages
 
-- name: Install mod_php{{ apache_php_version }}
+- name: Install mod_php{{ apache_php_version }} (package)
   pkgng: >
     name="{{ item }}"
     state="present"

@@ -25,7 +25,7 @@
   with_items:
     - { regexp: "^LoadModule ssl_module ",
         line: "LoadModule ssl_module libexec/{{ apache_dir }}/mod_ssl.so"}
-  when: apache_ssl == "yes"
+  when: apache_ssl|lower == "yes"
   notify: reload apache
   tags:
     - config_httpd-modules_conf
@@ -42,7 +42,7 @@
   with_items:
     - { regexp: "^LoadModule php5_module ",
         line: "LoadModule php5_module libexec/{{ apache_dir }}/libphp5.so"}
-  when: apache_php == "yes"
+  when: apache_php|lower == "yes"
   notify: reload apache
   tags:
     - config_httpd-modules_conf
@@ -73,7 +73,7 @@
     owner: "root"
     group: "www"
     mode: "0640"
-  when: apache_php == "yes"
+  when: apache_php|lower == "yes"
   notify: reload apache
   tags: config_httpd-module-php_conf
 

@@ -10,7 +10,7 @@
   with_items:
     - { regexp: "^Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf",
         line: "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"}
-  when: apache_ssl == "yes"
+  when: apache_ssl|lower == "yes"
   notify: reload apache
   tags: config_httpd-ssl_conf
 
@@ -31,7 +31,7 @@
     - { regexp: "^SSLCompression ", line: "SSLCompression {{ apache_SSLCompression }}"}
     - { regexp: "^SSLCertificateFile ", line: "SSLCertificateFile {{ apache_SSLCertificateFile }}"}
     - { regexp: "^SSLCertificateKeyFile ", line: "SSLCertificateKeyFile {{ apache_SSLCertificateKeyFile }}"}
-  when: apache_ssl == "yes"
+  when: apache_ssl|lower == "yes"
   notify: reload apache
   tags: config_httpd-ssl_conf
 

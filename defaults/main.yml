@@ -5,7 +5,7 @@ freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
 
-apache_enable: "YES"
+apache_enable: "yes"
 apache_version: "24"
 apache_package: "www/apache{{ apache_version }}"
 apache_dir: "apache{{ apache_version }}"

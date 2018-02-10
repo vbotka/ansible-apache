@@ -8,7 +8,7 @@
     group="www"
     mode="0644"
   with_items: "{{ apache_vhost }}"
-  when: apache_vhosts == "yes"
+  when: apache_vhosts|lower == "yes"
   notify: reload apache
   tags: config_httpd-vhosts_conf
 
@@ -20,7 +20,7 @@
     insertbefore="BOF"
     backup="yes"
   with_items: "{{ apache_vhost }}"
-  when: apache_vhosts == "yes"
+  when: apache_vhosts|lower == "yes"
   notify: reload apache
   tags: config_httpd-vhosts_conf
 
