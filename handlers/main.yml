@@ -12,6 +12,7 @@
 
 - name: reload apache
   service: name="{{ apache_service }}" state="reloaded"
+  when: apache_enable
 
 # TODO: add graceful handler
 

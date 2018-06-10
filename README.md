@@ -20,13 +20,13 @@ Variables
 By default SSL is off.
 
 ```
-apache_ssl: "no"
+apache_ssl: False
 ```
 
 Certificates are needed to enable SSL.
 
 ```
-apache_ssl: "yes"
+apache_ssl: True
 apache_SSLCertificateFile: "/usr/local/etc/apache24/server.crt"
 apache_SSLCertificateKeyFile: "/usr/local/etc/apache24/server.key"
 ```
@@ -67,10 +67,9 @@ SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/example.net/privkey.pem
 **Defaults**
 
 ```
-apache_enable: "yes"
+apache_enable: True
 apache_version: "24"
-apache_ssl: "no"
-apache_vhosts: "no"
+apache_ssl: False
 apache_vhost: []
 apache_conf_path: "/usr/local/etc/apache24"
 
@@ -91,7 +90,7 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-> ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+> ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role.
@@ -109,7 +108,7 @@ Workflow
 4) Create playbook and inventory.
 
 ```
-> cat ~/.ansible/playbooks/apache.yml
+> cat ~/.ansible/apache.yml
 ---
 - hosts: webserver
   become: yes
@@ -133,7 +132,7 @@ ansible_perl_interpreter=/usr/local/bin/perl
 5) Install and configure apache.
 
 ```
-ansible-playbook ~/.ansible/playbooks/apache.yml
+ansible-playbook ~/.ansible/apache.yml
 ```
 
 6) Consider to test the webserver

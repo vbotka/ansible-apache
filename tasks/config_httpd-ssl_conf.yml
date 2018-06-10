@@ -1,39 +1,26 @@
 ---
 
-- name: Include extra/httpd-ssl.conf in {{ apache_conf_path }}/httpd.conf
-  lineinfile: >
-    dest="{{ apache_conf_path }}/httpd.conf"
-    regexp="{{ item.regexp }}"
-    line="{{ item.line }}"
-    insertbefore="BOF"
-    backup="yes"
-  with_items:
-    - { regexp: "^Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf",
-        line: "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"}
-  when: apache_ssl|lower == "yes"
+- name: "config_httpd-ssl_conf: Include extra/httpd-ssl.conf in {{ apache_conf_path }}/httpd.conf"
+  lineinfile:
+    dest: "{{ apache_conf_path }}/httpd.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    insertbefore: "BOF"
+    backup: yes
+  with_items: "{{ apache_httpd_conf_ssl }}"
+  when: apache_ssl
   notify: reload apache
-  tags: config_httpd-ssl_conf
 
-- name: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf
-  lineinfile: >
-    dest="{{ apache_conf_path }}/extra/httpd-ssl.conf"
-    regexp="{{ item.regexp }}"
-    line="{{ item.line }}"
-    insertbefore="BOF"
-    backup="yes"
-  with_items:
-    - { regexp: "^Listen 443", line: "Listen 443"}
-    - { regexp: "^ServerName", line: "ServerName {{ apache_ServerName }}"}
-    - { regexp: "^ServerAdmin", line: "ServerAdmin {{ apache_ServerAdmin }}"}
-    - { regexp: "^SSLEngine on", line: "SSLEngine on"}
-    - { regexp: "^SSLProtocol ", line: "SSLProtocol {{ apache_SSLProtocol }}"}
-    - { regexp: "^SSLCipherSuite ", line: "SSLCipherSuite {{ apache_SSLCipherSuite }}"}
-    - { regexp: "^SSLCompression ", line: "SSLCompression {{ apache_SSLCompression }}"}
-    - { regexp: "^SSLCertificateFile ", line: "SSLCertificateFile {{ apache_SSLCertificateFile }}"}
-    - { regexp: "^SSLCertificateKeyFile ", line: "SSLCertificateKeyFile {{ apache_SSLCertificateKeyFile }}"}
-  when: apache_ssl|lower == "yes"
+- name: "config_httpd-ssl_conf: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
+  lineinfile:
+    dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    insertbefore: "BOF"
+    backup: yes
+  with_items: "{{ apache_httpd_conf_ssl_extra }}"
+  when: apache_ssl
   notify: reload apache
-  tags: config_httpd-ssl_conf
 
 # EOF
 ...

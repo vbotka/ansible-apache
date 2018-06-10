@@ -1,28 +1,24 @@
 ---
 
-- name: Configure virtual hosts in {{ apache_conf_path }}/extra/
-  template: >
-    src="vhost.j2"
-    dest="{{ apache_conf_path }}/extra/{{ item.ServerName }}.conf"
-    owner="root"
-    group="www"
-    mode="0644"
+- name: "config_httpd-vhosts_conf: Configure virtual hosts in {{ apache_conf_path }}/extra/"
+  template:
+    src: "vhost.j2"
+    dest: "{{ apache_conf_path }}/extra/{{ item.ServerName }}.conf"
+    owner: "root"
+    group: "www"
+    mode: "0644"
   with_items: "{{ apache_vhost }}"
-  when: apache_vhosts|lower == "yes"
   notify: reload apache
-  tags: config_httpd-vhosts_conf
 
-- name: Include virtual hosts in {{ apache_conf_path }}/httpd.conf
-  lineinfile: >
-    dest="{{ apache_conf_path }}/httpd.conf"
-    regexp="^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
-    line="Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
-    insertbefore="BOF"
-    backup="yes"
+- name: "config_httpd-vhosts_conf: Include virtual hosts in {{ apache_conf_path }}/httpd.conf"
+  lineinfile:
+    dest: "{{ apache_conf_path }}/httpd.conf"
+    regexp: "^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
+    line: "Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
+    insertbefore: "BOF"
+    backup: yes
   with_items: "{{ apache_vhost }}"
-  when: apache_vhosts|lower == "yes"
   notify: reload apache
-  tags: config_httpd-vhosts_conf
 
 # EOF
 ...

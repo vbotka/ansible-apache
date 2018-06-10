@@ -1,24 +1,22 @@
 ---
 
-- name: Enable and start apache
-  lineinfile: >
-    dest="/etc/rc.conf"
-    regexp="^{{ apache_service }}_enable"
-    line="{{ apache_service }}_enable=\"YES\""
-    backup="yes"
+- name: "config_rc_conf: Enable and Start apache"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^{{ apache_service }}_enable"
+    line: "{{ apache_service }}_enable=\"YES\""
+    backup: yes
   notify: enable and start apache
-  when: apache_enable|lower == "yes"
-  tags: rc_conf_apache
+  when: apache_enable
 
-- name: Disable and stop apache
-  lineinfile: >
-    dest="/etc/rc.conf"
-    regexp="^{{ apache_service }}_enable"
-    line="{{ apache_service }}_enable=\"NO\""
-    backup="yes"
+- name: "config_rc_conf: Disable and Stop apache"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^{{ apache_service }}_enable"
+    line: "{{ apache_service }}_enable=\"NO\""
+    backup: yes
   notify: disable and stop apache
-  when: apache_enable|lower == "no"
-  tags: rc_conf_apache
+  when: not apache_enable
 
 # EOF
 ...
