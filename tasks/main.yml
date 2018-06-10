@@ -9,15 +9,22 @@
          apache_dir [ {{ apache_dir }} ]
          apache_service [ {{ apache_service }} ]
          apache_conf_path [ {{ apache_conf_path }} ]
-         apache_httpd_conf [ {{ apache_httpd_conf | to_nice_yaml }} ]
+         apache_httpd_conf [
+         {{ apache_httpd_conf | to_nice_yaml }} ]
          apache_ssl [ {{ apache_ssl }} ]
          apache_php [ {{ apache_php }} ]
-         apache_packages [ {{ apache_packages }} ]
-         apache_httpd_conf_modules [ {{ apache_httpd_conf_modules | to_nice_yaml }} ]
-         apache_httpd_conf_ssl [ {{ apache_httpd_conf_ssl | to_nice_yaml }} ]
-         apache_httpd_conf_ssl_extra [ {{ apache_httpd_conf_ssl_extra | to_nice_yaml }} ]
-         apache_vhost [ {{ apache_vhost | to_nice_yaml }} ]
-         apache_directory_blocks [ {{ apache_directory_blocks | to_nice_yaml }} ]
+         apache_packages [
+         {{ apache_packages | to_nice_yaml }} ]
+         apache_httpd_conf_modules [
+         {{ apache_httpd_conf_modules | to_nice_yaml }} ]
+         apache_httpd_conf_ssl [
+         {{ apache_httpd_conf_ssl | to_nice_yaml }} ]
+         apache_httpd_conf_ssl_extra [
+         {{ apache_httpd_conf_ssl_extra | to_nice_yaml }} ]
+         apache_vhost [
+         {{ apache_vhost | to_nice_yaml }} ]
+         apache_directory_blocks [
+         {{ apache_directory_blocks | to_nice_yaml }} ]
   debug: msg="{{ msg.split('\n') }}"
   when: apache_debug
 
