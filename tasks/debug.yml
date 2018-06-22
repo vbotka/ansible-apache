@@ -1,0 +1,43 @@
+---
+
+- name: "Apache: Debug"
+  vars:
+    msg: |
+         ansible_architecture [ {{ ansible_architecture }} ]
+         ansible_os_family [ {{ ansible_os_family }} ]
+         ansible_distribution [ {{ ansible_distribution }} ]
+         ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+         ansible_distribution_version [ {{ ansible_distribution_version }} ]
+         ansible_distribution_release [ {{ ansible_distribution_release }} ]
+
+         apache_enable [ {{ apache_enable }} ]
+         apache_ssl [ {{ apache_ssl }} ]
+         apache_SSLEngine [ {{ apache_SSLEngine }} ]
+         apache_php [ {{ apache_php }} ]
+         apache_backup_conf [ {{ apache_backup_conf }} ]
+         apache_ServerName [ {{ apache_ServerName }} ]
+         apache_ServerAdmin [ {{ apache_ServerAdmin }} ]
+         apache_dir [ {{ apache_dir }} ]
+         apache_service [ {{ apache_service }} ]
+         apache_conf_path [ {{ apache_conf_path }} ]
+         apache_httpd_conf
+         {{ apache_httpd_conf | to_yaml }}
+         apache_packages
+         {{ apache_packages | to_nice_yaml }}
+         apache_httpd_conf_modules
+         {{ apache_httpd_conf_modules | to_yaml }}
+         apache_httpd_conf_ssl
+         {{ apache_httpd_conf_ssl | to_nice_yaml }}
+         apache_httpd_conf_ssl_extra
+         {{ apache_httpd_conf_ssl_extra | to_yaml }}
+         apache_httpd_conf_ssl_extra_absent
+         {{ apache_httpd_conf_ssl_extra_absent | to_yaml }}
+         apache_vhost
+         {{ apache_vhost | to_nice_yaml }}
+         apache_directory_blocks
+         {{ apache_directory_blocks | to_nice_yaml }}
+  debug:
+    msg: "{{ msg.split('\n') }}"
+
+# EOF
+...

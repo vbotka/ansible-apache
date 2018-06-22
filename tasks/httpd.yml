@@ -3,8 +3,8 @@
 - name: "config_httpd_conf: Configure parameters in {{ apache_conf_path }}/httpd.conf"
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
+    regexp: "^{{ item.regexp }}"
+    line: "{{ item.regexp }}{{ item.line }}"
     insertbefore: "BOF"
     backup: yes
   with_items: "{{ apache_httpd_conf }}"

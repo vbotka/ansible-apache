@@ -1,5 +1,14 @@
 ---
 
+- name: "config_httpd-vhosts_conf: Create directories for virtual hosts"
+  file:
+    state: "directory"
+    path: "{{ item.DocumentRoot }}"
+    owner: "{{ apache_data_owner }}"
+    group: "{{ apache_data_group }}"
+    mode: "{{ apache_data_mode }}"
+  with_items: "{{ apache_vhost}}"
+
 - name: "config_httpd-vhosts_conf: Configure virtual hosts in {{ apache_conf_path }}/extra/"
   template:
     src: "vhost.j2"

@@ -3,9 +3,7 @@ apache
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/apache)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure apache on FreeBSD.
-
-Tested with FreeBSD 10.3 and 11.1
+[Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache for FreeBSD.
 
 
 Requirements
@@ -17,7 +15,7 @@ No requiremenst.
 Variables
 ---------
 
-By default SSL is off.
+By default SSL is off. Check other defaults and examples in vars.
 
 ```
 apache_ssl: False
@@ -27,12 +25,13 @@ Certificates are needed to enable SSL.
 
 ```
 apache_ssl: True
-apache_SSLCertificateFile: "/usr/local/etc/apache24/server.crt"
-apache_SSLCertificateKeyFile: "/usr/local/etc/apache24/server.key"
+apache_version: "24"
+apache_SSLCertificateFile: "/usr/local/etc/apache{{ apache_version }}/server.crt"
+apache_SSLCertificateKeyFile: "/usr/local/etc/apache{{ apache_version }}/server.key"
 ```
 
-Virtual hosts are configured with manadtory SSL. Both 80/443 virtual hosts will be created and 80 permanently redirected to
-443. SEE example in vars.
+Virtual hosts are configured with manadtory SSL. Both 80/443 virtual hosts will be created and port 80 permanently redirected to
+443. SEE example is available in vars.
 
 Example of variable apache_vhost:
 
@@ -90,41 +89,40 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-> ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+# ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role.
 
 ```
-> ansible-galaxy install vbotka.apache
+# ansible-galaxy install vbotka.apache
 ```
 
 3) Fit variables.
 
 ```
-~/.ansible/roles/vbotka.apache/vars/main.yml
+# editor vbotka.apache/vars/main.yml
 ```
 
 4) Create playbook and inventory.
 
 ```
-> cat ~/.ansible/apache.yml
+# cat apache.yml
 ---
 - hosts: webserver
-  become: yes
-  become_method: sudo
   roles:
-    - role: vbotka.apache
+    - vbotka.apache
 ```
 
 ```
-> cat ~/.ansible/hosts
+# cat hosts
 [webserver]
-<WEBSERVER-IP-OR-FQDN>
-
+<webserver-ip-or-fqdn>
 [webserver:vars]
 ansible_connection=ssh
 ansible_user=freebsd
+ansible_become=yes
+ansible_become_method=sudo
 ansible_python_interpreter=/usr/local/bin/python2
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
@@ -132,7 +130,7 @@ ansible_perl_interpreter=/usr/local/bin/perl
 5) Install and configure apache.
 
 ```
-ansible-playbook ~/.ansible/apache.yml
+# ansible-playbook apache.yml
 ```
 
 6) Consider to test the webserver
@@ -144,10 +142,10 @@ ansible-playbook ~/.ansible/apache.yml
 References
 ----------
 
-- [SSL/TLS Strong Encryption: How-To](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
-
+- [Apache HTTP Server Documentation](https://httpd.apache.org/docs/)
+- [SSL/TLS Strong Encryption: Trunk: How-To](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.html)
+- [SSL/TLS Strong Encryption: 2.4: How-To](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
 - [SSL with Virtual Hosts Using SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI)
-
 - [Multi-Processing Modules (MPMs)](https://httpd.apache.org/docs/2.4/mpm.html)
 
 License

@@ -1,53 +1,30 @@
 ---
 # tasks for vbotka.apache
 
-- name: "Apache: Debug"
-  vars:
-    msg: |
-         apache_ServerName [ {{ apache_ServerName }} ]
-         apache_ServerAdmin [ {{ apache_ServerAdmin }} ]
-         apache_dir [ {{ apache_dir }} ]
-         apache_service [ {{ apache_service }} ]
-         apache_conf_path [ {{ apache_conf_path }} ]
-         apache_httpd_conf [
-         {{ apache_httpd_conf | to_nice_yaml }} ]
-         apache_ssl [ {{ apache_ssl }} ]
-         apache_php [ {{ apache_php }} ]
-         apache_packages [
-         {{ apache_packages | to_nice_yaml }} ]
-         apache_httpd_conf_modules [
-         {{ apache_httpd_conf_modules | to_nice_yaml }} ]
-         apache_httpd_conf_ssl [
-         {{ apache_httpd_conf_ssl | to_nice_yaml }} ]
-         apache_httpd_conf_ssl_extra [
-         {{ apache_httpd_conf_ssl_extra | to_nice_yaml }} ]
-         apache_vhost [
-         {{ apache_vhost | to_nice_yaml }} ]
-         apache_directory_blocks [
-         {{ apache_directory_blocks | to_nice_yaml }} ]
-  debug: msg="{{ msg.split('\n') }}"
+- import_tasks: debug.yml
   when: apache_debug
+  tags: apache-debug
 
-- include: packages.yml
-  tags: [ bsd_packages, bsd_ports, apache-packages ]
+- import_tasks: packages.yml
+  tags: apache-packages
 
-- include: config_rc_conf.yml
-  tags: apache-config_rc
+- import_tasks: rcconf.yml
+  tags: apache-rcconf
 
-- include: config_httpd_conf.yml
-  tags: apache-config_httpd
+- import_tasks: httpd.yml
+  tags: apache-httpd
 
-- include: config_httpd-dirs_conf.yml
-  tags: apache-config_httpd-dirs
+- import_tasks: httpd-dirs.yml
+  tags: apache-httpd-dirs
 
-- include: config_httpd-modules_conf.yml
-  tags: apache-config_httpd-modules
+- import_tasks: httpd-modules.yml
+  tags: apache-httpd-modules
 
-- include: config_httpd-ssl_conf.yml
-  tags: apache-config_httpd-ssl
+- import_tasks: httpd-ssl.yml
+  tags: apache-httpd-ssl
 
-- include: config_httpd-vhosts_conf.yml
-  tags: apache-config_httpd-vhosts
+- import_tasks: httpd-vhosts.yml
+  tags: apache-httpd-vhosts
 
 # EOF
 ...
