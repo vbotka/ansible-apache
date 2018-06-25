@@ -3,7 +3,7 @@ apache
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/apache)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache for FreeBSD.
+[Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
 
 
 Requirements
@@ -30,8 +30,9 @@ apache_SSLCertificateFile: "/usr/local/etc/apache{{ apache_version }}/server.crt
 apache_SSLCertificateKeyFile: "/usr/local/etc/apache{{ apache_version }}/server.key"
 ```
 
-Virtual hosts are configured with manadtory SSL. Both 80/443 virtual hosts will be created and port 80 permanently redirected to
-443. SEE example is available in vars.
+Virtual hosts are configured with mandatory SSL. Virtual hosts for
+ports 80 and 443 will be created and port 80 permanently redirected to
+443. Example is available in vars.
 
 Example of variable apache_vhost:
 
@@ -44,7 +45,7 @@ apache_vhost:
       }                                                                                                                      
 ```
 
-Example of a created file with virtual host:
+Example of a virtual host's configuration file:
 
 ```
 # cat /usr/local/etc/apache24/extra/example.net.conf

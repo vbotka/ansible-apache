@@ -5,20 +5,18 @@
 #apache_debug: True
 #apache_ssl: True
 #apache_php: True
-#apache_backup_conf: no
+#apache_backup_conf: yes
 #apache_SSLEngine: "on"
 
 #apache_packages:
 #  - "{{ apache_package }}"
 #  - "{{ apache_php_package }}"
 
-
 #apache_httpd_conf_modules:
 #  - { module: "socache_shmcb_module", mod: "mod_socache_shmcb.so" }
 #  - { module: "ssl_module", mod: "mod_ssl.so" }
 #  - { module: "php5_module", mod: "libphp5.so" }
 
-#apache_vhosts: "yes"
 #apache_vhost:
 #- { ServerName: "example.net",
 #    DocumentRoot: "/usr/local/www/apache{{ apache_version }}/data/example.net/",

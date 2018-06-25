@@ -17,6 +17,7 @@
   service:
     name: "{{ apache_service }}"
     state: "restarted"
+  when: apache_enable
 
 - name: reload apache
   service:
