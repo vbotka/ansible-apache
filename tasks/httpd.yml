@@ -5,7 +5,6 @@
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^{{ item.regexp }}"
     line: "{{ item.regexp }}{{ item.line }}"
-    insertbefore: "BOF"
     backup: yes
   with_items: "{{ apache_httpd_conf }}"
   notify: reload apache

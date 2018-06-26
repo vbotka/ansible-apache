@@ -6,16 +6,16 @@
     path: "{{ item.DocumentRoot }}"
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"
-    mode: "{{ apache_data_mode }}"
+    mode: "{{ apache_dir_mode }}"
   with_items: "{{ apache_vhost}}"
 
 - name: "config_httpd-vhosts_conf: Configure virtual hosts in {{ apache_conf_path }}/extra/"
   template:
     src: "vhost.j2"
     dest: "{{ apache_conf_path }}/extra/{{ item.ServerName }}.conf"
-    owner: "root"
-    group: "www"
-    mode: "0644"
+    owner: "{{ apache_data_owner }}"
+    group: "{{ apache_data_group }}"
+    mode: "{{ apache_data_mode }}"
   with_items: "{{ apache_vhost }}"
   notify: reload apache
 

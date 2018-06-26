@@ -8,6 +8,12 @@
 #apache_backup_conf: yes
 #apache_SSLEngine: "on"
 
+#apache_httpd_conf_ssl_extra_absent:
+#  - "Listen\\s*443"
+#apache_httpd_conf_ssl_listen:
+#  - { regexp: "Listen ", line: "443"}
+#  - { regexp: "Listen ", line: "10.1.0.10:443"}
+
 #apache_packages:
 #  - "{{ apache_package }}"
 #  - "{{ apache_php_package }}"

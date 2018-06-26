@@ -19,7 +19,8 @@ apache_service: "apache{{ apache_version }}"
 apache_conf_path: "/usr/local/etc/apache{{ apache_version }}"
 apache_data_owner: "www"
 apache_data_group: "wheel"
-apache_data_mode: "0644"
+apache_data_mode: "0640"
+apache_dir_mode: "0750"
 apache_packages:
   - "{{ apache_package }}"
 
@@ -31,6 +32,7 @@ apache_httpd_conf:
   - { regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}" }
 
 # SSL
+apache_SSLListen: ""
 apache_SSLCertificateFile: "/usr/local/etc/apache{{ apache_version }}/server.crt"
 apache_SSLCertificateKeyFile: "/usr/local/etc/apache{{ apache_version }}/server.key"
 apache_SSLProtocol: "all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1"
@@ -55,8 +57,9 @@ apache_httpd_conf_ssl_extra:
   - { regexp: "SSLSessionTickets ", line: "{{ apache_SSLSessionTickets }}" }
   - { regexp: "SSLCertificateFile ", line: "{{ apache_SSLCertificateFile }}" }
   - { regexp: "SSLCertificateKeyFile ", line: "{{ apache_SSLCertificateKeyFile }}" }
-apache_httpd_conf_ssl_extra_absent:
-  - "Listen\\s*443"
+apache_httpd_conf_ssl_extra_absent: []
+apache_httpd_conf_ssl_listen:
+  - "Listen 443"
 
 # Modules
 apache_httpd_conf_modules:
