@@ -15,7 +15,7 @@ No requiremenst.
 Variables
 ---------
 
-By default SSL is off. Check other defaults and examples in vars.
+Review defaults and examples in vars. By default SSL is off.
 
 ```
 apache_ssl: False
@@ -30,58 +30,9 @@ apache_SSLCertificateFile: "/usr/local/etc/apache{{ apache_version }}/server.crt
 apache_SSLCertificateKeyFile: "/usr/local/etc/apache{{ apache_version }}/server.key"
 ```
 
-Virtual hosts are configured with mandatory SSL. Virtual hosts for
-ports 80 and 443 will be created and port 80 permanently redirected to
-443. Example is available in vars.
-
-Example of variable apache_vhost:
-
-```
-apache_vhost:
-  - { ServerName: "example.net",
-      DocumentRoot: "/usr/local/www/apache24/data/example.net/",
-      SSLCertificateFile: "/usr/local/etc/letsencrypt/live/example.net/fullchain.pem",
-      SSLCertificateKeyFile: "/usr/local/etc/letsencrypt/live/example.net/privkey.pem"
-      }                                                                                                                      
-```
-
-Example of a virtual host's configuration file:
-
-```
-# cat /usr/local/etc/apache24/extra/example.net.conf
-<VirtualHost *:80>
-ServerName example.net
-DocumentRoot /usr/local/www/apache24/data/example.net/
-Redirect permanent / https://example.net/
-</VirtualHost>
-
-<VirtualHost *:443>
-ServerName example.net
-DocumentRoot /usr/local/www/apache24/data/example.net/
-SSLCertificateFile /usr/local/etc/letsencrypt/live/example.net/fullchain.pem
-SSLCertificateKeyFile /usr/local/etc/letsencrypt/live/example.net/privkey.pem
-</VirtualHost>
-```
-
-
-**Defaults**
-
-```
-apache_enable: True
-apache_version: "24"
-apache_ssl: False
-apache_vhost: []
-apache_conf_path: "/usr/local/etc/apache24"
-
-apache_ServerName: "www.example.com"
-apache_ServerAdmin: "admin@example.com"
-
-apache_SSLCompression: "off"
-apache_SSLCertificateFile: "/usr/local/etc/apache24/server.crt"
-apache_SSLCertificateKeyFile: "/usr/local/etc/apache24/server.key"
-apache_SSLProtocol: "all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1"
-apache_SSLCipherSuite: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256"
-```
+Virtual hosts are configured with optional redirection to SSL. By
+default virtual hosts for ports 80 and 443 will be created and port 80
+permanently redirected to 443. Example is available in vars.
 
 
 Workflow
