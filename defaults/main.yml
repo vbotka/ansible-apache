@@ -49,6 +49,8 @@ apache_SSLSessionTickets: "off"
 apache_httpd_conf_ssl:
   - "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"
 apache_httpd_conf_ssl_extra:
+  - { regexp: "ServerName ", line: "{{ apache_ServerName }}:443" }
+  - { regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}" }
   - { regexp: "SSLEngine ", line: "{{ apache_SSLEngine }}" }
   - { regexp: "SSLProtocol ", line: "{{ apache_SSLProtocol }}" }
   - { regexp: "SSLCipherSuite ", line: "{{ apache_SSLCipherSuite }}" }
