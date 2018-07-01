@@ -5,7 +5,7 @@
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^LoadModule {{ item.module }}"
     line: "LoadModule {{ item.module }} libexec/{{ apache_dir }}/{{ item.mod }}"
-    insertbefore: "BOF"
+    insertbefore: "LoadModule"
     backup: yes
   with_items: "{{ apache_httpd_conf_modules }}"
   notify: reload apache
