@@ -1,6 +1,6 @@
 ---
 
-- name: "config_httpd-ssl_conf: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
+- name: "httpd-ssl_conf: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
   block:
     - lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"

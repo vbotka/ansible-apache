@@ -1,12 +1,12 @@
 ---
 
-- name: "config_httpd_conf: Configure parameters in {{ apache_conf_path }}/httpd.conf"
+- name: "httpd_conf: Configure parameters in {{ apache_conf_path }}/httpd.conf"
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^{{ item.regexp }}"
     line: "{{ item.regexp }}{{ item.line }}"
-    backup: yes
-  with_items: "{{ apache_httpd_conf }}"
+    backup: "{{ apache_backup_conf }}"
+  loop: "{{ apache_httpd_conf }}"
   notify: reload apache
 
 # EOF

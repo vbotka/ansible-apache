@@ -2,7 +2,7 @@
 # tasks for vbotka.apache
 
 - import_tasks: vars.yml
-  tags: apache-vars
+  tags: [ apache-vars, always ]
 
 - import_tasks: debug.yml
   when: apache_debug

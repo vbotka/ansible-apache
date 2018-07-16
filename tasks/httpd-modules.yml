@@ -1,13 +1,13 @@
 ---
 
-- name: "config_httpd-modules_conf: Configure modules in {{ apache_conf_path }}/httpd.conf"
+- name: "httpd-modules_conf: Configure modules in {{ apache_conf_path }}/httpd.conf"
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^LoadModule {{ item.module }}"
     line: "LoadModule {{ item.module }} libexec/{{ apache_dir }}/{{ item.mod }}"
     insertbefore: "LoadModule"
-    backup: yes
-  with_items: "{{ apache_httpd_conf_modules }}"
+    backup: "{{ apache_backup_conf }}"
+  loop: "{{ apache_httpd_conf_modules }}"
   notify: reload apache
 
 # marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
@@ -18,7 +18,7 @@
 # /usr/local/etc/apache24/Includes/php.conf:11: <!--> was not
 # closed.\\n/usr/local/etc/apache24/Includes/php.conf:1: <!--> was not
 # closed.\n"
-- name: "config_httpd-modules_conf: Configure PHP in {{ apache_conf_path }}/Includes/php.conf"
+- name: "httpd-modules_conf: Configure PHP in {{ apache_conf_path }}/Includes/php.conf"
   blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"
     block: |
@@ -31,10 +31,11 @@
       <FilesMatch "\.phps$">
         SetHandler application/x-httpd-php-source
       </FilesMatch>
-    create: yes
     owner: "root"
     group: "www"
     mode: "0640"
+    create: yes
+    backup: "{{ apache_backup_conf }}"
   when: apache_php
   notify: reload apache
 

@@ -1,13 +1,14 @@
 ---
 
-- name: "config_httpd-dirs_conf: Configure directories in {{ apache_conf_path }}/Includes/"
+- name: "httpd-dirs_conf: Configure directories in {{ apache_conf_path }}/Includes/"
   template:
     src: "directory-block.j2"
     dest: "{{ apache_conf_path }}/Includes/{{ item.Includefile }}"
     owner: "root"
     group: "www"
     mode: "0644"
-  with_items: "{{ apache_directory_blocks }}"
+    backup: "{{ apache_backup_conf }}"
+  loop: "{{ apache_directory_blocks }}"
   notify: reload apache
 
 # EOF
