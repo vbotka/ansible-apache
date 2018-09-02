@@ -1,7 +1,7 @@
 apache
 ==================
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/apache)
+[![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/ansible-apache)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
 
