@@ -1,28 +1,32 @@
 ---
 
-- name: "httpd-ssl_conf: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
+- name: "httpd-ssl: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
   block:
-    - lineinfile:
+    - name: "httpd-ssl: Present extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+      lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "^{{ item.regexp }}"
         line: "{{ item.regexp }}{{ item.line }}"
         backup: "{{ apache_backup_conf }}"
       with_items: "{{ apache_httpd_conf_ssl_extra }}"
       notify: reload apache
-    - lineinfile:
+    - name: "httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+      lineinfile:
         state: "absent"
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       with_items: "{{ apache_httpd_conf_ssl_extra_absent }}"
       notify: reload apache
-    - lineinfile:
+    - name: "httpd-ssl: SSL Listen in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+      lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       with_items: "{{ apache_httpd_conf_ssl_listen }}"
       notify: reload apache
-    - lineinfile:
+    - name: "httpd-ssl: SSL in {{ apache_conf_path }}/httpd.conf"
+      lineinfile:
         dest: "{{ apache_conf_path }}/httpd.conf"
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
