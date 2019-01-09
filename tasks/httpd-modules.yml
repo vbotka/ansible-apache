@@ -10,14 +10,6 @@
   loop: "{{ apache_httpd_conf_modules }}"
   notify: reload apache
 
-# marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
-# Including the marker resulted in error:
-# "httpd: Syntax error on line 530 of
-# /usr/local/etc/apache24/httpd.conf: Syntax error on line 1 of
-# /usr/local/etc/apache24/Includes/php.conf:
-# /usr/local/etc/apache24/Includes/php.conf:11: <!--> was not
-# closed.\\n/usr/local/etc/apache24/Includes/php.conf:1: <!--> was not
-# closed.\n"
 - name: "httpd-modules_conf: Configure PHP in {{ apache_conf_path }}/Includes/php.conf"
   blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"

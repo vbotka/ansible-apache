@@ -8,7 +8,7 @@
         regexp: "^{{ item.regexp }}"
         line: "{{ item.regexp }}{{ item.line }}"
         backup: "{{ apache_backup_conf }}"
-      with_items: "{{ apache_httpd_conf_ssl_extra }}"
+      loop: "{{ apache_httpd_conf_ssl_extra }}"
       notify: reload apache
     - name: "httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
       lineinfile:
@@ -16,21 +16,21 @@
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
-      with_items: "{{ apache_httpd_conf_ssl_extra_absent }}"
+      loop: "{{ apache_httpd_conf_ssl_extra_absent }}"
       notify: reload apache
     - name: "httpd-ssl: SSL Listen in {{ apache_conf_path }}/extra/httpd-ssl.conf"
       lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
-      with_items: "{{ apache_httpd_conf_ssl_listen }}"
+      loop: "{{ apache_httpd_conf_ssl_listen }}"
       notify: reload apache
     - name: "httpd-ssl: SSL in {{ apache_conf_path }}/httpd.conf"
       lineinfile:
         dest: "{{ apache_conf_path }}/httpd.conf"
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
-      with_items: "{{ apache_httpd_conf_ssl }}"
+      loop: "{{ apache_httpd_conf_ssl }}"
       notify: reload apache
   when: apache_ssl
 
