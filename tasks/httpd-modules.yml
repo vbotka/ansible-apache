@@ -1,6 +1,8 @@
 ---
 
-- name: "httpd-modules_conf: Configure modules in {{ apache_conf_path }}/httpd.conf"
+- name: >-
+    httpd-modules_conf:
+    Configure modules in {{ apache_conf_path }}/httpd.conf
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^LoadModule {{ item.module }}"
@@ -10,7 +12,9 @@
   loop: "{{ apache_httpd_conf_modules }}"
   notify: reload apache
 
-- name: "httpd-modules_conf: Configure PHP in {{ apache_conf_path }}/Includes/php.conf"
+- name: >-
+    httpd-modules_conf:
+    Configure PHP in {{ apache_conf_path }}/Includes/php.conf
   blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"
     block: |
@@ -26,7 +30,7 @@
     owner: "root"
     group: "www"
     mode: "0640"
-    create: yes
+    create: "yes"
     backup: "{{ apache_backup_conf }}"
   when: apache_php
   notify: reload apache

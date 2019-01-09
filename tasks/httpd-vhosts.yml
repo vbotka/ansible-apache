@@ -9,7 +9,8 @@
     mode: "{{ apache_dir_mode }}"
   loop: "{{ apache_vhost }}"
 
-- name: "httpd-vhosts_conf: Configure virtual hosts in {{ apache_conf_path }}/extra/"
+- name: >-
+    httpd-vhosts_conf: Configure virtual hosts in {{ apache_conf_path }}/extra/
   template:
     src: "vhost.j2"
     dest: "{{ apache_conf_path }}/extra/{{ item.ServerName }}.conf"
@@ -20,11 +21,15 @@
   loop: "{{ apache_vhost }}"
   notify: reload apache
 
-- name: "httpd-vhosts_conf: Include virtual hosts in {{ apache_conf_path }}/httpd.conf"
+- name: >-
+    httpd-vhosts_conf:
+    Include virtual hosts in {{ apache_conf_path }}/httpd.conf
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
-    line: "Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
+    regexp: >-
+      ^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf
+    line: >-
+      Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf
     insertbefore: "BOF"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_vhost }}"

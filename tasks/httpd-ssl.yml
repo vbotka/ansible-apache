@@ -2,7 +2,9 @@
 
 - name: "httpd-ssl: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
   block:
-    - name: "httpd-ssl: Present extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+    - name: >-
+        httpd-ssl: Present extra lines in
+        {{ apache_conf_path }}/extra/httpd-ssl.conf
       lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "^{{ item.regexp }}"
@@ -10,7 +12,9 @@
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra }}"
       notify: reload apache
-    - name: "httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+    - name: >-
+        httpd-ssl: Absent extra lines in
+        {{ apache_conf_path }}/extra/httpd-ssl.conf
       lineinfile:
         state: "absent"
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
@@ -18,7 +22,9 @@
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra_absent }}"
       notify: reload apache
-    - name: "httpd-ssl: SSL Listen in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+    - name: >-
+        httpd-ssl: SSL Listen in
+        {{ apache_conf_path }}/extra/httpd-ssl.conf"
       lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         line: "{{ item }}"

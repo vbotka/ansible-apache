@@ -1,62 +1,75 @@
 ---
 # defaults for vbotka.apache
 
-apache_enable: True
-apache_debug: False
-apache_ssl: False
-apache_php: False
-apache_backup_conf: no
-apache_SSLEngine: "off"
+apache_enable: 'True'
+apache_debug: 'False'
+apache_ssl: 'False'
+apache_php: 'False'
+apache_backup_conf: 'no'
+apache_SSLEngine: 'off'
 
 # httpd.conf
 apache_ServerName: "www.example.com"
 apache_ServerAdmin: "admin@example.com"
 apache_httpd_conf:
-  - { regexp: "ServerName ", line: "{{ apache_ServerName }}" }
-  - { regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}" }
+  - {regexp: "ServerName ", line: "{{ apache_ServerName }}"}
+  - {regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}"}
 
 # SSL
 apache_SSLListen: ""
-apache_SSLCertificateFile: "/usr/local/etc/apache{{ apache_version }}/server.crt"
-apache_SSLCertificateKeyFile: "/usr/local/etc/apache{{ apache_version }}/server.key"
+apache_SSLCertificateFile: >-
+  /usr/local/etc/apache{{ apache_version }}/server.crt
+apache_SSLCertificateKeyFile: >-
+  /usr/local/etc/apache{{ apache_version }}/server.key
 apache_SSLProtocol: "all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1"
 # apache_SSLCipherSuite: HIGH:!aNULL:!MD5
 # apache_SSLCipherSuite: RC4-SHA:AES128-SHA:HIGH:!aNULL:!MD5
-apache_SSLCipherSuite: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256"
+apache_SSLCipherSuite: "ECDHE-ECDSA-AES256-GCM-SHA384:\
+ECDHE-RSA-AES256-GCM-SHA384:\
+ECDHE-ECDSA-CHACHA20-POLY1305:\
+ECDHE-RSA-CHACHA20-POLY1305:\
+ECDHE-ECDSA-AES128-GCM-SHA256:\
+ECDHE-RSA-AES128-GCM-SHA256:\
+ECDHE-ECDSA-AES256-SHA384:\
+ECDHE-RSA-AES256-SHA384:\
+ECDHE-ECDSA-AES128-SHA256:\
+ECDHE-RSA-AES128-SHA256"
 apache_SSLHonorCipherOrder: "on"
 apache_SSLCompression: "off"
 apache_SSLSessionTickets: "off"
-#SSLOpenSSLConfCmd DHParameters "/usr/local/etc/ssl/dhparam.pem"
-#SSLSessionCache shmcb:/var/run/ssl_scache(512000)
-#Header always set X-Frame-Options DENY
-#Header always set X-Frame-Options SAMEORIGIN
+# SSLOpenSSLConfCmd DHParameters "/usr/local/etc/ssl/dhparam.pem"
+# SSLSessionCache shmcb:/var/run/ssl_scache(512000)
+# Header always set X-Frame-Options DENY
+# Header always set X-Frame-Options SAMEORIGIN
 apache_httpd_conf_ssl:
   - "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"
 apache_httpd_conf_ssl_extra:
-  - { regexp: "ServerName ", line: "{{ apache_ServerName }}:443" }
-  - { regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}" }
-  - { regexp: "SSLEngine ", line: "{{ apache_SSLEngine }}" }
-  - { regexp: "SSLProtocol ", line: "{{ apache_SSLProtocol }}" }
-  - { regexp: "SSLCipherSuite ", line: "{{ apache_SSLCipherSuite }}" }
-  - { regexp: "SSLHonorCipherOrder ", line: "{{ apache_SSLHonorCipherOrder }}" }
-  - { regexp: "SSLCompression ", line: "{{ apache_SSLCompression }}" }
-  - { regexp: "SSLSessionTickets ", line: "{{ apache_SSLSessionTickets }}" }
-  - { regexp: "SSLCertificateFile ", line: "{{ apache_SSLCertificateFile }}" }
-  - { regexp: "SSLCertificateKeyFile ", line: "{{ apache_SSLCertificateKeyFile }}" }
+  - {regexp: "ServerName ", line: "{{ apache_ServerName }}:443"}
+  - {regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}"}
+  - {regexp: "SSLEngine ", line: "{{ apache_SSLEngine }}"}
+  - {regexp: "SSLProtocol ", line: "{{ apache_SSLProtocol }}"}
+  - {regexp: "SSLCipherSuite ", line: "{{ apache_SSLCipherSuite }}"}
+  - {regexp: "SSLHonorCipherOrder ", line: "{{ apache_SSLHonorCipherOrder }}"}
+  - {regexp: "SSLCompression ", line: "{{ apache_SSLCompression }}"}
+  - {regexp: "SSLSessionTickets ", line: "{{ apache_SSLSessionTickets }}"}
+  - {regexp: "SSLCertificateFile ", line: "{{ apache_SSLCertificateFile }}"}
+  - {regexp: "SSLCertificateKeyFile ",
+     line: "{{ apache_SSLCertificateKeyFile }}"}
 apache_httpd_conf_ssl_extra_absent: []
 apache_httpd_conf_ssl_listen:
   - "Listen 443"
 
 # Modules
 apache_httpd_conf_modules:
-  - { module: "socache_shmcb_module", mod: "mod_socache_shmcb.so" }
+  - {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}
 
 # PHP
 apache_php_version: "56"
 apache_php_package: "www/mod_php{{ apache_php_version }}"
 
 # vhosts
-# Virtual hosts need apache_ssl. Port 80 is redirected permanently to 443 for vhosts.
+# Virtual hosts need apache_ssl. Port 80 is redirected permanently to
+# 443 for vhosts.
 apache_vhost: {}
 
 # dirs
