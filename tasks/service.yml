@@ -1,0 +1,8 @@
+---
+
+- name: "service: Config FreeBSD"
+  include_tasks: rcconf.yml
+  when: ansible_os_family == "FreeBSD"
+
+# EOF
+...

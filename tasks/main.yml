@@ -11,9 +11,6 @@
 - import_tasks: packages.yml
   tags: apache-packages
 
-- import_tasks: rcconf.yml
-  tags: apache-rcconf
-
 - import_tasks: httpd.yml
   tags: apache-httpd
 
@@ -28,6 +25,9 @@
 
 - import_tasks: httpd-vhosts.yml
   tags: apache-httpd-vhosts
+
+- import_tasks: service.yml
+  tags: apache-service
 
 # EOF
 ...
