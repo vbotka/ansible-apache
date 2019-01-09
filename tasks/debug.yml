@@ -36,6 +36,8 @@
          {{ apache_vhost | to_nice_yaml }}
          apache_directory_blocks
          {{ apache_directory_blocks | to_nice_yaml }}
+         apache_alias
+         {{ apache_alias | to_nice_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
 

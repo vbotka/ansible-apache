@@ -1,3 +1,4 @@
+
 ---
 # tasks for vbotka.apache
 
@@ -6,7 +7,7 @@
 
 - import_tasks: debug.yml
   when: apache_debug
-  tags: apache-debug
+  tags: [ apache-debug, always ]
 
 - import_tasks: packages.yml
   tags: apache-packages
@@ -19,6 +20,9 @@
 
 - import_tasks: httpd-modules.yml
   tags: apache-httpd-modules
+
+- import_tasks: httpd-alias.yml
+  tags: apache-httpd-alias
 
 - import_tasks: httpd-ssl.yml
   tags: apache-httpd-ssl
