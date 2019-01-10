@@ -1,20 +1,28 @@
 ---
 
-- name: >-
-    httpd-modules_conf:
-    Configure modules in {{ apache_conf_path }}/httpd.conf
+- name: "httpd-modules: Load modules in {{ apache_conf_path }}/httpd.conf"
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "^LoadModule {{ item.module }}"
-    line: "LoadModule {{ item.module }} libexec/{{ apache_dir }}/{{ item.mod }}"
+    regexp: "^\\s*#*\\s*LoadModule {{ item.module }}"
+    line: "    LoadModule {{ item.module }} libexec/{{ apache_dir }}/{{ item.mod }}"
     insertbefore: "LoadModule"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  notify: reload apache
+  when: item.present|default('true')
+  notify: restart apache
 
-- name: >-
-    httpd-modules_conf:
-    Configure PHP in {{ apache_conf_path }}/Includes/php.conf
+- name: "httpd-modules: Unload modules in {{ apache_conf_path }}/httpd.conf"
+  lineinfile:
+    dest: "{{ apache_conf_path }}/httpd.conf"
+    regexp: "^\\s*#*\\s*LoadModule {{ item.module }}"
+    line: "    # LoadModule {{ item.module }}"
+    insertbefore: "LoadModule"
+    backup: "{{ apache_backup_conf }}"
+  loop: "{{ apache_httpd_conf_modules }}"
+  when: not item.present|default('true')
+  notify: restart apache
+
+- name: "httpd-modules: Config PHP in {{ apache_conf_path }}/Includes/php.conf"
   blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"
     block: |
@@ -33,7 +41,7 @@
     create: "yes"
     backup: "{{ apache_backup_conf }}"
   when: apache_php
-  notify: reload apache
+  notify: restart apache
 
 # EOF
 ...

@@ -1,6 +1,6 @@
 ---
 
-- name: "httpd-vhosts_conf: Create directories for virtual hosts"
+- name: "httpd-vhosts: Create directories for virtual hosts"
   file:
     state: directory
     path: "{{ item.DocumentRoot }}"
@@ -9,8 +9,7 @@
     mode: "{{ apache_dir_mode }}"
   loop: "{{ apache_vhost }}"
 
-- name: >-
-    httpd-vhosts_conf: Configure virtual hosts in {{ apache_conf_path }}/extra/
+- name: "httpd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"
   template:
     src: "vhost.j2"
     dest: "{{ apache_conf_path }}/extra/{{ item.ServerName }}.conf"
@@ -21,9 +20,7 @@
   loop: "{{ apache_vhost }}"
   notify: reload apache
 
-- name: >-
-    httpd-vhosts_conf:
-    Include virtual hosts in {{ apache_conf_path }}/httpd.conf
+- name: "httpd-vhosts: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: >-
