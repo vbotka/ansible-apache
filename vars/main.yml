@@ -11,25 +11,23 @@
 # apache_httpd_conf_ssl_extra_absent:
 #  - "Listen\\s*443"
 # apache_httpd_conf_ssl_listen:
-#  - { regexp: "Listen ", line: "443"}
-#  - { regexp: "Listen ", line: "10.1.0.10:443"}
+#  - {regexp: "Listen ", line: "443"}
+#  - {regexp: "Listen ", line: "10.1.0.10:443"}
 
 # apache_packages:
 #  - "{{ apache_package }}"
 #  - "{{ apache_php_package }}"
 
 # apache_httpd_conf_modules:
-#  - { module: "socache_shmcb_module", mod: "mod_socache_shmcb.so" }
-#  - { module: "ssl_module", mod: "mod_ssl.so" }
-#  - { module: "php5_module", mod: "libphp5.so" }
+#  - {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}
+#  - {module: "ssl_module", mod: "mod_ssl.so"}
+#  - {module: "php5_module", mod: "libphp5.so"}
 
 # apache_vhost:
 # - ServerName: "example.net"
 #  DocumentRoot: "/usr/local/www/apache{{ apache_version }}/data/example.net/"
-#  SSLCertificateFile: >
-#    /usr/local/etc/letsencrypt/live/example.net/fullchain.pem
-#  SSLCertificateKeyFile: >
-#    /usr/local/etc/letsencrypt/live/example.net/privkey.pem
+#  SSLCertificateFile: /usr/local/etc/letsencrypt/live/example.net/fullchain.pem
+#  SSLCertificateKeyFile: /usr/local/etc/letsencrypt/live/example.net/privkey.pem
 #  redirect: False
 
 # apache_directory_blocks:

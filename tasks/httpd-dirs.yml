@@ -1,7 +1,6 @@
 ---
 
-- name: >-
-    httpd-dirs_conf: Configure directories in {{ apache_conf_path }}/Includes/
+- name: "httpd-dirs: Configure directories in {{ apache_conf_path }}/Includes/"
   template:
     src: "directory-block.j2"
     dest: "{{ apache_conf_path }}/Includes/{{ item.Includefile }}"

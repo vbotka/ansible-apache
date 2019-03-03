@@ -8,7 +8,7 @@
     insertbefore: "LoadModule"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  when: item.present|default('true')
+  when: item.present|default(true)
   notify: restart apache
 
 - name: "httpd-modules: Unload modules in {{ apache_conf_path }}/httpd.conf"
@@ -19,7 +19,7 @@
     insertbefore: "LoadModule"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  when: not item.present|default('true')
+  when: not item.present|default(true)
   notify: restart apache
 
 - name: "httpd-modules: Config PHP in {{ apache_conf_path }}/Includes/php.conf"

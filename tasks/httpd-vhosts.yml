@@ -23,10 +23,8 @@
 - name: "httpd-vhosts: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: >-
-      ^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf
-    line: >-
-      Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf
+    regexp: "^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
+    line: "Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
     insertbefore: "BOF"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_vhost }}"

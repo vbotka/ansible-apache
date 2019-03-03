@@ -4,25 +4,25 @@
 - name: enable and start apache
   service:
     name: "{{ apache_service }}"
-    state: "started"
-    enabled: "yes"
+    state: started
+    enabled: yes
 
 - name: disable and stop apache
   service:
     name: "{{ apache_service }}"
-    state: "stopped"
-    enabled: "no"
+    state: stopped
+    enabled: no
 
 - name: restart apache
   service:
     name: "{{ apache_service }}"
-    state: "restarted"
+    state: restarted
   when: apache_enable
 
 - name: reload apache
   service:
     name: "{{ apache_service }}"
-    state: "reloaded"
+    state: reloaded
   when: apache_enable
 
 - name: graceful apache
