@@ -85,7 +85,11 @@ ansible_perl_interpreter=/usr/local/bin/perl
 # ansible-playbook apache.yml
 ```
 
-6) Consider to test the webserver
+6) Syntax check.
+
+It's a good idea to run the playbook with "--syntax-check" first to see potential problems. But, before running the playbook it's necessary to install required packages (see [defaults](https://github.com/vbotka/ansible-apache/tree/master/vars/defaults)). Otherwise the role will complain about missing configuration files.
+
+7) Consider to test the webserver.
 
    - http://validator.w3.org
    - https://www.ssllabs.com
