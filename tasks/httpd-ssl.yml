@@ -1,6 +1,7 @@
 ---
 
 - name: "httpd-ssl: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
+  when: apache_ssl|bool
   block:
     - name: "httpd-ssl: Present extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
       lineinfile:
@@ -12,7 +13,7 @@
       notify: reload apache
     - name: "httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
       lineinfile:
-        state: "absent"
+        state: absent
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
@@ -32,7 +33,6 @@
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl }}"
       notify: reload apache
-  when: apache_ssl
 
 # EOF
 ...

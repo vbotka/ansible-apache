@@ -14,24 +14,24 @@
     enabled: no
 
 - name: restart apache
+  when: apache_enable|bool
   service:
     name: "{{ apache_service }}"
     state: restarted
-  when: apache_enable
 
 - name: reload apache
+  when: apache_enable|bool
   service:
     name: "{{ apache_service }}"
     state: reloaded
-  when: apache_enable
 
 - name: graceful apache
+  when: apache_enable|bool
   command: "/usr/local/etc/rc.d/{{ apache_service }} graceful"
-  when: apache_enable
 
 - name: gracefulstop apache
+  when: apache_enable|bool
   command: "/usr/local/etc/rc.d/{{ apache_service }} gracefulstop"
-  when: apache_enable
 
 # EOF
 ...

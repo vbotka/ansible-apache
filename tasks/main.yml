@@ -5,7 +5,7 @@
   tags: [apache-vars, always]
 
 - import_tasks: debug.yml
-  when: apache_debug
+  when: apache_debug|bool
   tags: [apache-debug, always]
 
 - import_tasks: packages.yml

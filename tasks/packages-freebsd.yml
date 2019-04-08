@@ -1,6 +1,7 @@
 ---
 
 - name: "packages: Install packages"
+  when: freebsd_install_method == "packages"
   pkgng:
     name: "{{ item }}"
   loop: "{{ apache_packages }}"
@@ -8,9 +9,9 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "packages"
 
 - name: "packages: Install ports"
+  when: freebsd_install_method == "ports"
   portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages|default(True) }}"
@@ -19,7 +20,6 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "ports"
 
 # EOF
 ...

@@ -1,6 +1,7 @@
 ---
 
 - name: "httpd-modules: Load modules in {{ apache_conf_path }}/httpd.conf"
+  when: item.present|default(true)
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^\\s*#*\\s*LoadModule {{ item.module }}"
@@ -8,10 +9,10 @@
     insertbefore: "LoadModule"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  when: item.present|default(true)
   notify: restart apache
 
 - name: "httpd-modules: Unload modules in {{ apache_conf_path }}/httpd.conf"
+  when: not item.present|default(true)
   lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^\\s*#*\\s*LoadModule {{ item.module }}"
@@ -19,10 +20,10 @@
     insertbefore: "LoadModule"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  when: not item.present|default(true)
   notify: restart apache
 
 - name: "httpd-modules: Config PHP in {{ apache_conf_path }}/Includes/php.conf"
+  when: apache_php|bool
   blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"
     block: |
@@ -40,7 +41,6 @@
     mode: "0640"
     create: "yes"
     backup: "{{ apache_backup_conf }}"
-  when: apache_php
   notify: restart apache
 
 # EOF
