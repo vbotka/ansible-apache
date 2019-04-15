@@ -1,19 +1,16 @@
-apache
-==================
+# apache
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/ansible-apache)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
 
 
-Requirements
-------------
+## Requirements
 
 No requiremenst.
 
 
-Variables
----------
+## Variables
 
 Review defaults and examples in vars. By default SSL is off.
 
@@ -35,8 +32,7 @@ default virtual hosts for ports 80 and 443 will be created and port 80
 permanently redirected to 443. Example is available in vars.
 
 
-Workflow
---------
+## Workflow
 
 1) Change shell to /bin/sh.
 
@@ -95,8 +91,7 @@ It's a good idea to run the playbook with "--syntax-check" first to see potentia
    - https://www.ssllabs.com
 		
 
-References
-----------
+## References
 
 - [Apache HTTP Server Documentation](https://httpd.apache.org/docs/)
 - [SSL/TLS Strong Encryption: Trunk: How-To](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.html)
@@ -105,13 +100,12 @@ References
 - [Multi-Processing Modules (MPMs)](https://httpd.apache.org/docs/2.4/mpm.html)
 - [FreebSD handbook: 29.8. Apache HTTP Server](https://www.freebsd.org/doc/handbook/network-apache.html)
 
-License
--------
+
+## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
-Author Information
-------------------
+## Author Information
 
 [Vladimir Botka](https://botka.link)
