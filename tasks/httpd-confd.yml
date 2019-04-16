@@ -6,8 +6,7 @@
     - name: "http-confd: Set variables for al_include_confd_vars_list"
       set_fact:
         al_include_confd_dir: "{{ apache_confd_dir }}/vhosts"
-        al_include_confd_vars_list_plain: false
-        al_include_confd_vars_list_fname: true
+        al_include_confd_vars_list_type: "fname"
     - name: "http-confd: Include al_include_confd_vars_list"
       include_role:
         name: vbotka.ansible_lib
