@@ -7,7 +7,7 @@
 
 ## Requirements
 
-No requiremenst.
+- [config_encoder_filters](https://galaxy.ansible.com/jtyr/config_encoder_filters)
 
 
 ## Variables
