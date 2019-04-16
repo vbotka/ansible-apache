@@ -15,5 +15,6 @@ galaxy_info:
   galaxy_tags:
     - freebsd
     - apache
-dependencies: []
+dependencies:
+  - jtyr.config_encoder_filters
 ...

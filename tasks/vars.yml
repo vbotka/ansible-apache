@@ -23,7 +23,7 @@
 #         - "default.yml"
 #       paths: "{{ role_path }}/vars/defaults"
 #       skip: true
-# 
+#
 # - name: "vars: Custom vars for
 #                {{ ansible_os_family }}
 #                {{ ansible_distribution }}
