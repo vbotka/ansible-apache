@@ -1,0 +1,31 @@
+---
+
+- name: "httpd-confd-sections: Include sections from {{ apache_confd_dir }}/sections"
+  block:
+    - name: "httpd-confd-sections: Set variables for al_include_confd_vars_list"
+      set_fact:
+        al_include_confd_dir: "{{ apache_confd_dir }}/sections"
+        al_include_confd_vars_list_type: "fname"
+    - name: "httpd-confd-sections: Include al_include_confd_vars_list"
+      include_role:
+        name: vbotka.ansible_lib
+        tasks_from: al_include_confd_vars_list
+    - name: "httpd-confd-sections: Debug al_include_confd_vars_list"
+      when: apache_debug
+      debug:
+        var: item
+      loop: "{{ al_include_confd_vars_list }}"
+
+- name: "httpd-confd-sections: Configure sections in {{ apache_conf_path }}/Includes/"
+  template:
+    src: "section2.j2"
+    dest: "{{ apache_conf_path }}/Includes/{{ item.fname }}.conf"
+    owner: "{{ apache_data_owner }}"
+    group: "{{ apache_data_group }}"
+    mode: "{{ apache_data_mode }}"
+    backup: "{{ apache_backup_conf }}"
+  loop: "{{ al_include_confd_vars_list }}"
+  notify: reload apache
+
+# EOF
+...

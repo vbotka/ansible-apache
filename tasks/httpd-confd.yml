@@ -1,52 +1,12 @@
 ---
 
-  # conf.d/vhosts
-- name: "http-confd: Include variables from {{ apache_confd_dir }}/vhosts"
-  block:
-    - name: "http-confd: Set variables for al_include_confd_vars_list"
-      set_fact:
-        al_include_confd_dir: "{{ apache_confd_dir }}/vhosts"
-        al_include_confd_vars_list_type: "fname"
-    - name: "http-confd: Include al_include_confd_vars_list"
-      include_role:
-        name: vbotka.ansible_lib
-        tasks_from: al_include_confd_vars_list
-    - name: "http-confd: Debug al_include_confd_vars_list"
-      when: apache_debug
-      debug:
-        var: item
-      loop: "{{ al_include_confd_vars_list }}"
+- name: "httpd-confd: Configure virtual hosts from {{ apache_confd_dir }}/vhosts"
+  import_tasks: httpd-confd-vhosts.yml
+  tags: apache-httpd-confd-vhosts
 
-- name: "httpd-confd: Debug list directories for virtual hosts"
-  when: apache_debug
-  debug:
-    msg: "{{ item|json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
-  loop: "{{ al_include_confd_vars_list|json_query('[].vars') }}"
-
-- name: "httpd-confd: Create directories for virtual hosts"
-  include_tasks: fn/httpd-confd-vhost-dirs.yml
-  loop: "{{ al_include_confd_vars_list|json_query('[].vars') }}"
-
-- name: "httpd-confd: Configure virtual hosts in {{ apache_conf_path }}/extra/"
-  template:
-    src: "vhost2.j2"
-    dest: "{{ apache_conf_path }}/extra/{{ item.fname }}.conf"
-    owner: "{{ apache_data_owner }}"
-    group: "{{ apache_data_group }}"
-    mode: "{{ apache_data_mode }}"
-    backup: "{{ apache_backup_conf }}"
-  loop: "{{ al_include_confd_vars_list }}"
-  notify: reload apache
-
-- name: "httpd-confd: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
-  lineinfile:
-    dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "^Include etc/apache{{ apache_version }}/extra/{{ item.fname }}.conf"
-    line: "Include etc/apache{{ apache_version }}/extra/{{ item.fname }}.conf"
-    insertbefore: "BOF"
-    backup: "{{ apache_backup_conf }}"
-  loop: "{{ al_include_confd_vars_list }}"
-  notify: reload apache
+- name: "httpd-confd: Configure includes from {{ apache_confd_dir }}/includes"
+  import_tasks: httpd-confd-includes.yml
+  tags: apache-httpd-confd-includes
 
 # EOF
 ...
