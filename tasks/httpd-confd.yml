@@ -4,7 +4,7 @@
   import_tasks: httpd-confd-vhosts.yml
   tags: apache-httpd-confd-vhosts
 
-- name: "httpd-confd: Configure includes from {{ apache_confd_dir }}/includes"
+- name: "httpd-confd: Configure includes from {{ apache_confd_dir }}/sections"
   import_tasks: httpd-confd-includes.yml
   tags: apache-httpd-confd-includes
 
