@@ -8,6 +8,7 @@
     group: "{{ apache_data_group }}"
     mode: "{{ apache_dir_mode }}"
   loop: "{{ apache_vhost }}"
+  when: item.create_document_root|default(False)
 
 - name: "httpd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"
   template:
