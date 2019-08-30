@@ -1,11 +1,25 @@
 ---
 
-- name: "httpd-confd: Configure virtual hosts from {{ apache_confd_dir }}/vhosts"
-  import_tasks: httpd-confd-vhosts.yml
+- name: "httpd-confd: Validate {{ apache_confd_dir }}/vhosts exists"
+  stat:
+    path: "{{ apache_confd_dir }}/vhosts/"
+  register: apache_confd_vhosts_stat
   tags: apache-httpd-confd-vhosts
 
+- name: "httpd-confd: Configure virtual hosts from {{ apache_confd_dir }}/vhosts"
+  include_tasks: httpd-confd-vhosts.yml
+  when: apache_confd_vhosts_stat.stat.exists == true
+  tags: apache-httpd-confd-vhosts
+
+- name: "httpd-confd: Validate {{ apache_confd_dir }}/sections exists"
+  stat:
+    path: "{{ apache_confd_dir }}/sections/"
+  register: apache_confd_sections_stat
+  tags: apache-confd-confd-vhosts
+
 - name: "httpd-confd: Configure includes from {{ apache_confd_dir }}/sections"
-  import_tasks: httpd-confd-includes.yml
+  include_tasks: httpd-confd-includes.yml
+  when: apache_confd_sections_stat.stat.exists == true
   tags: apache-httpd-confd-includes
 
 # EOF
