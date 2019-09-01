@@ -17,5 +17,8 @@ galaxy_info:
     - freebsd
     - apache
 dependencies:
-  - jtyr.config_encoder_filters
+  - src: jtyr.config_encoder_filters
+    version: v1.20
+  - src: vbotka.ansible_lib
+    version: 1.1.0
 ...
