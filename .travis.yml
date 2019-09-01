@@ -16,8 +16,8 @@ install:
   - pip install ansible
 
   # Fetch dependencies
-  - ansible-galaxy install -p tests/roles/ jtyr.config_encoder_filters
-  - ansible-galaxy install -p tests/roles/ vbotka.ansible_lib
+  - ansible-galaxy install -p tests/roles/ jtyr.config_encoder_filters,v1.20
+  - ansible-galaxy install -p tests/roles/ vbotka.ansible_lib,1.1.0
 
   # Check ansible version
   - ansible --version
