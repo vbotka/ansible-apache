@@ -8,6 +8,7 @@
 ## Requirements
 
 - [config_encoder_filters](https://galaxy.ansible.com/jtyr/config_encoder_filters)
+- [ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
 
 
 ## Variables
