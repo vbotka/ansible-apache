@@ -76,7 +76,8 @@ apache_directory_blocks: {}
 apache_alias: []
 
 # conf.d
-apache_confd_dir: "{{ role_path }}/vars/conf.d"
+apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/vhosts"
+apache_confd_dir_sections: "{{ role_path }}/vars/conf.d/sections"
 
 # EOF
 ...

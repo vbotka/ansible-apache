@@ -38,7 +38,8 @@
          {{ apache_directory_blocks | to_nice_yaml }}
          apache_alias
          {{ apache_alias | to_nice_yaml }}
-         apache_confd_dir [ {{ apache_confd_dir }} ]
+         apache_confd_dir_vhosts [ {{ apache_confd_dir_vhosts }} ]
+         apache_confd_dir_sections [ {{ apache_confd_dir_sections }} ]
   debug:
     msg: "{{ msg.split('\n') }}"
 

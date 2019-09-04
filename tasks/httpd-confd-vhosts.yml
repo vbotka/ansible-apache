@@ -1,23 +1,23 @@
 ---
 
-- name: "httpd-confd-vhosts: Include variables from {{ apache_confd_dir }}/vhosts"
+- name: "httpd-confd-vhosts: Include variables from {{ apache_confd_dir_vhosts }}"
   block:
     - name: "httpd-confd-vhosts: Set variables for al_include_confd_vars_list"
       set_fact:
-        al_include_confd_dir: "{{ apache_confd_dir }}/vhosts"
+        al_include_confd_dir: "{{ apache_confd_dir_vhosts }}"
         al_include_confd_vars_list_type: "fname"
     - name: "httpd-confd-vhosts: Include al_include_confd_vars_list"
       include_role:
         name: vbotka.ansible_lib
         tasks_from: al_include_confd_vars_list
     - name: "httpd-confd-vhosts: Debug al_include_confd_vars_list"
-      when: apache_debug
+      when: apache_debug|bool
       debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"
 
 - name: "httpd-confd-vhosts: Debug list directories for virtual hosts"
-  when: apache_debug
+  when: apache_debug|bool
   debug:
     msg: "{{ item|json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
   loop: "{{ al_include_confd_vars_list|json_query('[].vars') }}"
