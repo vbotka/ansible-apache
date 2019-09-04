@@ -1,8 +1,10 @@
 # apache
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/ansible-apache)
+[![Documentation Status](https://readthedocs.org/projects/ansible-apache/badge/?version=latest)](https://ansible-apache.readthedocs.io/en/latest/?badge=latest)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
+[Documentation.](https://ansible-apache.readthedocs.io/en/latest/) User's Guide (wip).
 
 
 ## Requirements
