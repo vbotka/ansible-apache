@@ -6,51 +6,6 @@ Ansible role `apache <https://galaxy.ansible.com/vbotka/apache/>`_
 Overview
 ========
 
-Tags
-----
-::
-
-    $ ansible-playbook apache.yml --list-tags
-    
-    playbook: apache.yml
-    
-    play #1 (srv.example.conf): srv.example.com	TAGS: []
-      TASK TAGS: [always, apache-debug, apache-httpd, apache-httpd-alias,
-      apache-httpd-confd, apache-httpd-confd-includes, apache-httpd-confd-vhosts,
-      apache-httpd-dirs, apache-httpd-modules, apache-httpd-ssl, apache-httpd-vhosts,
-      apache-packages, apache-service, apache-vars]
-
-To see the list of the variables only use the tag apache-debug
-::
-    
-    $ ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
-
-
-To check what packages will be installed run
-::
-    
-    $ ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true' --check
-
-Install packages only
-::
-
-    $ ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true'
-
-
-Debug
------
-
-To see additional debug information in the output enable debug output
-in the configuration
-::
-
-    apache_debug: true
-
-, or set the extra variable in the command
-::
-
-    $ ansible-playbook apache.yml -e 'apache_debug=true'
-
 
 Tree
 ----
