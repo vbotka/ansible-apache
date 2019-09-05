@@ -1,8 +1,14 @@
 Packages
 ========
 
+Goal: Install packages.
+
+
 Install packages
 ----------------
+
+Install packages for supported OS.
+
 
 .. highlight:: Yaml
     :linenothreshold: 5                                                                     
@@ -13,8 +19,10 @@ Install packages
     :linenos:
 
 
-Install freebsd packages
+Install FreeBSD packages
 ------------------------
+
+
 
 .. highlight:: Yaml
     :linenothreshold: 5                                                                     
