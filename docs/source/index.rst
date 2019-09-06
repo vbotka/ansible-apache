@@ -1,6 +1,8 @@
 Ansible role Apache
 ===================
 
+Welcome to the Ansible role for Apache!
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

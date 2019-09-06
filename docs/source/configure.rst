@@ -3,6 +3,8 @@
 Configure
 =========
 
+.. contents:: Topics
+
 
 .. _httpd-conf:
 
@@ -12,7 +14,7 @@ Configure httpd.conf
 .. highlight:: Yaml
     :linenothreshold: 5                                                                     
 
-`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_
+[`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd.yml
     :language: Yaml
@@ -25,7 +27,7 @@ Configure httpd.conf
 Configure directories in Includes
 ---------------------------------
 
-`httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_
+[`httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-dirs.yml
     :language: Yaml
@@ -38,7 +40,7 @@ Configure directories in Includes
 Configure modules
 -----------------
 
-`httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_
+[`httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-modules.yml
     :language: Yaml
@@ -51,7 +53,7 @@ Configure modules
 Configure alias
 ---------------
 
-`httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_
+[`httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-alias.yml
     :language: Yaml
@@ -64,7 +66,7 @@ Configure alias
 Configure ssl
 -------------
 
-`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
+[`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-ssl.yml
     :language: Yaml
@@ -79,19 +81,19 @@ Configure vhosts
 
 Goal: Configure virtual hosts in extra directory.
 
-Take the dictionary ``{{ apache_vhost }}`` and create files with the
-Apache virtual hosts in ``{{ apache_conf_path }}/extra/``. The created
-files will be included in ``{{ apache_conf_path }}/httpd.conf``.
+Take the dictionary ``{{ apache_vhost }}`` and create files with the Apache
+virtual hosts in ``{{ apache_conf_path }}/extra/``. The created files
+will be included in ``{{ apache_conf_path }}/httpd.conf``.
 
-See the example of the variable `vars/main.yml
-<https://github.com/vbotka/ansible-apache/blob/master/vars/main.yml>`_.
-
-`httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_
+[`httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-vhosts.yml
     :language: Yaml
     :emphasize-lines: 4-6,10-11
     :linenos:
+
+.. seealso:: See the example of the variable ``{{ apache_vhost }}`` in  `vars/main.yml
+             <https://github.com/vbotka/ansible-apache/blob/master/vars/main.yml>`_.
 
 
 .. _confd:
@@ -107,7 +109,7 @@ Take the configuration data from the directories ``{{
 apache_confd_dir_vhosts }}`` and ``{{ apache_confd_dir_sections
 }}``. Include the files in ``httpd.conf``.
 
-`httpd-confd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd.yml>`_
+[`httpd-confd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-confd.yml
     :language: Yaml
@@ -145,16 +147,19 @@ directory with the YAML configuration files (7), and the type of the list
 (8) and returns the list with the YAML configurations of the virtual
 hosts stored in the variable ``al_include_confd_vars_list``. The
 variable can be printed (17) if debug is turned on ``apache_debug:
-true``. The parameters (7,8) are tested inside the included tasks. See
-details of the included tasks at `al_include_confd_vars_list.yml
-<https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.
+true``. The parameters (7,8) are tested inside the included tasks.
+
+.. seealso:: See details of the included tasks at
+             `al_include_confd_vars_list.yml
+             <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.
 
 
 Create directories for virtual hosts (25-27)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Include tasks from fn/httpd-confd-vhost-dirs.yml . See :ref:`Configure
-confd-vhost-dirs <confd-vhost-dirs>`
+Include tasks from fn/httpd-confd-vhost-dirs.yml .
+
+.. seealso:: See :ref:`confd-vhost-dirs`.
 
 
 Configure virtual hosts in extra directory (29-38)
@@ -162,9 +167,10 @@ Configure virtual hosts in extra directory (29-38)
 
 Create the Apache configuration files for the virtual hosts with the
 help of ``encode_apache`` filter. Store the files in the directory
-``{{ apache_conf_path }}/extra/`` For details see the template
-`vhost2.j2
-<https://github.com/vbotka/ansible-apache/blob/master/templates/vhost2.j2>`_.
+``{{ apache_conf_path }}/extra/``.
+
+.. seealso:: For details see the template `vhost2.j2
+             <https://github.com/vbotka/ansible-apache/blob/master/templates/vhost2.j2>`_.
 
 
 Include virtual hosts in httpd.conf (40-48)
@@ -173,7 +179,7 @@ Include virtual hosts in httpd.conf (40-48)
 Include virtual hosts in httpd.conf.
 
 
-`httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_
+[`httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-confd-vhosts.yml
     :language: Yaml
@@ -188,7 +194,7 @@ Configure confd-vhost-dirs
 
 Goal: Create ``DocumentRoot`` directories for vhosts.
 
-`fn/httpd-confd-vhost-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/fn/httpd-confd-vhost-dirs.yml>`_
+[`fn/httpd-confd-vhost-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/fn/httpd-confd-vhost-dirs.yml>`_]
 
 .. literalinclude:: ../../tasks/fn/httpd-confd-vhost-dirs.yml
     :language: Yaml
@@ -229,23 +235,27 @@ directory with the YAML configuration files (7), and the type of the list
 (8) and returns the list with the YAML configurations of the sections
 stored in the variable ``al_include_confd_vars_list``. The variable
 can be printed (17) if debug is turned on ``apache_debug: true``. The
-parameters (7,8) are tested inside the included tasks. See details of
-the included tasks at `al_include_confd_vars_list.yml
-<https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.
+parameters (7,8) are tested inside the included tasks.
+
+.. seealso:: See details of the included tasks at
+             `al_include_confd_vars_list.yml
+             <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.
+
 
 Configure sections in Includes directory (19-28)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create the Apache configuration files for the sections with the
 help of ``encode_apache`` filter. Store the files in the directory
-``{{ apache_conf_path }}/Includes/`` (22). For details see the template
-`section2.j2
-<https://github.com/vbotka/ansible-apache/blob/master/templates/sectiont2.j2>`_.
+``{{ apache_conf_path }}/Includes/`` (22).
 
 
-`httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_
+[`httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_]
 
 .. literalinclude:: ../../tasks/httpd-confd-includes.yml
     :language: Yaml
     :emphasize-lines: 7,8,11,12,17,22
     :linenos:
+
+.. seealso:: For details see the template `section2.j2
+             <https://github.com/vbotka/ansible-apache/blob/master/templates/sectiont2.j2>`_.

@@ -3,6 +3,7 @@
 Variables
 =========
 
+
 .. _vars_default:
 
 Include OS specific variables
@@ -16,16 +17,17 @@ directory `vars/defaults
 specific custom variables, that will override default values, can be
 loaded from the files in the directory `vars <https://github.com/vbotka/ansible-apache/blob/master/vars/>`__.
 
-See the precedence, naming conventions and other details in the included tasks (11) at `al_include_os_vars_path.yml
-<https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_.
-
 .. highlight:: Yaml
     :linenothreshold: 5                                                                     
 
-`vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_
+[`vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]
 
 .. literalinclude:: ../../tasks/vars.yml
     :language: Yaml
     :emphasize-lines: 10, 11
     :linenos:
 
+.. seealso:: See the precedence, naming conventions and other details
+             in the included tasks (11) at
+             `al_include_os_vars_path.yml
+             <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_.

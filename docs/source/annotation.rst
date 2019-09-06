@@ -1,14 +1,13 @@
+.. _source_guide:
+
 Annotated source code
 *********************
 
-Ansible role `apache <https://galaxy.ansible.com/vbotka/apache/>`_ 
 
-Overview
-========
-
+.. _source_guide_tree:
 
 Tree
-----
+====
 ::
 
     $ tree .
