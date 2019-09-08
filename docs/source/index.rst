@@ -9,10 +9,6 @@ Welcome to the Ansible role for Apache!
 
    guide
    annotation
-   variables
-   packages
-   configure
-   service
    examples
    references
 
