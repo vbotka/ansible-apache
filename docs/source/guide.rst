@@ -1,3 +1,6 @@
+.. role:: bash(code)
+   :language: bash
+
 .. _ug:
 
 User's guide
@@ -47,20 +50,21 @@ and install it ::
     $ ansible-galaxy install vbotka.apache
 
 Together with the role ``vbotka.apache`` two other roles will be
-installed. The role ``vbotka.ansible_lib`` provides some common tasks
-in the form of included tasks and the role
-``jtyr.config_encoder_filters`` provides the filter ``encode_apache``
-used to encode YAML configuration data to Apache format.
+installed.
 
-Take a look at other roles ::
+* `vbotka.ansible_lib
+  <https://galaxy.ansible.com/vbotka/ansible_lib>`_ provides common
+  tasks in the form of included tasks
 
-    $ ansible-galaxy search --author=vbotka
+* `jtyr.config_encoder_filters
+  <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ provides
+  the filter `encode_apache
+  <https://github.com/jtyr/ansible-config_encoder_filters#id6>`_ used
+  to encode YAML configuration data to Apache format.
 
 
-.. seealso:: For details how to install specific versions from various
-             sources see `Installing content
-             <https://galaxy.ansible.com/docs/using/installing.html>`__.
-
+.. seealso:: * | For details how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
+	     * | Take a look at other roles ``$ ansible-galaxy search --author=vbotka``
 
 .. _ug_ansible_playbook:
 
@@ -87,7 +91,7 @@ Simple playbook to install and configure Apache at srv.example.com (2)
 .. note:: * | ``gather_facts: true`` (3) must be set to collect variables
             | needed to evaluate :ref:`ug_os_defaults` and :ref:`ug_os_custom`
 	    | [``ansible_distribution``, ``ansible_distribution_release``, ``ansible_os_family``]
-	  * | See `tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_
+	  * | See :ref:`ug_variables`
 
 .. seealso:: * For details see `Connection Plugins
                <https://docs.ansible.com/ansible/latest/plugins/connection.html>`__ (4-5)
@@ -215,12 +219,10 @@ in the directory ``vars/defaults`` will be included
       paths: "{{ al_os_vars_path }}/vars/defaults"
 
 .. note:: * OS specific variables are included with the module
-	    ``include_var``. This has very high precedence (18 in the
-	    22 scale).
-          * See `Ansible variable precedence: Where should I put a
-	    variable?
+	    ``include_var`` that has very high precedence (18 in the list of 22).
+          * See `Ansible variable precedence: Where should I put a variable?
 	    <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
-	  * To override these variables see :ref:`ug_os_custom`
+	  * To override the default variables see :ref:`ug_os_custom`
 
 
 .. _ug_os_defaults_freebsd:
