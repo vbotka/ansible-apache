@@ -6,7 +6,7 @@ galaxy_info:
   company: https://botka.link
   github_branch: master
   license: BSD
-  min_ansible_version: 2.7
+  min_ansible_version: 2.8
   platforms:
     - name: FreeBSD
       versions:
@@ -17,10 +17,5 @@ galaxy_info:
     - freebsd
     - apache
 dependencies:
-  - src: https://github.com/jtyr/ansible-config_encoder_filters
-    version: v1.20
-    name: jtyr.config_encoder_filters
-  - src: https://github.com/vbotka/ansible-lib
-    version: 1.1.0
-    name: vbotka.ansible_lib
+  - jtyr.config_encoder_filters
 ...
