@@ -67,10 +67,10 @@ apache_php_package: "www/mod_php{{ apache_php_version }}"
 # vhosts
 # Virtual hosts need apache_ssl. Port 80 is redirected permanently to
 # 443 for vhosts.
-apache_vhost: {}
+apache_vhost: []
 
 # dirs
-apache_directory_blocks: {}
+apache_directory_blocks: []
 
 # aliases
 apache_alias: []
