@@ -13,7 +13,7 @@
       notify: reload apache
     - name: "httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
       lineinfile:
-        state: absent
+        state: "absent"
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "{{ item }}"
         backup: "{{ apache_backup_conf }}"

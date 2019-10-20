@@ -1,11 +1,11 @@
 ---
 
 - name: "httpd-confd: Configure virtual hosts from {{ apache_confd_dir_vhosts }}"
-  import_tasks: httpd-confd-vhosts.yml
+  import_tasks: "httpd-confd-vhosts.yml"
   tags: apache-httpd-confd-vhosts
 
 - name: "httpd-confd: Configure includes from {{ apache_confd_dir_sections }}"
-  import_tasks: httpd-confd-includes.yml
+  import_tasks: "httpd-confd-includes.yml"
   tags: apache-httpd-confd-includes
 
 # EOF

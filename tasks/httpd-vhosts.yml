@@ -2,7 +2,7 @@
 
 - name: "httpd-vhosts: Create directories for virtual hosts"
   file:
-    state: directory
+    state: "directory"
     path: "{{ item.DocumentRoot }}"
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"

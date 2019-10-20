@@ -1,7 +1,7 @@
 ---
 - name: "httpd-confd-vhost-dirs: Create directories for virtual hosts"
   file:
-    state: directory
+    state: "directory"
     path: "{{ vhost_dir }}"
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"

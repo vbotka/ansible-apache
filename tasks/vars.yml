@@ -7,8 +7,8 @@
         al_os_vars_path: "{{ role_path }}"
     - name: "vars: Include OS vars"
       include_role:
-        name: vbotka.ansible_lib
-        tasks_from: al_include_os_vars_path.yml
+        name: "vbotka.ansible_lib"
+        tasks_from: "al_include_os_vars_path.yml"
 
 # EOF
 ...

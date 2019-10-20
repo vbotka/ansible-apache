@@ -1,35 +1,35 @@
 ---
 # handlers for vbotka.apache
 
-- name: enable and start apache
+- name: "enable and start apache"
   service:
     name: "{{ apache_service }}"
-    state: started
-    enabled: yes
+    state: "started"
+    enabled: true
 
-- name: disable and stop apache
+- name: "disable and stop apache"
   service:
     name: "{{ apache_service }}"
-    state: stopped
-    enabled: no
+    state: "stopped"
+    enabled: false
 
-- name: restart apache
+- name: "restart apache"
   when: apache_enable|bool
   service:
     name: "{{ apache_service }}"
-    state: restarted
+    state: "restarted"
 
-- name: reload apache
+- name: "reload apache"
   when: apache_enable|bool
   service:
     name: "{{ apache_service }}"
-    state: reloaded
+    state: "reloaded"
 
-- name: graceful apache
+- name: "graceful apache"
   when: apache_enable|bool
   command: "/usr/local/etc/rc.d/{{ apache_service }} graceful"
 
-- name: gracefulstop apache
+- name: "gracefulstop apache"
   when: apache_enable|bool
   command: "/usr/local/etc/rc.d/{{ apache_service }} gracefulstop"
 

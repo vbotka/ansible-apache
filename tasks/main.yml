@@ -9,6 +9,7 @@
   tags: [apache-debug, always]
 
 - import_tasks: packages.yml
+  when: apache_install|bool
   tags: apache-packages
 
 - import_tasks: httpd.yml

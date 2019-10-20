@@ -27,11 +27,11 @@ apache_confd_dir_vhosts: "{{ playbook_dir }}/servers/apache.d/vhosts"
 apache_confd_dir_sections: "{{ playbook_dir }}/servers/apache.d/sections"
 
 apache_httpd_conf_modules:
-  - { module: "socache_shmcb_module", mod: "mod_socache_shmcb.so" }
-  - { module: "ssl_module", mod: "mod_ssl.so" }
-  - { module: "php{{ apache_php_lib }}_module", mod: "libphp{{ apache_php_lib }}.so" }
-  - { module: "cgi_module", mod: "mod_cgi.so", present: true }
-  - { module: "cgid_module", mod: "mod_cgid.so", present: true }
+  - {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}
+  - {module: "ssl_module", mod: "mod_ssl.so"}
+  - {module: "php{{ apache_php_lib }}_module", mod: "libphp{{ apache_php_lib }}.so"}
+  - {module: "cgi_module", mod: "mod_cgi.so", present: true}
+  - {module: "cgid_module", mod: "mod_cgid.so", present: true}
 
 apache_directory_blocks: {}
 apache_vhost: {}

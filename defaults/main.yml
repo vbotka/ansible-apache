@@ -1,11 +1,13 @@
 ---
 # defaults for vbotka.apache
 
-apache_enable: True
-apache_debug: False
-apache_ssl: False
-apache_php: False
-apache_backup_conf: no
+apache_install: true
+apache_enable: true
+apache_debug: false
+apache_ssl: false
+apache_php: false
+apache_backup_conf: false
+
 apache_SSLEngine: "off"
 
 # httpd.conf
