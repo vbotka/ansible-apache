@@ -6,6 +6,8 @@
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
 [Documentation at readthedocs.io](https://ansible-apache.readthedocs.io)
 
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-apache/issues). Contributions are welcome.
+
 
 ## Requirements
 
