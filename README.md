@@ -4,7 +4,7 @@
 [![Documentation Status](https://readthedocs.org/projects/ansible-apache/badge/?version=latest)](https://ansible-apache.readthedocs.io/en/latest/?badge=latest)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
-[Documentation.](https://ansible-apache.readthedocs.io/en/latest/) User's Guide (wip).
+[Documentation at readthedocs.io](https://ansible-apache.readthedocs.io)
 
 
 ## Requirements
@@ -40,25 +40,25 @@ permanently redirected to 443. Example is available in vars.
 1) Change shell to /bin/sh.
 
 ```
-# ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+shell> ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role.
 
 ```
-# ansible-galaxy install vbotka.apache
+shell> ansible-galaxy install vbotka.apache
 ```
 
 3) Fit variables.
 
 ```
-# editor vbotka.apache/vars/main.yml
+shell> editor vbotka.apache/vars/main.yml
 ```
 
 4) Create playbook and inventory.
 
 ```
-# cat apache.yml
+shell> cat apache.yml
 ---
 - hosts: webserver
   roles:
@@ -66,7 +66,7 @@ permanently redirected to 443. Example is available in vars.
 ```
 
 ```
-# cat hosts
+shell> cat hosts
 [webserver]
 <webserver-ip-or-fqdn>
 [webserver:vars]
@@ -81,7 +81,7 @@ ansible_perl_interpreter=/usr/local/bin/perl
 5) Install and configure apache.
 
 ```
-# ansible-playbook apache.yml
+shell> ansible-playbook apache.yml
 ```
 
 6) Syntax check.
