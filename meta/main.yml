@@ -2,17 +2,16 @@
 galaxy_info:
   role_name: apache
   author: Vladimir Botka
-  description: Configure Apache.
+  description: Install and configure Apache.
   company: https://botka.link
   github_branch: master
   license: BSD
-  min_ansible_version: 2.8
+  min_ansible_version: 2.9
   platforms:
     - name: FreeBSD
       versions:
-        - 11.2
         - 11.3
-        - 12.0
+        - 12.1
   galaxy_tags:
     - freebsd
     - apache

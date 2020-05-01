@@ -10,6 +10,12 @@
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-apache/issues). Contributions are welcome.
 
 
+## Supported platforms
+
+This role has been developed and tested with
+* [FreeBSD Supported Production Releases](https://www.freebsd.org/releases/)
+
+
 ## Requirements
 
 - [config_encoder_filters](https://galaxy.ansible.com/jtyr/config_encoder_filters)
