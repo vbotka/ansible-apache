@@ -14,7 +14,7 @@ Welcome to the Ansible role for Apache!
 
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
