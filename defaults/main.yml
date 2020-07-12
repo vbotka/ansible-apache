@@ -81,5 +81,24 @@ apache_alias: []
 apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/vhosts"
 apache_confd_dir_sections: "{{ role_path }}/vars/conf.d/sections"
 
+# samples
+apache_samples: false
+apache_samples_list:
+  - "httpd.conf"
+  - "magic"
+  - "mime.types"
+  - "extra/httpd-autoindex.conf"
+  - "extra/httpd-dav.conf"
+  - "extra/httpd-default.conf"
+  - "extra/httpd-info.conf"
+  - "extra/httpd-languages.conf"
+  - "extra/httpd-manual.conf"
+  - "extra/httpd-mpm.conf"
+  - "extra/httpd-multilang-errordoc.conf"
+  - "extra/httpd-ssl.conf"
+  - "extra/httpd-userdir.conf"
+  - "extra/httpd-vhosts.conf"
+  - "extra/proxy-html.conf"
+
 # EOF
 ...

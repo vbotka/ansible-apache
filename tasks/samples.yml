@@ -1,0 +1,11 @@
+---
+
+- name: "samples: Copy sample files"
+  copy:
+    remote_src: true
+    src: "{{ apache_conf_path }}/{{ item }}.sample"
+    dest: "{{ apache_conf_path }}/{{ item }}"
+  loop: "{{ apache_samples_list }}"
+
+# EOF
+...

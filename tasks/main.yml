@@ -12,6 +12,10 @@
   when: apache_install|bool
   tags: apache-packages
 
+- import_tasks: samples.yml
+  when: apache_samples|bool
+  tags: apache-samples
+
 - import_tasks: httpd.yml
   tags: apache-httpd
 
