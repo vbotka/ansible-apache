@@ -11,11 +11,13 @@ apache_backup_conf: false
 apache_SSLEngine: "off"
 
 # httpd.conf
-apache_ServerName: "www.example.com"
-apache_ServerAdmin: "admin@example.com"
+apache_ServerName: www.example.com
+apache_ServerAdmin: admin@example.com
+apache_ServerTokens: Prod
 apache_httpd_conf:
-  - {regexp: "ServerName", line: "{{ apache_ServerName }}"}
-  - {regexp: "ServerAdmin", line: "{{ apache_ServerAdmin }}"}
+  - {regexp: ServerName, line: "{{ apache_ServerName }}"}
+  - {regexp: ServerAdmin, line: "{{ apache_ServerAdmin }}"}
+  - {regexp: ServerTokens, line: "{{ apache_ServerTokens }}"}
 
 # SSL
 apache_SSLListen: ""
@@ -43,6 +45,7 @@ apache_SSLSessionTickets: "off"
 # Header always set X-Frame-Options SAMEORIGIN
 apache_httpd_conf_ssl:
   - "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"
+# Note: The regex value must be terminated by one space
 apache_httpd_conf_ssl_extra:
   - {regexp: "ServerName ", line: "{{ apache_ServerName }}:443"}
   - {regexp: "ServerAdmin ", line: "{{ apache_ServerAdmin }}"}
@@ -56,11 +59,11 @@ apache_httpd_conf_ssl_extra:
   - {regexp: "SSLCertificateKeyFile ", line: "{{ apache_SSLCertificateKeyFile }}"}
 apache_httpd_conf_ssl_extra_absent: []
 apache_httpd_conf_ssl_listen:
-  - "Listen 443"
+  - Listen 443
 
 # Modules
 apache_httpd_conf_modules:
-  - {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}
+  - {module: socache_shmcb_module, mod: mod_socache_shmcb.so}
 
 # PHP
 apache_php_version: "56"
