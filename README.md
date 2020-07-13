@@ -114,6 +114,7 @@ the role will complain about missing configuration files.
 - [SSL with Virtual Hosts Using SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI)
 - [Multi-Processing Modules (MPMs)](https://httpd.apache.org/docs/2.4/mpm.html)
 - [FreebSD handbook: 29.8. Apache HTTP Server](https://www.freebsd.org/doc/handbook/network-apache.html)
+- [Recommended Steps To Harden Apache HTTP on FreeBSD 12.0](https://www.digitalocean.com/community/tutorials/recommended-steps-to-harden-apache-http-on-freebsd-12-0)
 
 
 ## License
