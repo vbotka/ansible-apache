@@ -322,7 +322,7 @@ The example below will configure virtual server ``mail.example.net`` (2).
 
 Notes
 ^^^^^
-.. note:: * The default value is an empty dictionary ``apache_vhost: {}``
+.. note:: * The default value is an empty list ``apache_vhost: []``
 	  * For details see :ref:`as_vhosts`. [`httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
 
 See Also
