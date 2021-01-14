@@ -8,8 +8,6 @@ User's guide
 .. contents:: Topics
    :depth: 3
 
-Welcome to the User's Guide!
-
 
 .. _ug_introduction:
 

@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ansible-role-apache'
-copyright = '2019-2020, Vladimir Botka'
+copyright = '2019-2021, Vladimir Botka'
 author = 'Vladimir Botka'
 
 # The version info for the project you're documenting, acts as replacement for
