@@ -8,8 +8,8 @@
         al_include_confd_vars_list_type: "fname"
     - name: "httpd-confd-vhosts: Include al_include_confd_vars_list"
       include_role:
-        name: "vbotka.ansible_lib"
-        tasks_from: "al_include_confd_vars_list"
+        name: vbotka.ansible_lib
+        tasks_from: al_include_confd_vars_list
     - name: "httpd-confd-vhosts: Debug al_include_confd_vars_list"
       when: apache_debug|bool
       debug:

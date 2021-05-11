@@ -1,0 +1,25 @@
+---
+
+task_httpd-confd-vhost-dirs_synopsis: |
+  
+  Create ``DocumentRoot`` directories for vhosts.
+
+task_httpd-confd-vhost-dirs_description: |
+
+  <TBD>
+
+task_httpd-confd-vhost-dirs_lines: 2
+
+task_httpd-confd-vhost-dirs_seealso:
+  handlers: []
+  templates: []
+  others:
+
+    - <TBD>
+
+task_httpd-confd-vhost-dirs_note: []
+task_httpd-confd-vhost-dirs_hint: []
+task_httpd-confd-vhost-dirs_warning: []
+
+# EOF
+...

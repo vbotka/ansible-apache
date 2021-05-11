@@ -173,10 +173,10 @@ variables included from the directory ``vars``.
 Default variables
 -----------------
 
-* Most of the variables are self-explaining (4-9,12-13,64-65)
-* For Apache configuration (19-54,60) see `Apache HTTP Server
+* Most of the variables are self-explaining (4-9,14-15,69-70)
+* For Apache configuration (23-62,65) see `Apache HTTP Server
   Documentation <https://httpd.apache.org/docs/>`__.
-* Other variables (70,73,76,79-80) will be explained in the next sections.
+* Other variables (75,78,81,84-85) will be explained in the next sections.
 
 [`defaults/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main.yml>`_]
 
@@ -184,10 +184,10 @@ Default variables
     :linenothreshold: 5
 .. literalinclude:: ../../defaults/main.yml
     :language: yaml
-    :emphasize-lines: 4-9,12-13,64-65,70,73,76,79-80
+    :emphasize-lines: 4-9,14-15,69-70,75,78,81,84-85
     :linenos:
 
-.. warning:: By default SSL is turned off ``apache_SSLEngine: "off"`` (9).
+.. warning:: By default SSL is turned off ``apache_SSLEngine: "off"`` (11).
 
 
 .. _ug_os_defaults:
@@ -195,8 +195,7 @@ Default variables
 OS specific default variables
 -----------------------------
 
-Here come the OS specific default variables. The configuration files
-in the directory ``vars/defaults`` will be included
+The configuration files from the directory ``vars/defaults`` will be included in the loop
 ``with_first_found`` (1). At least empty ``default.yml`` (6) shall be present.
 
 * [`tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]
@@ -216,8 +215,7 @@ in the directory ``vars/defaults`` will be included
         - "defaults.yml"
       paths: "{{ al_os_vars_path }}/vars/defaults"
 
-.. note:: * OS specific variables are included with the module
-	    ``include_var`` that has very high precedence (18 in the list of 22).
+.. note:: * OS specific variables are included by the module ``include_var`` that has very high precedence (18 in the list of 22).
           * See `Ansible variable precedence: Where should I put a variable?
 	    <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
 	  * To override the default variables see :ref:`ug_os_custom`
@@ -228,11 +226,9 @@ in the directory ``vars/defaults`` will be included
 FreeBSD default variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default the binary packages will be installed (4). But if custom
-builds are available switch to ``ports`` (5) and use
-``freebsd_use_packages: "yes"`` (6) to speedup the installation. Under
-standard circumstances, there is no reason to change other parameters
-here.
+By default the binary packages will be installed (4). But if custom builds are available switch to
+``ports`` (5) and use ``freebsd_use_packages: "yes"`` (6) to speedup the installation. Under
+standard circumstances, there is no reason to change other parameters here.
 
 [`vars/defaults/FreeBSD.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/defaults/FreeBSD.yml>`_]
 
@@ -247,9 +243,8 @@ here.
 OS specific custom variables
 ----------------------------
 
-Here come the OS specific custom variables. The configuration files
-in the directory ``vars`` will be included ``with_first_found`` (1) and
-will override the default values of the variables. At least empty
+The configuration files from the directory ``vars`` will be included in the loop
+``with_first_found`` (1) and will override the default values of the variables. At least empty
 ``default.yml`` (6) shall be present here.
 
 * [`tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]

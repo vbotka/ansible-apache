@@ -1,0 +1,361 @@
+---
+mytasks:
+  - file: main.yml
+    link: main.yml
+    path: tasks/main.yml
+    synopsis: |
+      Main task.
+    description: |
+      Import tasks if enabled.
+    lines: 1,2
+    seealso: []
+    note: []
+    warning: []
+
+  - file: vars.yml
+    link: vars.yml
+    path: tasks/vars.yml
+    synopsis: |
+      Include OS specific variables from the role's directory vars.
+
+    description: |
+      
+      OS specific default variables will be loaded from the files in the directories `vars
+      <https://github.com/vbotka/ansible-apache/blob/master/vars/>`_ and `vars/defaults
+      <https://github.com/vbotka/ansible-apache/blob/master/vars/defaults/>`_. OS specific custom
+      variables, that will override default values, can be loaded from the files in the directory `vars
+      <https://github.com/vbotka/ansible-apache/blob/master/vars/>`_.
+
+    lines: 10,11
+    seealso: {'handlers': [], 'templates': [], 'others': ['See the precedence, naming conventions and other details in the included task (11) from `al_include_os_vars_path.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path.yml>`_', 'See :ref:`ug_variables`']}
+    notes: ['Put OS specific variables here only. Because of the precedence (15.role vars), there are limited options to override these variables, if necessary.']
+    hints: ['It might be more convenient to maintain the variables incrementally. See `al_include_os_vars_path_incr.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path_incr.yml>`_']
+    warnings: ['Put customized OS specific variables into the files in the dictionary *vars/*. Changes stored in the directory *vars/defaults* will be overwritten by an update of the role.']
+
+  - file: debug.yml
+    link: debug.yml
+    path: tasks/debug.yml
+    synopsis: |
+      Configure debug.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: packages.yml
+    link: packages.yml
+    path: tasks/packages.yml
+    synopsis: |
+      
+      Install packages for supported OS.
+
+    description: |
+      
+      <TBD>
+
+    lines: 3
+    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: packages-freebsd.yml
+    link: packages-freebsd.yml
+    path: tasks/packages-freebsd.yml
+    synopsis: |
+      
+      <TBD>
+
+    description: |
+      
+      <TBD>
+
+    lines: 3,13
+    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: samples.yml
+    link: samples.yml
+    path: tasks/samples.yml
+    synopsis: |
+      
+      <TBD>
+
+    description: |
+      
+      <TBD>
+
+    lines: 3
+    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd.yml
+    link: httpd.yml
+    path: tasks/httpd.yml
+    synopsis: |
+      Configure lines in httpd.conf
+
+    description: |
+      
+      Iterate the list ``apache_httpd_conf`` (9) and add lines to the configuration file (5).
+
+    lines: 5,9
+    seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_httpd_conf`']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-dirs.yml
+    link: httpd-dirs.yml
+    path: tasks/httpd-dirs.yml
+    synopsis: |
+      
+      Create files with the directory blocks in the Includes directory.
+
+    description: |
+      
+      Iterate the list ``apache_directory_blocks`` (11) and create configuration files in the directory (6).
+
+    lines: 6,11
+    seealso: {'handlers': [], 'templates': ['directory-block'], 'others': ['Variable :ref:`ug_apache_directory_blocks`']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-modules.yml
+    link: httpd-modules.yml
+    path: tasks/httpd-modules.yml
+    synopsis: |
+      
+      Load Apache modules. Optionally configure PHP module. (TODO: General configuration of modules.)
+
+    description: |
+      
+      Iterate ``apache_httpd_conf_modules`` (11). When ``item.preset`` (4) insert line ``LoadModule
+      ...`` (8) to httpd.conf (6). Iterate ``apache_httpd_conf_modules`` (22). When ``not item.preset``
+      (15) comment line ``# LoadModule ...`` (20) in httpd.conf (17). Configure PHP (30-38) in
+      Includes/php.conf when ``apache_php`` (26).
+
+    lines: 4,11,15,22,26,30-38
+    seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_httpd_conf_modules`']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-alias.yml
+    link: httpd-alias.yml
+    path: tasks/httpd-alias.yml
+    synopsis: |
+      
+      Configure aliases in httpd.conf
+
+    description: |
+      
+      When not an empty list (4) iterate ``apache_alias`` (9) and include configuration lines in httpd/conf (6).
+
+    lines: 4,6,9-11
+    seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_alias`']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-ssl.yml
+    link: httpd-ssl.yml
+    path: tasks/httpd-ssl.yml
+    synopsis: |
+      
+      Configure SSL in extra/httpd-ssl.conf
+
+    description: |
+      
+      Iterate ``apache_httpd_conf_ssl_extra`` (12) and configure lines in
+      ``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_extra_absent`` (20) and remove lines
+      from ``extra/httpd-ssl.conf`` (17). Iterate ``apache_httpd_conf_ssl_listen`` (27) and add lines
+      from ``extra/httpd-ssl.conf`` (17). Iterate ``apache_httpd_conf_ssl`` (34) and configure lines in
+      ``httpd.conf``.
+
+    lines: 4,8,12,17,20,24,27,31,34
+    seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_httpd_conf_ssl`', 'Variable :ref:`ug_apache_httpd_conf_ssl_extra`', 'Variable :ref:`ug_apache_httpd_conf_ssl_extra_absent`', 'Variable :ref:`ug_apache_httpd_conf_ssl_listen`']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-vhosts.yml
+    link: httpd-vhosts.yml
+    path: tasks/httpd-vhosts.yml
+    synopsis: |
+      
+      Configure virtual hosts in extra directory.
+
+    description: |
+      
+      Loop the dictionary ``apache_vhost`` (10,21,31) and optionally (11) create directories
+      ``DocumentRoot`` (5,6). Create files with the Apache virtual hosts in the directory (16). See the
+      template :ref:`as_template_vhost.j2` (15). Include created files (28) in the configuration file
+      (26).
+
+    lines: 5-6,10-11,15-16,21,26,28,31
+    seealso: {'handlers': [], 'templates': ['vhost', 'vhost2'], 'others': []}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-confd.yml
+    link: httpd-confd.yml
+    path: tasks/httpd-confd.yml
+    synopsis: |
+      
+      Configure virtual hosts.
+
+    description: |
+      
+      Configure virtual hosts (4) and configuration sections of the directories (9).
+
+    lines: 4,9
+    seealso: {'handlers': [], 'templates': [], 'others': ['httpd-confd-vhosts.yml and httpd-confd-includes.yml']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-confd-vhosts.yml
+    link: httpd-confd-vhosts.yml
+    path: tasks/httpd-confd-vhosts.yml
+    synopsis: |
+      
+      Configure virtual hosts. Create files.
+
+    description: |
+      
+      Configure virtual hosts with the filter `encode_apache
+      <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_. See the template vhost2.j2.  Take the
+      YAML configuration files from the directory ``apache_confd_dir_vhosts`` (7) at master and create
+      files with the Apache virtual hosts in the directory (32) at the remote host. The created files
+      will be included in the configuration file (42).
+
+
+      **Include data from conf.d (3-17)**
+
+      Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
+      (11). This task takes as parameters the directory with the YAML configuration files (7), and the
+      type of the list (8) and returns the list with the YAML configurations of the virtual hosts stored
+      in the variable ``al_include_confd_vars_list``. The variable can be printed (17) if debug is
+      turned on ``apache_debug: true``. The parameters (7,8) are tested inside the included tasks.
+
+
+      **Create directories for virtual hosts (25-27)**
+
+      Include tasks from ``fn/httpd-confd-vhost-dirs.yml`` .
+
+
+      **Configure virtual hosts in extra directory (29-38)**
+
+      Create the Apache configuration files for the virtual hosts with the help of ``encode_apache``
+      filter. Store the configuration file (32).
+
+
+      **Include virtual hosts in httpd.conf (40-48)**
+
+      Include virtual hosts in httpd.conf.
+
+    lines: 3,7-8,11,12,17,25-27,29,32,37,40,42,44,47
+    seealso: {'handlers': [], 'templates': ['vhost2'], 'others': ['Example of the configuration file `vars/conf.d/vhosts-sample/example.com.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/vhosts-sample/example.com.yml>`_', 'Included task `al_include_confd_vars_list.yml <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-confd-vhost-dirs.yml
+    link: httpd-confd-vhost-dirs.yml
+    path: tasks/fn/httpd-confd-vhost-dirs.yml
+    synopsis: |
+      
+      Create ``DocumentRoot`` directories for vhosts.
+
+    description: |
+      
+      <TBD>
+
+    lines: 2
+    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-confd-includes.yml
+    link: httpd-confd-includes.yml
+    path: tasks/httpd-confd-includes.yml
+    synopsis: |
+      
+      Configure sections with the filter encode_apache.
+
+    description: |
+      
+      Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (7) at master
+      and create the configuration files (22) at the remote host. The created configuration files are
+      included in the configuration file ``httpd.conf`` by default.
+
+      .. code-block:: yaml
+
+        shell> grep Includes /usr/local/etc/apache24/httpd.conf
+        Include etc/apache24/Includes/*.conf
+
+      **Include data from conf.d (3-17)**
+
+      Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
+      (11). This task takes as parameters the directory with the YAML configuration files (7), and the
+      type of the list (8) and returns the list with the YAML configurations of the sections stored in
+      the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
+      tasks.
+
+      **Configure sections in Includes directory (19-28)**
+
+      Create the Apache configuration files (22) for the sections with the help of ``encode_apache``
+      filter.
+
+    lines: 7,8,11,12,17,22
+    seealso: {'handlers': [], 'templates': ['section2'], 'others': ['Example of the configuration file `vars/conf.d/section-sample/usr-local-www-example.com.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/section-sample/usr-local-www-example.com.yml>`_', 'Details of the format are described in the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: service.yml
+    link: service.yml
+    path: tasks/service.yml
+    synopsis: |
+      
+      Configure service.
+
+    description: |
+      
+      At the moment, only configuration of FreeBSD is implemented (3).
+
+    lines: 3
+    seealso: {'handlers': [], 'templates': [], 'others': ['rcconf.yml']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: rcconf.yml
+    link: rcconf.yml
+    path: tasks/rcconf.yml
+    synopsis: |
+      
+      Configure service in FreeBSD.
+
+    description: |
+      
+      Enable the service (3) or disable it (12).
+
+    lines: 3,12
+    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+    notes: []
+    hints: []
+    warnings: []
+
+...
