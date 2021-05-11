@@ -315,8 +315,11 @@ The example below will configure virtual server ``mail.example.net`` (2).
 
 Notes
 ^^^^^
-.. note:: * The default value is an empty list ``apache_vhost: []``
-	  * For details see :ref:`as_vhosts`. [`httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
+.. note::
+
+   * The default value is an empty list ``apache_vhost: []``
+
+   * For details see :ref:`as_httpd-vhosts.yml`. [`httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
 
 See Also
 ^^^^^^^^
@@ -366,12 +369,17 @@ Configuration file (3) will be created in the directory ``{{ apache_conf_path }}
 
 Notes
 ^^^^^
-.. note:: * The default value is an empty dictionary ``apache_directory_blocks: {}``
-	  * For details see :ref:`as_includes`. [`httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_]
+.. note::
+
+   * The default value is an empty dictionary ``apache_directory_blocks: {}``
+
+   * For details see :ref:`as_httpd-dirs.yml`. [`httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_]
 
 See Also
 ^^^^^^^^
-.. seealso:: * :ref:`as_directory-block`
+.. seealso::
+
+   * <TBD>
 
 
 .. _ug_apache_alias:
@@ -398,8 +406,11 @@ Example
 
 Notes
 ^^^^^
-.. note:: * The default value is an empty list ``apache_alias: []``
-	  * For details see :ref:`as_alias`. [`httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_]
+.. note::
+
+   * The default value is an empty list ``apache_alias: []``
+
+   * For details see :ref:`as_httpd-alias.yml`. [`httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_]
 
 
 .. _ug_apache_confd_dir_vhosts:
@@ -454,7 +465,10 @@ the file will be included in ``{{ apache_conf_path }}/httpd.conf``.
 
 Notes
 ^^^^^
-.. note:: * For details see :ref:`as_confd-vhosts`. [`httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
+.. note::
+
+   * For details see :ref:`as_httpd-confd-vhosts.yml`. [`httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
+
 
 Hints
 ^^^^^
@@ -520,7 +534,9 @@ directory ``{{ apache_conf_path }}/Includes`` (17).
 
 Notes
 ^^^^^
-.. note:: * For details see :ref:`as_confd-includes`. [`httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_]
+.. note::
+
+   * For details see :ref:`as_httpd-confd-includes.yml`. [`httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_]
 
 Hints
 ^^^^^
@@ -572,7 +588,7 @@ Notes
 	  |     ``- {regexp: "ServerAdmin", line: "{{ apache_ServerAdmin }}"}``
 	  | * The argument line must be quoted if it contains spaces
 	  |     ``- {regexp: "ErrorDocument 500", line: "\"The server made a boo boo.\""}``
-          | * For details see :ref:`as_httpd-conf`. [`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]
+          | * For details see :ref:`as_httpd.yml`. [`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]
 
 
 .. _ug_apache_httpd_conf_ssl:
@@ -601,7 +617,7 @@ Notes
 .. note:: | * The default value is
 	  |   ``apache_httpd_conf_ssl:``
           |     ``- "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf``
-          | * For details see :ref:`as_ssl`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+          | * For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
 
 
 .. _ug_apache_httpd_conf_ssl_extra:
@@ -630,7 +646,7 @@ Parameters
 Notes
 ^^^^^
 .. note:: * See the default value in :ref:`ug_defaults`
-          * For details see :ref:`as_ssl`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+          * For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
 
 
 .. _ug_apache_httpd_conf_ssl_extra_absent:
@@ -657,7 +673,7 @@ Parameters
 Notes
 ^^^^^
 .. note:: * The default value is empty list ``apache_httpd_conf_ssl_extra_absent: []``
-          * For details see :ref:`as_ssl`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+          * For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
 
 
 .. _ug_apache_httpd_conf_ssl_listen:
@@ -679,7 +695,7 @@ Notes
 	    |   ``- "Listen 443"``
 	  * | Overlapping Listen directives will result in a fatal error which
 	    | will prevent the server from starting up.
-          * | For details see :ref:`as_ssl`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+          * | For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
 
 
 .. _ug_apache_httpd_conf_modules:
@@ -725,4 +741,4 @@ Notes
 .. note:: * | The default value is
 	    | ``apache_httpd_conf_modules:``
             |   ``- {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}``
-          * For details see :ref:`as_modules`. [`httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
+          * For details see :ref:`as_httpd-modules.yml`. [`httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
