@@ -1,22 +1,32 @@
 ---
 
-- name: "rc_conf: Enable and Start Apache"
-  when: apache_enable|bool
+
+- name: "rc_conf: configure /etc/rc.conf"
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^\\s*{{ apache_service }}_enable\\s*="
-    line: "{{ apache_service }}_enable=\"YES\""
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    line: '{{ item.key }}="{{ item.value }}"'
+    backup: "{{ apache_backup_conf }}"
+  loop: "{{ apache_rcconf }}"
+  notify: graceful apache
+
+- name: "rc_conf: Enable and Start Apache"
+  lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ apache_service }}_enable\s*=(.*)$'
+    line: '{{ apache_service }}_enable="YES"'
     backup: "{{ apache_backup_conf }}"
   notify: enable and start apache
+  when: apache_enable|bool
 
 - name: "rc_conf: Disable and Stop Apache"
-  when: not apache_enable|bool
   lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^\\s*{{ apache_service }}_enable\\s*="
-    line: "{{ apache_service }}_enable=\"NO\""
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ apache_service }}_enable\s*=(.*)$'
+    line: '{{ apache_service }}_enable="NO"'
     backup: "{{ apache_backup_conf }}"
   notify: disable and stop apache
+  when: not apache_enable|bool
 
 # EOF
 ...
