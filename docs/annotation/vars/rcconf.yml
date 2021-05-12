@@ -6,9 +6,9 @@ task_rcconf_synopsis: |
 
 task_rcconf_description: |
   
-  Enable the service (3) or disable it (12).
+  Configure (3), enable (12) or disable (21) the service.
 
-task_rcconf_lines: 3,12
+task_rcconf_lines: 3,12,21
 
 task_rcconf_seealso:
   handlers: []

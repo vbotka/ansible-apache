@@ -51,11 +51,11 @@ variables, that will override default values, can be loaded from the files in th
     :linenos:
 
 .. seealso::
-   * See the precedence, naming conventions and other details in the included task (11) from `al_include_os_vars_path.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path.yml>`_
+   * See the precedence, naming conventions and other details in the included tasks (11) from `al_include_os_vars_path.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path.yml>`_
    * See :ref:`ug_variables`
 
 .. note::
-   * Put OS specific variables here only. Because of the precedence (15.role vars), there are limited options to override these variables, if necessary.
+   * Put OS specific variables here. Because of the precedence (15.role vars), there are limited options to override these variables, if necessary.
 
 .. hint::
    * It might be more convenient to maintain the variables incrementally. See `al_include_os_vars_path_incr.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path_incr.yml>`_
@@ -237,10 +237,10 @@ Load Apache modules. Optionally configure PHP module. (TODO: General configurati
 
 
 
-Iterate ``apache_httpd_conf_modules`` (11). When ``item.preset`` (4) insert line ``LoadModule
-...`` (8) to httpd.conf (6). Iterate ``apache_httpd_conf_modules`` (22). When ``not item.preset``
-(15) comment line ``# LoadModule ...`` (20) in httpd.conf (17). Configure PHP (30-38) in
-Includes/php.conf when ``apache_php`` (26).
+Iterate ``apache_httpd_conf_modules`` (10). When ``item.preset`` (12) insert line ``LoadModule
+...`` (7) to httpd.conf (5). Iterate ``apache_httpd_conf_modules`` (21). When ``not item.preset``
+(23) comment line ``# LoadModule ...`` (18) in httpd.conf (16). Configure PHP (29-37) in
+Includes/php.conf when ``apache_php`` is enabled (44).
 
 
 [`tasks/httpd-modules.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-modules.yml>`_]
@@ -249,7 +249,7 @@ Includes/php.conf when ``apache_php`` (26).
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-modules.yml
     :language: Yaml
-    :emphasize-lines: 4,11,15,22,26,30-38
+    :emphasize-lines: 3,10,12,14,21,23,25,30-38,44
     :linenos:
 
 .. seealso::
@@ -268,7 +268,7 @@ Configure aliases in httpd.conf
 
 
 
-When not an empty list (4) iterate ``apache_alias`` (9) and include configuration lines in httpd/conf (6).
+When not an empty list (13) iterate ``apache_alias`` (8-10) and update blocks in the configuration file (5).
 
 
 [`tasks/httpd-alias.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-alias.yml>`_]
@@ -277,7 +277,7 @@ When not an empty list (4) iterate ``apache_alias`` (9) and include configuratio
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-alias.yml
     :language: Yaml
-    :emphasize-lines: 4,6,9-11
+    :emphasize-lines: 3,8-10,13
     :linenos:
 
 .. seealso::
@@ -296,11 +296,11 @@ Configure SSL in extra/httpd-ssl.conf
 
 
 
-Iterate ``apache_httpd_conf_ssl_extra`` (12) and configure lines in
-``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_extra_absent`` (20) and remove lines
-from ``extra/httpd-ssl.conf`` (17). Iterate ``apache_httpd_conf_ssl_listen`` (27) and add lines
-from ``extra/httpd-ssl.conf`` (17). Iterate ``apache_httpd_conf_ssl`` (34) and configure lines in
-``httpd.conf``.
+Iterate ``apache_httpd_conf_ssl_extra`` (11) and configure lines in
+``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_extra_absent`` (22) and remove lines
+from ``extra/httpd-ssl.conf`` (19). Iterate ``apache_httpd_conf_ssl_listen`` (30) and add configuration lines
+in ``extra/httpd-ssl.conf`` (27). Iterate ``apache_httpd_conf_ssl`` (38) and configure lines in
+``httpd.conf`` (35).
 
 
 [`tasks/httpd-ssl.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-ssl.yml>`_]
@@ -309,7 +309,7 @@ from ``extra/httpd-ssl.conf`` (17). Iterate ``apache_httpd_conf_ssl`` (34) and c
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-ssl.yml
     :language: Yaml
-    :emphasize-lines: 4,8,12,17,20,24,27,31,34
+    :emphasize-lines: 3,7,16,25,33
     :linenos:
 
 .. seealso::
@@ -331,10 +331,10 @@ Configure virtual hosts in extra directory.
 
 
 
-Loop the dictionary ``apache_vhost`` (10,21,31) and optionally (11) create directories
-``DocumentRoot`` (5,6). Create files with the Apache virtual hosts in the directory (16). See the
-template :ref:`as_template_vhost.j2` (15). Include created files (28) in the configuration file
-(26).
+Loop the dictionary ``apache_vhost`` (10,23,35) and optionally (13) create directories
+``DocumentRoot`` (5,6). Create configuration files with the Apache virtual hosts (18). See the
+template :ref:`as_template_vhost.j2` (17). Include created files (32) in the configuration file
+(30).
 
 
 [`tasks/httpd-vhosts.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-vhosts.yml>`_]
@@ -343,7 +343,7 @@ template :ref:`as_template_vhost.j2` (15). Include created files (28) in the con
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-vhosts.yml
     :language: Yaml
-    :emphasize-lines: 5-6,10-11,15-16,21,26,28,31
+    :emphasize-lines: 3,15,28
     :linenos:
 
 .. seealso::
@@ -363,7 +363,7 @@ Configure virtual hosts.
 
 
 
-Configure virtual hosts (4) and configuration sections of the directories (9).
+Configure virtual hosts (3) and configuration sections of the directories (7).
 
 
 [`tasks/httpd-confd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-confd.yml>`_]
@@ -372,7 +372,7 @@ Configure virtual hosts (4) and configuration sections of the directories (9).
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd.yml
     :language: Yaml
-    :emphasize-lines: 4,9
+    :emphasize-lines: 3,7
     :linenos:
 
 .. seealso::
@@ -391,20 +391,20 @@ Configure virtual hosts. Create files.
 
 
 
-Configure virtual hosts with the filter `encode_apache
-<https://galaxy.ansible.com/jtyr/config_encoder_filters>`_. See the template vhost2.j2.  Take the
-YAML configuration files from the directory ``apache_confd_dir_vhosts`` (7) at master and create
-files with the Apache virtual hosts in the directory (32) at the remote host. The created files
-will be included in the configuration file (42).
+Use the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ to
+configure virtual hosts. See the template vhost2.j2.  Take the YAML configuration files from the
+directory ``apache_confd_dir_vhosts`` (7) at master and create files with the Apache virtual hosts
+in the directory (32) at the remote host. The created files will be included in the configuration
+file (42).
 
 
 **Include data from conf.d (3-17)**
 
 Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
-(11). This task takes as parameters the directory with the YAML configuration files (7), and the
-type of the list (8) and returns the list with the YAML configurations of the virtual hosts stored
-in the variable ``al_include_confd_vars_list``. The variable can be printed (17) if debug is
-turned on ``apache_debug: true``. The parameters (7,8) are tested inside the included tasks.
+(11). This task takes as parameters the directory with the YAML configuration files (7) and the
+type of the list (8), and returns the list with the YAML configurations of the virtual hosts
+stored in the variable ``al_include_confd_vars_list``. The variable can be printed (16) when debug
+is enabled ``apache_debug: true`` (17). The parameters (7,8) are tested inside the included tasks.
 
 
 **Create directories for virtual hosts (25-27)**
@@ -429,7 +429,7 @@ Include virtual hosts in httpd.conf.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-vhosts.yml
     :language: Yaml
-    :emphasize-lines: 3,7-8,11,12,17,25-27,29,32,37,40,42,44,47
+    :emphasize-lines: 3,19,25,29,40
     :linenos:
 
 .. seealso::
@@ -480,7 +480,7 @@ Configure sections with the filter encode_apache.
 
 Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (7) at master
 and create the configuration files (22) at the remote host. The created configuration files are
-included in the configuration file ``httpd.conf`` by default.
+included in the configuration file ``httpd.conf`` by default. For example
 
 .. code-block:: yaml
 
@@ -490,15 +490,15 @@ included in the configuration file ``httpd.conf`` by default.
 **Include data from conf.d (3-17)**
 
 Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
-(11). This task takes as parameters the directory with the YAML configuration files (7), and the
-type of the list (8) and returns the list with the YAML configurations of the sections stored in
+(11). This task takes as parameters the directory of the YAML configuration files (7) and the
+type of the list (8), and returns the list with the YAML configurations of the sections stored in
 the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
 tasks.
 
 **Configure sections in Includes directory (19-28)**
 
-Create the Apache configuration files (22) for the sections with the help of ``encode_apache``
-filter.
+Use the ``encode_apache`` filter to create the configuration files (22) for the sections. See the
+template ``section2.j2``.
 
 
 [`tasks/httpd-confd-includes.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-confd-includes.yml>`_]
@@ -507,7 +507,7 @@ filter.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-includes.yml
     :language: Yaml
-    :emphasize-lines: 7,8,11,12,17,22
+    :emphasize-lines: 3,19
     :linenos:
 
 .. seealso::
@@ -556,7 +556,7 @@ Configure service in FreeBSD.
 
 
 
-Enable the service (3) or disable it (12).
+Configure (3), enable (12) or disable (21) the service.
 
 
 [`tasks/rcconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/rcconf.yml>`_]
@@ -565,7 +565,7 @@ Enable the service (3) or disable it (12).
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/rcconf.yml
     :language: Yaml
-    :emphasize-lines: 3,12
+    :emphasize-lines: 3,12,21
     :linenos:
 
 .. seealso::

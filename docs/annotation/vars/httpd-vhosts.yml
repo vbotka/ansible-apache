@@ -6,12 +6,12 @@ task_httpd-vhosts_synopsis: |
 
 task_httpd-vhosts_description: |
   
-  Loop the dictionary ``apache_vhost`` (10,21,31) and optionally (11) create directories
-  ``DocumentRoot`` (5,6). Create files with the Apache virtual hosts in the directory (16). See the
-  template :ref:`as_template_vhost.j2` (15). Include created files (28) in the configuration file
-  (26).
+  Loop the dictionary ``apache_vhost`` (10,23,35) and optionally (13) create directories
+  ``DocumentRoot`` (5,6). Create configuration files with the Apache virtual hosts (18). See the
+  template :ref:`as_template_vhost.j2` (17). Include created files (32) in the configuration file
+  (30).
 
-task_httpd-vhosts_lines: 5-6,10-11,15-16,21,26,28,31
+task_httpd-vhosts_lines: 3,15,28
 
 task_httpd-vhosts_seealso:
   handlers: []
