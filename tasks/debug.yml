@@ -47,7 +47,7 @@
       apache_samples [{{ apache_samples }}]
       apache_samples_list
       {{ apache_samples_list|to_nice_yaml }}
-  debug:
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
 
 # EOF

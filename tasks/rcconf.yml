@@ -1,7 +1,7 @@
 ---
 
 - name: "rc_conf: configure /etc/rc.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ item.key }}\s*=(.*)$'
     line: '{{ item.key }}="{{ item.value }}"'
@@ -10,7 +10,7 @@
   notify: graceful apache
 
 - name: "rc_conf: Enable and Start Apache"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ apache_service }}_enable\s*=(.*)$'
     line: '{{ apache_service }}_enable="YES"'
@@ -19,7 +19,7 @@
   when: apache_enable|bool
 
 - name: "rc_conf: Disable and Stop Apache"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/rc.conf
     regexp: '^\s*{{ apache_service }}_enable\s*=(.*)$'
     line: '{{ apache_service }}_enable="NO"'

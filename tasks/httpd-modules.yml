@@ -1,30 +1,29 @@
 ---
 
 - name: "httpd-modules: Load modules in {{ apache_conf_path }}/httpd.conf"
-  when: item.present|default(true)
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "^\\s*#*\\s*LoadModule {{ item.module }}"
+    regexp: '^\s*#*\s*LoadModule {{ item.module }}'
     line: "    LoadModule {{ item.module }} libexec/{{ apache_dir }}/{{ item.mod }}"
-    insertbefore: "LoadModule"
+    insertbefore: LoadModule
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
   notify: restart apache
+  when: item.present|default(true)
 
 - name: "httpd-modules: Unload modules in {{ apache_conf_path }}/httpd.conf"
-  when: not item.present|default(true)
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "^\\s*#*\\s*LoadModule {{ item.module }}"
+    regexp: '^\s*#*\s*LoadModule {{ item.module }}'
     line: "    # LoadModule {{ item.module }}"
-    insertbefore: "LoadModule"
+    insertbefore: LoadModule
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
   notify: restart apache
+  when: not item.present|default(true)
 
 - name: "httpd-modules: Config PHP in {{ apache_conf_path }}/Includes/php.conf"
-  when: apache_php|bool
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"
     block: |
       <IfModule dir_module>
@@ -36,12 +35,13 @@
       <FilesMatch "\.phps$">
         SetHandler application/x-httpd-php-source
       </FilesMatch>
-    owner: "root"
-    group: "www"
+    owner: root
+    group: www
     mode: "0640"
-    create: "yes"
+    create: true
     backup: "{{ apache_backup_conf }}"
   notify: restart apache
+  when: apache_php|bool
 
 # EOF
 ...

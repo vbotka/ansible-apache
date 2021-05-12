@@ -1,7 +1,7 @@
 ---
 - name: "httpd-confd-vhost-dirs: Create directories for virtual hosts"
-  file:
-    state: "directory"
+  ansible.builtin.file:
+    state: directory
     path: "{{ vhost_dir }}"
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"
@@ -9,4 +9,6 @@
   loop: "{{ item|json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
   loop_control:
     loop_var: vhost_dir
+
+# EOF
 ...

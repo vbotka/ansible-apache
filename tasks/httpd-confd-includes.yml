@@ -3,7 +3,7 @@
 - name: "httpd-confd-includes: Include sections from {{ apache_confd_dir_sections }}"
   block:
     - name: "httpd-confd-includes: Set variables for al_include_confd_vars_list"
-      set_fact:
+      ansible.builtin.set_fact:
         al_include_confd_dir: "{{ apache_confd_dir_sections }}"
         al_include_confd_vars_list_type: "fname"
     - name: "httpd-confd-includes: Include al_include_confd_vars_list"
@@ -11,14 +11,14 @@
         name: vbotka.ansible_lib
         tasks_from: al_include_confd_vars_list
     - name: "httpd-confd-includes: Debug al_include_confd_vars_list"
-      when: apache_debug|bool
-      debug:
+      ansible.builtin.debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"
+      when: apache_debug|bool
 
 - name: "httpd-confd-includes: Configure sections in {{ apache_conf_path }}/Includes/"
-  template:
-    src: "section2.j2"
+  ansible.builtin.template:
+    src: section2.j2
     dest: "{{ apache_conf_path }}/Includes/{{ item.fname }}.conf"
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"

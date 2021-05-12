@@ -1,7 +1,7 @@
 ---
 
 - name: "httpd-dirs: Configure directories in {{ apache_conf_path }}/Includes/"
-  template:
+  ansible.builtin.template:
     src: directory-block.j2
     dest: "{{ apache_conf_path }}/Includes/{{ item.Includefile }}"
     owner: root
@@ -9,6 +9,8 @@
     mode: "0644"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_directory_blocks }}"
+  loop_control:
+    label: "{{ item.Directory }}"
   notify: reload apache
 
 # EOF

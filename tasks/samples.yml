@@ -1,7 +1,7 @@
 ---
 
 - name: "samples: Copy sample files"
-  copy:
+  ansible.builtin.copy:
     remote_src: true
     src: "{{ apache_conf_path }}/{{ item }}.sample"
     dest: "{{ apache_conf_path }}/{{ item }}"

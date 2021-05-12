@@ -17,4 +17,6 @@ galaxy_info:
     - apache
 dependencies:
   - jtyr.config_encoder_filters
+collections:
+  - community.general
 ...

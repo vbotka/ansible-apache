@@ -1,8 +1,7 @@
 ---
 
 - name: "httpd-alias: Configure aliases in {{ apache_conf_path }}/httpd.conf"
-  when: apache_alias|length > 0
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     insertafter: "<IfModule alias_module>"
     block: |2
@@ -11,6 +10,7 @@
         {% endfor %}
     backup: "{{ apache_backup_conf }}"
   notify: reload apache
+  when: apache_alias|length > 0
 
 # EOF
 ...
