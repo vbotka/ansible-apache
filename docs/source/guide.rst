@@ -58,7 +58,7 @@ Install the library `vbotka.ansible_lib  <https://galaxy.ansible.com/vbotka/ansi
 
 Install the collection `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_ ::
 
-  shell> ansible-galaxy collection install community.general
+    shell> ansible-galaxy collection install community.general
 
 .. seealso::
 
@@ -78,7 +78,7 @@ Simple playbook to install and configure Apache at srv.example.com (2)
    :emphasize-lines: 2
    :linenos:
 
-   $ cat apache.yml
+   shell> cat apache.yml
    - hosts: srv.example.com
      gather_facts: true
      connection: ssh
@@ -113,7 +113,7 @@ command below
    :emphasize-lines: 1
    :linenos:
 
-    $ ansible-playbook apache.yml --list-tags
+    shell> ansible-playbook apache.yml --list-tags
 
     playbook: apache.yml
 
@@ -126,15 +126,15 @@ command below
 For example see the list of the variables and their values with the
 tag apache-debug ::
 
-    $ ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
 
 See what packages will be installed ::
 
-    $ ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true' --check
+    shell> ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true' --check
 
 Install packages only and exit the play. Enable the debug output ::
 
-    $ ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true'
 
 
 .. _ug_debug:
@@ -149,7 +149,7 @@ in the configuration ::
 
 , or set the extra variable in the command ::
 
-    $ ansible-playbook apache.yml -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -e 'apache_debug=true'
 
 .. seealso:: * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
 
