@@ -35,34 +35,37 @@ The user of this role is expected to have read at least the following documents
 Installation
 ============
 
-The most convenient way how to install an Ansible role is to use
-Ansible Galaxy CLI ``ansible-galaxy``. The utility comes with the
-standard Ansible packages and provide the user with simple interface
-to the Ansible Galaxy's services. For example take a look at the
-current status of the role ::
+The most convenient way how to install a Ansible role or collection is to use Ansible Galaxy CLI
+``ansible-galaxy``. The utility is installed by the standard Ansible package and provides the user with
+simple interface to the Ansible Galaxy's services. For example take a look at the current status of
+the role ::
 
-    $ ansible-galaxy info vbotka.apache
+    shell> ansible-galaxy role info vbotka.apache
 
 and install it ::
 
-    $ ansible-galaxy install vbotka.apache
+    shell> ansible-galaxy role install vbotka.apache
 
-Together with the role ``vbotka.apache`` two other roles will be
-installed.
+Together with the role ``vbotka.apache`` dependent role `jtyr.config_encoder_filters
+<https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ will be installed (see
+meta/main.yml). This role provides the filter `encode_apache
+<https://github.com/jtyr/ansible-config_encoder_filters#id6>`_ used to encode YAML configuration
+data to the Apache format.
 
-* `vbotka.ansible_lib
-  <https://galaxy.ansible.com/vbotka/ansible_lib>`_ provides common
-  tasks in the form of included tasks
+Install the library `vbotka.ansible_lib  <https://galaxy.ansible.com/vbotka/ansible_lib>`_ ::
 
-* `jtyr.config_encoder_filters
-  <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ provides
-  the filter `encode_apache
-  <https://github.com/jtyr/ansible-config_encoder_filters#id6>`_ used
-  to encode YAML configuration data to Apache format.
+    shell> ansible-galaxy role install vbotka.ansible_lib
 
+Install the collection `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_ ::
 
-.. seealso:: * | For details how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
-	     * | Take a look at other roles ``$ ansible-galaxy search --author=vbotka``
+    shell> ansible-galaxy collection install community.general
+
+.. seealso::
+
+   * For details how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
+
+   * Take a look at other roles ``$ ansible-galaxy search --author=vbotka``
+
 
 .. _ug_ansible_playbook:
 
@@ -75,7 +78,7 @@ Simple playbook to install and configure Apache at srv.example.com (2)
    :emphasize-lines: 2
    :linenos:
 
-   $ cat apache.yml
+   shell> cat apache.yml
    - hosts: srv.example.com
      gather_facts: true
      connection: ssh
@@ -110,7 +113,7 @@ command below
    :emphasize-lines: 1
    :linenos:
 
-    $ ansible-playbook apache.yml --list-tags
+    shell> ansible-playbook apache.yml --list-tags
 
     playbook: apache.yml
 
@@ -123,15 +126,15 @@ command below
 For example see the list of the variables and their values with the
 tag apache-debug ::
 
-    $ ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
 
 See what packages will be installed ::
 
-    $ ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true' --check
+    shell> ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true' --check
 
 Install packages only and exit the play. Enable the debug output ::
 
-    $ ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true'
 
 
 .. _ug_debug:
@@ -146,7 +149,7 @@ in the configuration ::
 
 , or set the extra variable in the command ::
 
-    $ ansible-playbook apache.yml -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -e 'apache_debug=true'
 
 .. seealso:: * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
 
