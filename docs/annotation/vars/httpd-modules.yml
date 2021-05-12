@@ -6,12 +6,12 @@ task_httpd-modules_synopsis: |
 
 task_httpd-modules_description: |
   
-  Iterate ``apache_httpd_conf_modules`` (11). When ``item.preset`` (4) insert line ``LoadModule
-  ...`` (8) to httpd.conf (6). Iterate ``apache_httpd_conf_modules`` (22). When ``not item.preset``
-  (15) comment line ``# LoadModule ...`` (20) in httpd.conf (17). Configure PHP (30-38) in
-  Includes/php.conf when ``apache_php`` (26).
+  Iterate ``apache_httpd_conf_modules`` (10). When ``item.preset`` (12) insert line ``LoadModule
+  ...`` (7) to httpd.conf (5). Iterate ``apache_httpd_conf_modules`` (21). When ``not item.preset``
+  (23) comment line ``# LoadModule ...`` (18) in httpd.conf (16). Configure PHP (29-37) in
+  Includes/php.conf when ``apache_php`` is enabled (44).
 
-task_httpd-modules_lines: 4,11,15,22,26,30-38
+task_httpd-modules_lines: 3,10,12,14,21,23,25,30-38,44
 
 task_httpd-modules_seealso:
   handlers: []

@@ -8,7 +8,7 @@ task_httpd-confd-includes_description: |
   
   Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (7) at master
   and create the configuration files (22) at the remote host. The created configuration files are
-  included in the configuration file ``httpd.conf`` by default.
+  included in the configuration file ``httpd.conf`` by default. For example
 
   .. code-block:: yaml
 
@@ -18,17 +18,17 @@ task_httpd-confd-includes_description: |
   **Include data from conf.d (3-17)**
 
   Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
-  (11). This task takes as parameters the directory with the YAML configuration files (7), and the
-  type of the list (8) and returns the list with the YAML configurations of the sections stored in
+  (11). This task takes as parameters the directory of the YAML configuration files (7) and the
+  type of the list (8), and returns the list with the YAML configurations of the sections stored in
   the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
   tasks.
 
   **Configure sections in Includes directory (19-28)**
 
-  Create the Apache configuration files (22) for the sections with the help of ``encode_apache``
-  filter.
+  Use the ``encode_apache`` filter to create the configuration files (22) for the sections. See the
+  template ``section2.j2``.
   
-task_httpd-confd-includes_lines: 7,8,11,12,17,22
+task_httpd-confd-includes_lines: 3,19
 
 task_httpd-confd-includes_seealso:
   handlers: []
