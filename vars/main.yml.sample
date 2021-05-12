@@ -52,5 +52,14 @@
 #       - "AllowOverride All"
 #       - "Require all granted"
 
+# FreeBSD rc.conf
+# apache_rcconf:
+#   - {key: apache24_profiles, value: ""}
+#   - {key: apache24limits_enable, value: "NO"}
+#   - {key: apache24_flags, value: ""}
+#   - {key: apache24limits_args, value: "-e -C daemon"}
+#   - {key: apache24_http_accept_enable, value: "NO"}
+#   - {key: apache24_configcheck_disable, value: "NO"}
+
 # EOF
 ...

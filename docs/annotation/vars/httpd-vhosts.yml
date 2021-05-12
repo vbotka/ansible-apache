@@ -1,0 +1,28 @@
+---
+
+task_httpd-vhosts_synopsis: |
+  
+  Configure virtual hosts in extra directory.
+
+task_httpd-vhosts_description: |
+  
+  Loop the dictionary ``apache_vhost`` (10,21,31) and optionally (11) create directories
+  ``DocumentRoot`` (5,6). Create files with the Apache virtual hosts in the directory (16). See the
+  template :ref:`as_template_vhost.j2` (15). Include created files (28) in the configuration file
+  (26).
+
+task_httpd-vhosts_lines: 5-6,10-11,15-16,21,26,28,31
+
+task_httpd-vhosts_seealso:
+  handlers: []
+  templates:
+    - vhost
+    - vhost2
+  others: []
+
+task_httpd-vhosts_note: []
+task_httpd-vhosts_hint: []
+task_httpd-vhosts_warning: []
+
+# EOF
+...

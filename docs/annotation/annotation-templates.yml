@@ -1,0 +1,60 @@
+---
+mytemplates:
+
+  - file: directory-block.j2
+    link: directory-block.j2
+    path: templates/directory-block.j2
+    synopsis: |
+      Template directory-block.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    hint: []
+    warning: []
+
+  - file: section2.j2
+    link: section2.j2
+    path: templates/section2.j2
+    synopsis: |
+      Template section2.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    hint: []
+    warning: []
+
+  - file: vhost2.j2
+    link: vhost2.j2
+    path: templates/vhost2.j2
+    synopsis: |
+      Template vhost2.
+    description: |
+      Description of the template.
+    lines: 1
+    seealso: []
+    note: []
+    hint: []
+    warning: []
+
+  - file: vhost.j2
+    link: vhost.j2
+    path: templates/vhost.j2
+    synopsis: |
+      
+      Create virtual servers.
+
+    description: |
+      
+      Create both http and https servers (1,8). Optionally ``default(True)`` redirect permanent http to https (4).
+
+    lines: 1,4,8
+    seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_vhost`']}
+    note: []
+    hint: []
+    warning: []
+
+...

@@ -1,0 +1,25 @@
+---
+
+task_httpd-alias_synopsis: |
+  
+  Configure aliases in httpd.conf
+
+task_httpd-alias_description: |
+  
+  When not an empty list (4) iterate ``apache_alias`` (9) and include configuration lines in httpd/conf (6).
+
+task_httpd-alias_lines: 4,6,9-11
+
+task_httpd-alias_seealso:
+  handlers: []
+  templates: []
+  others:
+
+    - Variable :ref:`ug_apache_alias`
+
+task_httpd-alias_note: []
+task_httpd-alias_hint: []
+task_httpd-alias_warning: []
+
+# EOF
+...

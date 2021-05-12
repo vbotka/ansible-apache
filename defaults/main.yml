@@ -103,5 +103,8 @@ apache_samples_list:
   - "extra/httpd-vhosts.conf"
   - "extra/proxy-html.conf"
 
+# rc.conf
+apache_rcconf: []
+
 # EOF
 ...

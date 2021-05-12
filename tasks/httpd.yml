@@ -1,7 +1,7 @@
 ---
 
 - name: "httpd_conf: Configure parameters in {{ apache_conf_path }}/httpd.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: '^{{ item.regexp }}\s(.*)$'
     line: "{{ item.regexp }} {{ item.line }}"

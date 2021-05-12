@@ -2,7 +2,7 @@
 
 - name: Debug
   vars:
-    msg: |
+    msg: |-
       ansible_architecture [{{ ansible_architecture }}]
       ansible_os_family [{{ ansible_os_family }}]
       ansible_distribution [{{ ansible_distribution }}]
@@ -15,6 +15,8 @@
       apache_packages
       {{ apache_packages|to_nice_yaml }}
       apache_enable [{{ apache_enable }}]
+      apache_rcconf
+      {{ apache_rcconf|to_yaml }}
       apache_ssl [{{ apache_ssl }}]
       apache_SSLEngine [{{ apache_SSLEngine }}]
       apache_php [{{ apache_php }}]
@@ -45,8 +47,8 @@
       apache_samples [{{ apache_samples }}]
       apache_samples_list
       {{ apache_samples_list|to_nice_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
 
 # EOF
 ...

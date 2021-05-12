@@ -1,0 +1,25 @@
+---
+
+task_service_synopsis: |
+  
+  Configure service.
+
+task_service_description: |
+  
+  At the moment, only configuration of FreeBSD is implemented (3).
+
+task_service_lines: 3
+
+task_service_seealso:
+  handlers: []
+  templates: []
+  others:
+
+    - rcconf.yml
+
+task_service_note: []
+task_service_hint: []
+task_service_warning: []
+
+# EOF
+...

@@ -3,31 +3,35 @@
 - name: "httpd-ssl: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
   when: apache_ssl|bool
   block:
+
     - name: "httpd-ssl: Present extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "^{{ item.regexp }}"
         line: "{{ item.regexp }}{{ item.line }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra }}"
       notify: reload apache
+
     - name: "httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
-      lineinfile:
-        state: "absent"
+      ansible.builtin.lineinfile:
+        state: absent
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra_absent }}"
       notify: reload apache
+
     - name: "httpd-ssl: SSL Listen in {{ apache_conf_path }}/extra/httpd-ssl.conf"
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_listen }}"
       notify: reload apache
+
     - name: "httpd-ssl: SSL in {{ apache_conf_path }}/httpd.conf"
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: "{{ apache_conf_path }}/httpd.conf"
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"

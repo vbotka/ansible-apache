@@ -1,0 +1,103 @@
+Templates
+=========
+
+.. _as_template_directory-block.j2:
+
+directory-block.j2
+------------------
+
+Synopsis: Template directory-block.
+
+
+Description of the template.
+
+
+[`templates/directory-block.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/directory-block.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/directory-block.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_section2.j2:
+
+section2.j2
+-----------
+
+Synopsis: Template section2.
+
+
+Description of the template.
+
+
+[`templates/section2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/section2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/section2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_vhost2.j2:
+
+vhost2.j2
+---------
+
+Synopsis: Template vhost2.
+
+
+Description of the template.
+
+
+[`templates/vhost2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/vhost2.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/vhost2.j2
+    :language: jinja
+    :emphasize-lines: 1
+    :linenos:
+
+
+
+
+
+.. _as_template_vhost.j2:
+
+vhost.j2
+--------
+
+Synopsis: 
+Create virtual servers.
+
+
+
+Create both http and https servers (1,8). Optionally ``default(True)`` redirect permanent http to https (4).
+
+
+[`templates/vhost.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/vhost.j2>`_]
+
+.. highlight:: jinja
+    :linenothreshold: 5
+.. literalinclude:: ../../templates/vhost.j2
+    :language: jinja
+    :emphasize-lines: 1,4,8
+    :linenos:
+
+.. seealso:: 
+   * Variable :ref:`ug_apache_vhost`
+
+
+
+

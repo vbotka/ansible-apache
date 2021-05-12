@@ -3,32 +3,32 @@
 - name: "httpd-confd-vhosts: Include variables from {{ apache_confd_dir_vhosts }}"
   block:
     - name: "httpd-confd-vhosts: Set variables for al_include_confd_vars_list"
-      set_fact:
+      ansible.builtin.set_fact:
         al_include_confd_dir: "{{ apache_confd_dir_vhosts }}"
-        al_include_confd_vars_list_type: "fname"
+        al_include_confd_vars_list_type: fname
     - name: "httpd-confd-vhosts: Include al_include_confd_vars_list"
       include_role:
-        name: "vbotka.ansible_lib"
-        tasks_from: "al_include_confd_vars_list"
+        name: vbotka.ansible_lib
+        tasks_from: al_include_confd_vars_list
     - name: "httpd-confd-vhosts: Debug al_include_confd_vars_list"
-      when: apache_debug|bool
-      debug:
+      ansible.builtin.debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"
+      when: apache_debug|bool
 
 - name: "httpd-confd-vhosts: Debug list directories for virtual hosts"
-  when: apache_debug|bool
-  debug:
+  ansible.builtin.debug:
     msg: "{{ item|json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
   loop: "{{ al_include_confd_vars_list|json_query('[].vars') }}"
+  when: apache_debug|bool
 
 - name: "httpd-confd-vhosts: Create directories for virtual hosts"
   include_tasks: "fn/httpd-confd-vhost-dirs.yml"
   loop: "{{ al_include_confd_vars_list|json_query('[].vars') }}"
 
 - name: "httpd-confd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"
-  template:
-    src: "vhost2.j2"
+  ansible.builtin.template:
+    src: vhost2.j2
     dest: "{{ apache_conf_path }}/extra/{{ item.fname }}.conf"
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"
@@ -38,11 +38,11 @@
   notify: reload apache
 
 - name: "httpd-confd-vhosts: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: "^Include etc/apache{{ apache_version }}/extra/{{ item.fname }}.conf"
     line: "Include etc/apache{{ apache_version }}/extra/{{ item.fname }}.conf"
-    insertbefore: "BOF"
+    insertbefore: BOF
     backup: "{{ apache_backup_conf }}"
   loop: "{{ al_include_confd_vars_list }}"
   notify: reload apache
