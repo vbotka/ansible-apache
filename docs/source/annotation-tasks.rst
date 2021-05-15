@@ -12,7 +12,7 @@ Synopsis: Main task.
 Import tasks if enabled.
 
 
-[`tasks/main.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/main.yml>`_]
+[`tasks/main.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -41,7 +41,7 @@ variables, that will override default values, can be loaded from the files in th
 <https://github.com/vbotka/ansible-apache/blob/master/vars/>`_.
 
 
-[`tasks/vars.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/vars.yml>`_]
+[`tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -74,7 +74,7 @@ Synopsis: Configure debug.
 Description of the task.
 
 
-[`tasks/debug.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/debug.yml>`_]
+[`tasks/debug.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/debug.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -100,7 +100,7 @@ Install packages for supported OS.
 <TBD>
 
 
-[`tasks/packages.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/packages.yml>`_]
+[`tasks/packages.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/packages.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -128,7 +128,7 @@ Synopsis:
 <TBD>
 
 
-[`tasks/packages-freebsd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/packages-freebsd.yml>`_]
+[`tasks/packages-freebsd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/packages-freebsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -156,7 +156,7 @@ Synopsis:
 <TBD>
 
 
-[`tasks/samples.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/samples.yml>`_]
+[`tasks/samples.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/samples.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -183,7 +183,7 @@ Synopsis: Configure lines in httpd.conf
 Iterate the list ``apache_httpd_conf`` (9) and add lines to the configuration file (5).
 
 
-[`tasks/httpd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd.yml>`_]
+[`tasks/httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -211,7 +211,7 @@ Create files with the directory blocks in the Includes directory.
 Iterate the list ``apache_directory_blocks`` (11) and create configuration files in the directory (6).
 
 
-[`tasks/httpd-dirs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-dirs.yml>`_]
+[`tasks/httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -243,7 +243,7 @@ Iterate ``apache_httpd_conf_modules`` (10). When ``item.preset`` (12) insert lin
 Includes/php.conf when ``apache_php`` is enabled (44).
 
 
-[`tasks/httpd-modules.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-modules.yml>`_]
+[`tasks/httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -271,7 +271,7 @@ Configure aliases in httpd.conf
 When not an empty list (13) iterate ``apache_alias`` (8-10) and update blocks in the configuration file (5).
 
 
-[`tasks/httpd-alias.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-alias.yml>`_]
+[`tasks/httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -303,7 +303,7 @@ in ``extra/httpd-ssl.conf`` (27). Iterate ``apache_httpd_conf_ssl`` (38) and con
 ``httpd.conf`` (35).
 
 
-[`tasks/httpd-ssl.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-ssl.yml>`_]
+[`tasks/httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -337,7 +337,7 @@ template :ref:`as_template_vhost.j2` (17). Include created files (32) in the con
 (30).
 
 
-[`tasks/httpd-vhosts.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-vhosts.yml>`_]
+[`tasks/httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -366,7 +366,7 @@ Configure virtual hosts.
 Configure virtual hosts (3) and configuration sections of the directories (7).
 
 
-[`tasks/httpd-confd.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-confd.yml>`_]
+[`tasks/httpd-confd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -423,7 +423,7 @@ filter. Store the configuration file (32).
 Include virtual hosts in httpd.conf.
 
 
-[`tasks/httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-confd-vhosts.yml>`_]
+[`tasks/httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -453,7 +453,7 @@ Create ``DocumentRoot`` directories for vhosts.
 <TBD>
 
 
-[`tasks/fn/httpd-confd-vhost-dirs.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/fn/httpd-confd-vhost-dirs.yml>`_]
+[`tasks/fn/httpd-confd-vhost-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/fn/httpd-confd-vhost-dirs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -501,7 +501,7 @@ Use the ``encode_apache`` filter to create the configuration files (22) for the 
 template ``section2.j2``.
 
 
-[`tasks/httpd-confd-includes.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/httpd-confd-includes.yml>`_]
+[`tasks/httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -531,7 +531,7 @@ Configure service.
 At the moment, only configuration of FreeBSD is implemented (3).
 
 
-[`tasks/service.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/service.yml>`_]
+[`tasks/service.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/service.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -559,7 +559,7 @@ Configure service in FreeBSD.
 Configure (3), enable (12) or disable (21) the service.
 
 
-[`tasks/rcconf.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/rcconf.yml>`_]
+[`tasks/rcconf.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/rcconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5

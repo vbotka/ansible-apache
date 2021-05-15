@@ -12,7 +12,7 @@ Synopsis: Template directory-block.
 Description of the template.
 
 
-[`templates/directory-block.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/directory-block.j2>`_]
+[`templates/directory-block.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/directory-block.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -36,7 +36,7 @@ Synopsis: Template section2.
 Description of the template.
 
 
-[`templates/section2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/section2.j2>`_]
+[`templates/section2.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/section2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -60,7 +60,7 @@ Synopsis: Template vhost2.
 Description of the template.
 
 
-[`templates/vhost2.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/vhost2.j2>`_]
+[`templates/vhost2.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/vhost2.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
@@ -86,7 +86,7 @@ Create virtual servers.
 Create both http and https servers (1,8). Optionally ``default(True)`` redirect permanent http to https (4).
 
 
-[`templates/vhost.j2 <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/templates/vhost.j2>`_]
+[`templates/vhost.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/vhost.j2>`_]
 
 .. highlight:: jinja
     :linenothreshold: 5
