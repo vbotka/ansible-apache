@@ -7,7 +7,7 @@
         al_include_confd_dir: "{{ apache_confd_dir_vhosts }}"
         al_include_confd_vars_list_type: fname
     - name: "httpd-confd-vhosts: Include al_include_confd_vars_list"
-      include_role:
+      ansible.builtin.include_role:
         name: vbotka.ansible_lib
         tasks_from: al_include_confd_vars_list
     - name: "httpd-confd-vhosts: Debug al_include_confd_vars_list"
@@ -23,7 +23,7 @@
   when: apache_debug|bool
 
 - name: "httpd-confd-vhosts: Create directories for virtual hosts"
-  include_tasks: "fn/httpd-confd-vhost-dirs.yml"
+  ansible.builtin.include_tasks: "fn/httpd-confd-vhost-dirs.yml"
   loop: "{{ al_include_confd_vars_list|json_query('[].vars') }}"
 
 - name: "httpd-confd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"

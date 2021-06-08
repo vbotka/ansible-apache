@@ -5,6 +5,7 @@ Requirements
 ------------
 * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
 * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_
+* `community.general <https://github.com/ansible-collections/community.general>`_
 
 
 Default variables

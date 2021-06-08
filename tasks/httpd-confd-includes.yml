@@ -7,7 +7,7 @@
         al_include_confd_dir: "{{ apache_confd_dir_sections }}"
         al_include_confd_vars_list_type: fname
     - name: "httpd-confd-includes: Include al_include_confd_vars_list"
-      include_role:
+      ansible.builtin.include_role:
         name: vbotka.ansible_lib
         tasks_from: al_include_confd_vars_list
     - name: "httpd-confd-includes: Debug al_include_confd_vars_list"

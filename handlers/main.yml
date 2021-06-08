@@ -26,12 +26,12 @@
   when: apache_enable|bool
 
 - name: graceful apache
-  command:
+  ansible.builtin.command:
     cmd: "/usr/local/etc/rc.d/{{ apache_service }} graceful"
   when: apache_enable|bool
 
 - name: gracefulstop apache
-  command:
+  ansible.builtin.command:
     cmd: "/usr/local/etc/rc.d/{{ apache_service }} gracefulstop"
   when: apache_enable|bool
 

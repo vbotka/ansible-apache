@@ -14,16 +14,17 @@ User's guide
 Introduction
 ============
 
-The role install and configure Apache web server
+The role will install and configure Apache web server
 
 * Ansible role: `Apache <https://galaxy.ansible.com/vbotka/apache/>`_
 * Supported systems: `FreeBSD <https://www.freebsd.org/>`_
 * Requirements:
 
-    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
-    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_
+    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib/>`__
+    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters/>`__
+    * `community.general <https://github.com/ansible-collections/community.general/>`__
 
-The user of this role is expected to have read at least the following documents
+The user is expected to have basic knowledge of Ansible
 
 * `Basic Concepts <https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html>`_
 * `Roles <https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html>`_
@@ -35,7 +36,7 @@ The user of this role is expected to have read at least the following documents
 Installation
 ============
 
-The most convenient way how to install a Ansible role or collection is to use Ansible Galaxy CLI
+The most convenient way on how to install a Ansible role or collection is to use Ansible Galaxy CLI
 ``ansible-galaxy``. The utility is installed by the standard Ansible package and provides the user with
 simple interface to the Ansible Galaxy's services. For example take a look at the current status of
 the role ::
@@ -62,7 +63,7 @@ Install the collection `community.general <https://docs.ansible.com/ansible/late
 
 .. seealso::
 
-   * For details how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
+   * For details on how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
 
    * Take a look at other roles ``$ ansible-galaxy search --author=vbotka``
 
@@ -105,9 +106,8 @@ Simple playbook to install and configure Apache at srv.example.com (2)
 Tags
 ====
 
-The tags provide very useful tool to run selected tasks of the
-role. To see what tags are available list the tags of the role with
-command below
+The tags provide very useful tool to run selected tasks of the role. To see what tags are available
+list the tags of the role with command below
 
 .. code-block:: yaml
    :emphasize-lines: 1
@@ -123,8 +123,7 @@ command below
       apache-httpd-dirs, apache-httpd-modules, apache-httpd-ssl, apache-httpd-vhosts,
       apache-packages, apache-service, apache-vars]
 
-For example see the list of the variables and their values with the
-tag apache-debug ::
+For example see the list of the variables and their values with the tag apache-debug ::
 
     shell> ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
 
@@ -142,8 +141,7 @@ Install packages only and exit the play. Enable the debug output ::
 Debug
 =====
 
-To see additional debug information in the output enable debug output
-in the configuration ::
+To see additional debug information in the output enable debug output in the configuration ::
 
     apache_debug: true
 
@@ -159,8 +157,8 @@ in the configuration ::
 Variables
 =========
 
-In this guide we describe role defaults variables in the directory ``defaults`` and
-variables included from the directory ``vars``.
+In this guide we describe the role default variables in the directory ``defaults`` and variables
+included from the directory ``vars``
 
 * role defaults in the directory ``{{ role_path }}/defaults``
   (precedence 2.)
@@ -190,7 +188,7 @@ Default variables
     :emphasize-lines: 4-9,14-15,69-70,75,78,81,84-85
     :linenos:
 
-.. warning:: By default SSL is turned off ``apache_SSLEngine: "off"`` (11).
+.. warning:: By default SSL is turned off ``apache_sslengine: "off"`` (11).
 
 
 .. _ug_os_defaults:
@@ -578,8 +576,8 @@ Example
    :linenos:
 
    apache_httpd_conf:
-     - {regexp: "ServerName", line: "{{ apache_ServerName }}"}
-     - {regexp: "ServerAdmin", line: "{{ apache_ServerAdmin }}"}
+     - {regexp: "ServerName", line: "{{ apache_servername }}"}
+     - {regexp: "ServerAdmin", line: "{{ apache_serveradmin }}"}
      - {regexp: "ServerRoot", line: "/usr/local"}
      - {regexp: "MIMEMagicFile", line: "etc/apache24/magic"}
 
@@ -587,8 +585,8 @@ Notes
 ^^^^^
 .. note:: | * The default value is
 	  |   ``apache_httpd_conf:``
-          |     ``- {regexp: "ServerName", line: "{{ apache_ServerName }}"}``
-	  |     ``- {regexp: "ServerAdmin", line: "{{ apache_ServerAdmin }}"}``
+          |     ``- {regexp: "ServerName", line: "{{ apache_servername }}"}``
+	  |     ``- {regexp: "ServerAdmin", line: "{{ apache_serveradmin }}"}``
 	  | * The argument line must be quoted if it contains spaces
 	  |     ``- {regexp: "ErrorDocument 500", line: "\"The server made a boo boo.\""}``
           | * For details see :ref:`as_httpd.yml`. [`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]

@@ -6,7 +6,7 @@
 # apache_ssl: True
 # apache_php: True
 # apache_backup_conf: True
-# apache_SSLEngine: "on"
+# apache_sslengine: "on"
 
 # apache_httpd_conf_ssl_extra_absent:
 #  - "Listen\\s*443"
