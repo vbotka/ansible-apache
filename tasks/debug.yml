@@ -18,11 +18,11 @@
       apache_rcconf
       {{ apache_rcconf|to_yaml }}
       apache_ssl [{{ apache_ssl }}]
-      apache_SSLEngine [{{ apache_SSLEngine }}]
+      apache_sslengine [{{ apache_sslengine }}]
       apache_php [{{ apache_php }}]
       apache_backup_conf [{{ apache_backup_conf }}]
-      apache_ServerName [{{ apache_ServerName }}]
-      apache_ServerAdmin [{{ apache_ServerAdmin }}]
+      apache_servername [{{ apache_servername }}]
+      apache_serveradmin [{{ apache_serveradmin }}]
       apache_dir [{{ apache_dir }}]
       apache_service [{{ apache_service }}]
       apache_conf_path [{{ apache_conf_path }}]

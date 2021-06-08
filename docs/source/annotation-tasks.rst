@@ -134,7 +134,7 @@ Synopsis:
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages-freebsd.yml
     :language: Yaml
-    :emphasize-lines: 3,13
+    :emphasize-lines: 3,12
     :linenos:
 
 .. seealso::
@@ -249,7 +249,7 @@ Includes/php.conf when ``apache_php`` is enabled (44).
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-modules.yml
     :language: Yaml
-    :emphasize-lines: 3,10,12,14,21,23,25,30-38,44
+    :emphasize-lines: 3,10,12,14,21,23,25,29-37,44
     :linenos:
 
 .. seealso::

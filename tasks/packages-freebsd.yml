@@ -2,8 +2,7 @@
 
 - name: "packages: Install packages"
   community.general.pkgng:
-    name: "{{ item }}"
-  loop: "{{ apache_packages }}"
+    name: "{{ apache_packages }}"
   register: result
   until: result is succeeded
   retries: "{{ freebsd_install_retries }}"

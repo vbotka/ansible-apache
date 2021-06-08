@@ -20,9 +20,9 @@ The role will install and configure Apache web server
 * Supported systems: `FreeBSD <https://www.freebsd.org/>`_
 * Requirements:
 
-    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib/>`_
-    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters/>`_
-    * `community.general <https://github.com/ansible-collections/community.general/>`_
+    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib/>`__
+    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters/>`__
+    * `community.general <https://github.com/ansible-collections/community.general/>`__
 
 The user is expected to have basic knowledge of Ansible
 
@@ -188,7 +188,7 @@ Default variables
     :emphasize-lines: 4-9,14-15,69-70,75,78,81,84-85
     :linenos:
 
-.. warning:: By default SSL is turned off ``apache_SSLEngine: "off"`` (11).
+.. warning:: By default SSL is turned off ``apache_sslengine: "off"`` (11).
 
 
 .. _ug_os_defaults:
@@ -576,8 +576,8 @@ Example
    :linenos:
 
    apache_httpd_conf:
-     - {regexp: "ServerName", line: "{{ apache_ServerName }}"}
-     - {regexp: "ServerAdmin", line: "{{ apache_ServerAdmin }}"}
+     - {regexp: "ServerName", line: "{{ apache_servername }}"}
+     - {regexp: "ServerAdmin", line: "{{ apache_serveradmin }}"}
      - {regexp: "ServerRoot", line: "/usr/local"}
      - {regexp: "MIMEMagicFile", line: "etc/apache24/magic"}
 
@@ -585,8 +585,8 @@ Notes
 ^^^^^
 .. note:: | * The default value is
 	  |   ``apache_httpd_conf:``
-          |     ``- {regexp: "ServerName", line: "{{ apache_ServerName }}"}``
-	  |     ``- {regexp: "ServerAdmin", line: "{{ apache_ServerAdmin }}"}``
+          |     ``- {regexp: "ServerName", line: "{{ apache_servername }}"}``
+	  |     ``- {regexp: "ServerAdmin", line: "{{ apache_serveradmin }}"}``
 	  | * The argument line must be quoted if it contains spaces
 	  |     ``- {regexp: "ErrorDocument 500", line: "\"The server made a boo boo.\""}``
           | * For details see :ref:`as_httpd.yml`. [`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]

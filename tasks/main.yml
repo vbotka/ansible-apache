@@ -1,43 +1,55 @@
 ---
 # tasks for vbotka.apache
 
-- import_tasks: vars.yml
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
   tags: [apache-vars, always]
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: apache_debug|bool
   tags: [apache-debug, always]
 
-- import_tasks: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: apache_install|bool
   tags: apache-packages
 
-- import_tasks: samples.yml
+- name: Import samples.yml
+  ansible.builtin.import_tasks: samples.yml
   when: apache_samples|bool
   tags: apache-samples
 
-- import_tasks: httpd.yml
+- name: Import httpd.yml
+  ansible.builtin.import_tasks: httpd.yml
   tags: apache-httpd
 
-- import_tasks: httpd-dirs.yml
+- name: Import httpd-dirs.yml
+  ansible.builtin.import_tasks: httpd-dirs.yml
   tags: apache-httpd-dirs
 
-- import_tasks: httpd-modules.yml
+- name: Import httpd-modules.yml
+  ansible.builtin.import_tasks: httpd-modules.yml
   tags: apache-httpd-modules
 
-- import_tasks: httpd-alias.yml
+- name: Import httpd-alias.yml
+  ansible.builtin.import_tasks: httpd-alias.yml
   tags: apache-httpd-alias
 
-- import_tasks: httpd-ssl.yml
+- name: Import httpd-ssl.yml
+  ansible.builtin.import_tasks: httpd-ssl.yml
   tags: apache-httpd-ssl
 
-- import_tasks: httpd-vhosts.yml
+- name: Import httpd-vhosts.yml
+  ansible.builtin.import_tasks: httpd-vhosts.yml
   tags: apache-httpd-vhosts
 
-- import_tasks: httpd-confd.yml
+- name: Import httpd-confd.yml
+  ansible.builtin.import_tasks: httpd-confd.yml
   tags: apache-httpd-confd
 
-- import_tasks: service.yml
+- name: Import service.yml
+  ansible.builtin.import_tasks: service.yml
   tags: apache-service
 
 # EOF

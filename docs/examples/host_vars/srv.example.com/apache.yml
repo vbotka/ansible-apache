@@ -12,16 +12,16 @@ apache_backup_conf: true
 apache_ssl: true
 apache_php: true
 apache_vhosts: true
-apache_SSLEngine: "on"
+apache_sslengine: "on"
 
 apache_packages:
   - "{{ apache_package }}"
   - "{{ apache_php_package }}"
 
-apache_ServerName: "srv.example.com"
-apache_ServerAdmin: "admin@example.com"
-apache_SSLCertificateFile: "/usr/local/etc/ssl/certs/srv.example.com.crt"
-apache_SSLCertificateKeyFile: "/usr/local/etc/ssl/private/srv.example.com.key"
+apache_servername: "srv.example.com"
+apache_serveradmin: "admin@example.com"
+apache_sslcertificatefile: "/usr/local/etc/ssl/certs/srv.example.com.crt"
+apache_sslcertificatekeyfile: "/usr/local/etc/ssl/private/srv.example.com.key"
 
 apache_confd_dir_vhosts: "{{ playbook_dir }}/servers/apache.d/vhosts"
 apache_confd_dir_sections: "{{ playbook_dir }}/servers/apache.d/sections"

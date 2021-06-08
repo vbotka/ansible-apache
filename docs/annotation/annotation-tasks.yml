@@ -73,7 +73,7 @@ mytasks:
       
       <TBD>
 
-    lines: 3,13
+    lines: 3,12
     seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
     notes: []
     hints: []
@@ -143,7 +143,7 @@ mytasks:
       (23) comment line ``# LoadModule ...`` (18) in httpd.conf (16). Configure PHP (29-37) in
       Includes/php.conf when ``apache_php`` is enabled (44).
 
-    lines: 3,10,12,14,21,23,25,30-38,44
+    lines: 3,10,12,14,21,23,25,29-37,44
     seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_httpd_conf_modules`']}
     notes: []
     hints: []
