@@ -12,6 +12,7 @@
       ansible_python_version [{{ ansible_python_version }}]
 
       apache_install [{{ apache_install }}]
+      apache_version [{{ apache_version }}]
       apache_packages
       {{ apache_packages|to_nice_yaml }}
       apache_enable [{{ apache_enable }}]

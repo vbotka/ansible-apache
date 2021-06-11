@@ -9,6 +9,11 @@
   delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method == "packages"
 
+- name: "packages: Debug install packages"
+  ansible.builtin.debug:
+    var: result
+  when: apache_debug|bool
+
 - name: "packages: Install ports"
   community.general.portinstall:
     name: "{{ item }}"
@@ -20,5 +25,9 @@
   delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method == "ports"
 
+- name: "packages: Debug install ports"
+  ansible.builtin.debug:
+    var: result
+  when: apache_debug|bool
 # EOF
 ...
