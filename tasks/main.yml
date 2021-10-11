@@ -8,7 +8,7 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: apache_debug|bool
-  tags: [apache-debug, always]
+  tags: apache-debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
