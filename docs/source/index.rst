@@ -14,6 +14,7 @@ This `role <https://galaxy.ansible.com/vbotka/apache/>`_ and the documentation i
    annotation
    examples
    references
+   collection-bsd
    copyright
    legalnotice
 
