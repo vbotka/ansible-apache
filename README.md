@@ -132,4 +132,4 @@ the role will complain about missing configuration files.
 
 ## Author Information
 
-[Vladimir Botka](https://botka.link)
+[Vladimir Botka](https://botka.info)
