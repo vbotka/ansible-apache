@@ -6,14 +6,14 @@
 # apache_ssl: True
 # apache_php: True
 # apache_backup_conf: True
-# apache_sslengine: "on"
+# apache_sslengine: 'on'
 
 # apache_httpd_conf_ssl_extra_absent:
-#  - "Listen\\s*443"
+#  - 'Listen\s*443'
 
 # apache_httpd_conf_ssl_listen:
-#  - {regexp: "Listen ", line: "443"}
-#  - {regexp: "Listen ", line: "10.1.0.10:443"}
+#  - {regexp: 'Listen ', line: '443'}
+#  - {regexp: 'Listen ', line: '10.1.0.10:443'}
 
 # apache_packages:
 #  - "{{ apache_package }}"
@@ -36,30 +36,30 @@
 #   - Directory: /usr/local/www/roundcube
 #     Includefile: usr-local-www-roundcube.conf
 #     Conf:
-#       - "Options Indexes FollowSymLinks"
-#       - "AllowOverride All"
-#       - "Require all granted"
+#       - 'Options Indexes FollowSymLinks'
+#       - 'AllowOverride All'
+#       - 'Require all granted'
 #   - Directory: /usr/local/www/roundcube/config
 #     Includefile: usr-local-www-roundcube-config.conf
 #     Conf:
-#       - "Options -FollowSymLinks"
-#       - "AllowOverride None"
-#       - "Require all denied"
+#       - 'Options -FollowSymLinks'
+#       - 'AllowOverride None'
+#       - 'Require all denied'
 #   - Directory: /usr/local/poudriere/data
 #     Includefile: usr-local-poudriere-data.conf
 #     Conf:
-#       - "Options Indexes FollowSymLinks"
-#       - "AllowOverride All"
-#       - "Require all granted"
+#       - 'Options Indexes FollowSymLinks'
+#       - 'AllowOverride All'
+#       - 'Require all granted'
 
 # FreeBSD rc.conf
 # apache_rcconf:
-#   - {key: apache24_profiles, value: ""}
-#   - {key: apache24limits_enable, value: "NO"}
-#   - {key: apache24_flags, value: ""}
-#   - {key: apache24limits_args, value: "-e -C daemon"}
-#   - {key: apache24_http_accept_enable, value: "NO"}
-#   - {key: apache24_configcheck_disable, value: "NO"}
+#   - {key: apache24_profiles, value: ''}
+#   - {key: apache24limits_enable, value: 'NO'}
+#   - {key: apache24_flags, value: ''}
+#   - {key: apache24limits_args, value: '-e -C daemon'}
+#   - {key: apache24_http_accept_enable, value: 'NO'}
+#   - {key: apache24_configcheck_disable, value: 'NO'}
 
 # EOF
 ...

@@ -6,7 +6,7 @@
     dest: "{{ apache_conf_path }}/Includes/{{ item.Includefile }}"
     owner: root
     group: www
-    mode: "0644"
+    mode: '0644'
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_directory_blocks }}"
   loop_control:
