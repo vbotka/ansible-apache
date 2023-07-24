@@ -7,7 +7,7 @@
   until: result is succeeded
   retries: "{{ freebsd_install_retries }}"
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "packages"
+  when: freebsd_install_method == 'packages'
 
 - name: "packages: Debug install packages"
   ansible.builtin.debug:
@@ -23,7 +23,7 @@
   until: result is succeeded
   retries: "{{ freebsd_install_retries }}"
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "ports"
+  when: freebsd_install_method == 'ports'
 
 - name: "packages: Debug install ports"
   ansible.builtin.debug:

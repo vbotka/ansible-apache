@@ -3,54 +3,54 @@
 
 - name: Import vars.yml
   ansible.builtin.import_tasks: vars.yml
-  tags: [apache-vars, always]
+  tags: [apache_vars, always]
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: apache_debug|bool
-  tags: apache-debug
+  tags: apache_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
   when: apache_install|bool
-  tags: apache-packages
+  tags: apache_packages
 
 - name: Import samples.yml
   ansible.builtin.import_tasks: samples.yml
   when: apache_samples|bool
-  tags: apache-samples
+  tags: apache_samples
 
 - name: Import httpd.yml
   ansible.builtin.import_tasks: httpd.yml
-  tags: apache-httpd
+  tags: apache_httpd
 
 - name: Import httpd-dirs.yml
   ansible.builtin.import_tasks: httpd-dirs.yml
-  tags: apache-httpd-dirs
+  tags: apache_httpd_dirs
 
 - name: Import httpd-modules.yml
   ansible.builtin.import_tasks: httpd-modules.yml
-  tags: apache-httpd-modules
+  tags: apache_httpd_modules
 
 - name: Import httpd-alias.yml
   ansible.builtin.import_tasks: httpd-alias.yml
-  tags: apache-httpd-alias
+  tags: apache_httpd_alias
 
 - name: Import httpd-ssl.yml
   ansible.builtin.import_tasks: httpd-ssl.yml
-  tags: apache-httpd-ssl
+  tags: apache_httpd_ssl
 
 - name: Import httpd-vhosts.yml
   ansible.builtin.import_tasks: httpd-vhosts.yml
-  tags: apache-httpd-vhosts
+  tags: apache_httpd_vhosts
 
 - name: Import httpd-confd.yml
   ansible.builtin.import_tasks: httpd-confd.yml
-  tags: apache-httpd-confd
+  tags: apache_httpd_confd
 
 - name: Import service.yml
   ansible.builtin.import_tasks: service.yml
-  tags: apache-service
+  tags: apache_service
 
 # EOF
 ...

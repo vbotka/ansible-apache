@@ -107,7 +107,7 @@ Tags
 ====
 
 The tags provide very useful tool to run selected tasks of the role. To see what tags are available
-list the tags of the role with command below
+list the tags of the role with the below command
 
 .. code-block:: yaml
    :emphasize-lines: 1
@@ -118,10 +118,13 @@ list the tags of the role with command below
     playbook: apache.yml
 
     play #1 (srv.example.conf): srv.example.com	TAGS: []
-      TASK TAGS: [always, apache-debug, apache-httpd, apache-httpd-alias,
-      apache-httpd-confd, apache-httpd-confd-includes, apache-httpd-confd-vhosts,
-      apache-httpd-dirs, apache-httpd-modules, apache-httpd-ssl, apache-httpd-vhosts,
-      apache-packages, apache-service, apache-vars]
+
+      TASK TAGS: [always, apache_debug, apache_httpd,
+      apache_httpd_alias, apache_httpd_confd,
+      apache_httpd_confd_includes, apache_httpd_confd_vhosts,
+      apache_httpd_dirs, apache_httpd_modules, apache_httpd_ssl,
+      apache_httpd_vhosts, apache_packages, apache_samples,
+      apache_service, apache_vars]
 
 For example see the list of the variables and their values with the tag apache-debug ::
 

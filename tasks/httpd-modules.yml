@@ -37,7 +37,7 @@
       </FilesMatch>
     owner: root
     group: www
-    mode: "0640"
+    mode: '0640'
     create: true
     backup: "{{ apache_backup_conf }}"
   notify: restart apache

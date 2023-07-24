@@ -2,11 +2,11 @@
 
 - name: "httpd-confd: Configure virtual hosts from {{ apache_confd_dir_vhosts }}"
   ansible.builtin.import_tasks: "httpd-confd-vhosts.yml"
-  tags: apache-httpd-confd-vhosts
+  tags: apache_httpd_confd_vhosts
 
 - name: "httpd-confd: Configure includes from {{ apache_confd_dir_sections }}"
   ansible.builtin.import_tasks: "httpd-confd-includes.yml"
-  tags: apache-httpd-confd-includes
+  tags: apache_httpd_confd_includes
 
 # EOF
 ...
