@@ -29,5 +29,6 @@
   ansible.builtin.debug:
     var: result
   when: apache_debug|bool
+
 # EOF
 ...

@@ -4,6 +4,6 @@
   name: jtyr.config_encoder_filters
 
 - src: https://github.com/vbotka/ansible-lib
-  version: 2.4.2
+  version: 2.6.0
   name: vbotka.ansible_lib
 ...

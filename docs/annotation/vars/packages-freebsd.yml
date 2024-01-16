@@ -8,7 +8,7 @@ task_packages-freebsd_description: |
 
   <TBD>
 
-task_packages-freebsd_lines: 3,12
+task_packages-freebsd_lines: 3,17
 
 task_packages-freebsd_seealso:
   handlers: []

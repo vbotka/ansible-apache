@@ -8,7 +8,7 @@ task_httpd-confd-vhost-dirs_description: |
 
   <TBD>
 
-task_httpd-confd-vhost-dirs_lines: 2
+task_httpd-confd-vhost-dirs_lines: 3
 
 task_httpd-confd-vhost-dirs_seealso:
   handlers: []
