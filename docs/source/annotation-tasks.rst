@@ -47,11 +47,11 @@ variables, that will override default values, can be loaded from the files in th
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
     :language: Yaml
-    :emphasize-lines: 10,11
+    :emphasize-lines: 5-6
     :linenos:
 
 .. seealso::
-   * See the precedence, naming conventions and other details in the included tasks (11) from `al_include_os_vars_path.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path.yml>`_
+   * See the precedence, naming conventions and other details in the included tasks (6) from `al_include_os_vars_path.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path.yml>`_
    * See :ref:`ug_variables`
 
 .. note::
@@ -134,7 +134,7 @@ Synopsis:
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/packages-freebsd.yml
     :language: Yaml
-    :emphasize-lines: 3,12
+    :emphasize-lines: 3,17
     :linenos:
 
 .. seealso::
@@ -459,7 +459,7 @@ Create ``DocumentRoot`` directories for vhosts.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/httpd-confd-vhost-dirs.yml
     :language: Yaml
-    :emphasize-lines: 2
+    :emphasize-lines: 3
     :linenos:
 
 .. seealso::
@@ -474,30 +474,30 @@ httpd-confd-includes.yml
 ------------------------
 
 Synopsis: 
-Configure sections with the filter encode_apache.
+Configure sections using the filter encode_apache.
 
 
 
-Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (7) at master
-and create the configuration files (22) at the remote host. The created configuration files are
-included in the configuration file ``httpd.conf`` by default. For example
+Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (8) at master
+and create the configuration files (25) at the remote host. The created configuration files are
+included in the configuration file ``httpd.conf`` by default. For example,
 
 .. code-block:: yaml
 
   shell> grep Includes /usr/local/etc/apache24/httpd.conf
   Include etc/apache24/Includes/*.conf
 
-**Include data from conf.d (3-17)**
+**Include data from conf.d (3-20)**
 
-Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
-(11). This task takes as parameters the directory of the YAML configuration files (7) and the
-type of the list (8), and returns the list with the YAML configurations of the sections stored in
-the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
+Include tasks from the file ``al_include_confd_vars_list`` (14) in the role ``vbotka.ansible_lib``
+(13). This task takes as parameters the directory of the YAML configuration files (8) and the
+type of the list (9), and returns the list with the YAML configurations of the sections stored in
+the variable ``al_include_confd_vars_list``. The parameters (8,9) are tested inside the included
 tasks.
 
-**Configure sections in Includes directory (19-28)**
+**Configure sections in Includes directory (22-31)**
 
-Use the ``encode_apache`` filter to create the configuration files (22) for the sections. See the
+Use the filter ``encode_apache`` to create the configuration files (25) for the sections. See the
 template ``section2.j2``.
 
 
@@ -507,7 +507,7 @@ template ``section2.j2``.
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-includes.yml
     :language: Yaml
-    :emphasize-lines: 3,19
+    :emphasize-lines: 3,22
     :linenos:
 
 .. seealso::

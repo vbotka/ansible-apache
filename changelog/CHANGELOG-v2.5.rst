@@ -19,7 +19,11 @@ Major Changes
 Minor Changes
 -------------
 * Bump docs version 2.5.0
-
+* Update docs
+* Update docs/requirements.txt; readthedocs-sphinx-search==0.3.2
+* Update vars. Use ansible_parent_role_paths
+* Update vars/main.yml.sample
+* Update requirements.yml
 
 Bugfixes
 --------
