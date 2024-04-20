@@ -1,6 +1,6 @@
 # apache
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/apache)[![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/ansible-apache)[![Documentation Status](https://readthedocs.org/projects/ansible-apache/badge/?version=latest)](https://ansible-apache.readthedocs.io/en/latest/?badge=latest)[![GitHub tag](https://img.shields.io/github/tag/vbotka/ansible-apache.svg)](https://github.com/vbotka/ansible-apache/tags)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/apache)[![Build Status](https://travis-ci.org/vbotka/ansible-apache.svg?branch=master)](https://travis-ci.org/vbotka/ansible-apache)[![Documentation Status](https://readthedocs.org/projects/ansible-apache/badge/?version=latest)](https://ansible-apache.readthedocs.io/en/latest/?badge=latest)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-apache)](https://github.com/vbotka/ansible-apache/tags)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
 
@@ -90,7 +90,7 @@ ansible_connection=ssh
 ansible_user=freebsd
 ansible_become=yes
 ansible_become_method=sudo
-ansible_python_interpreter=/usr/local/bin/python3.6
+ansible_python_interpreter=/usr/local/bin/python3.9
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
 
@@ -112,7 +112,18 @@ the role will complain about missing configuration files.
 
    - http://validator.w3.org
    - https://www.ssllabs.com
-		
+
+
+## Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
+```
+
 
 ## References
 
