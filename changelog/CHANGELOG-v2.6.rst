@@ -14,6 +14,7 @@ Ansible 2.16 update
 
 Major Changes
 -------------
+* Support FreeBSD 13.3. and 14.0
 
 Minor Changes
 -------------
