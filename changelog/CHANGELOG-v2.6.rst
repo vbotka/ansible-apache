@@ -22,6 +22,7 @@ Minor Changes
 * Update ansible lint config
 * Update requirements.yml
 * Update README
+* Formatting travis.yml
 
 Bugfixes
 --------
