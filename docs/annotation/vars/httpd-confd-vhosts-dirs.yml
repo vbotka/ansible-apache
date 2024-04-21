@@ -1,11 +1,9 @@
 ---
 
 task_httpd-confd-vhost-dirs_synopsis: |2
-
   Create ``DocumentRoot`` directories for vhosts.
 
 task_httpd-confd-vhost-dirs_description: |2
-
   <TBD>
 
 task_httpd-confd-vhost-dirs_lines: 3

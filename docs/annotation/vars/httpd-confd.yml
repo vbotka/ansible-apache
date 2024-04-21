@@ -1,14 +1,12 @@
 ---
 
 task_httpd-confd_synopsis: |2
-
   Configure virtual hosts.
 
 task_httpd-confd_description: |2
+  Configure virtual hosts (2) and configuration sections of the directories (6).
 
-  Configure virtual hosts (3) and configuration sections of the directories (7).
-
-task_httpd-confd_lines: 3,7
+task_httpd-confd_lines: 2,6
 
 task_httpd-confd_seealso:
   handlers: []

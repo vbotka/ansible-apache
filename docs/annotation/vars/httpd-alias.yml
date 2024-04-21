@@ -1,14 +1,12 @@
 ---
 
 task_httpd-alias_synopsis: |2
-
   Configure aliases in httpd.conf
 
 task_httpd-alias_description: |2
+  When not an empty list (12) iterate ``apache_alias`` (7-9) and update blocks in the configuration file (4).
 
-  When not an empty list (13) iterate ``apache_alias`` (8-10) and update blocks in the configuration file (5).
-
-task_httpd-alias_lines: 3,8-10,13
+task_httpd-alias_lines: 2,7-9,12
 
 task_httpd-alias_seealso:
   handlers: []
