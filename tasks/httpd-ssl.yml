@@ -1,7 +1,9 @@
 ---
-- name: "Httpd-ssl: Configure {{ apache_conf_path }}/extra/httpd-ssl.conf"
+- name: "Httpd-ssl: Configure {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"
+  when: apache_ssl | bool
   block:
-    - name: "Httpd-ssl: Present extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+
+    - name: "Httpd-ssl: Present extra lines in {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"
       ansible.builtin.lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: ^{{ item.regexp }}
@@ -10,7 +12,7 @@
       loop: "{{ apache_httpd_conf_ssl_extra }}"
       notify: reload apache
 
-    - name: "Httpd-ssl: Absent extra lines in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+    - name: "Httpd-ssl: Absent extra lines in {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"
       ansible.builtin.lineinfile:
         state: absent
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
@@ -19,7 +21,7 @@
       loop: "{{ apache_httpd_conf_ssl_extra_absent }}"
       notify: reload apache
 
-    - name: "Httpd-ssl: SSL Listen in {{ apache_conf_path }}/extra/httpd-ssl.conf"
+    - name: "Httpd-ssl: SSL Listen in {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"
       ansible.builtin.lineinfile:
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         line: "{{ item }}"
@@ -27,7 +29,7 @@
       loop: "{{ apache_httpd_conf_ssl_listen }}"
       notify: reload apache
 
-    - name: "Httpd-ssl: SSL in {{ apache_conf_path }}/httpd.conf"
+    - name: "Httpd-ssl: SSL in {{ apache_conf_path ~ '/httpd.conf' }}"
       ansible.builtin.lineinfile:
         dest: "{{ apache_conf_path }}/httpd.conf"
         line: "{{ item }}"
@@ -35,6 +37,5 @@
       loop: "{{ apache_httpd_conf_ssl }}"
       notify: reload apache
 
-  when: apache_ssl|bool
 
 # EOF

@@ -1,5 +1,5 @@
 ---
-- name: "Httpd-modules: Load modules in {{ apache_conf_path }}/httpd.conf"
+- name: "Httpd-modules: Load modules in {{ apache_conf_path ~ '/httpd.conf' }}"
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: ^\s*#*\s*LoadModule {{ item.module }}
@@ -8,9 +8,9 @@
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
   notify: restart apache
-  when: item.present|default(true)
+  when: item.present | d(true)
 
-- name: "Httpd-modules: Unload modules in {{ apache_conf_path }}/httpd.conf"
+- name: "Httpd-modules: Unload modules in {{ apache_conf_path ~ '/httpd.conf' }}"
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: ^\s*#*\s*LoadModule {{ item.module }}
@@ -19,9 +19,9 @@
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
   notify: restart apache
-  when: not item.present|default(true)
+  when: not item.present | d(true)
 
-- name: "Httpd-modules: Config PHP in {{ apache_conf_path }}/Includes/php.conf"
+- name: "Httpd-modules: Config PHP in {{ apache_conf_path ~ '/Includes/php.conf' }}"
   ansible.builtin.blockinfile:
     dest: "{{ apache_conf_path }}/Includes/php.conf"
     block: |
@@ -40,6 +40,6 @@
     create: true
     backup: "{{ apache_backup_conf }}"
   notify: restart apache
-  when: apache_php|bool
+  when: apache_php | bool
 
 # EOF

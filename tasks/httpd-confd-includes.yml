@@ -15,9 +15,9 @@
       ansible.builtin.debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"
-      when: apache_debug|bool
+      when: apache_debug | bool
 
-- name: "Httpd-confd-includes: Configure sections in {{ apache_conf_path }}/Includes/"
+- name: "Httpd-confd-includes: Configure sections in {{ apache_conf_path ~ '/Includes/' }}"
   ansible.builtin.template:
     src: section2.j2
     dest: "{{ apache_conf_path }}/Includes/{{ item.fname }}.conf"

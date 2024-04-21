@@ -25,7 +25,7 @@
   ansible.builtin.include_tasks: fn/httpd-confd-vhost-dirs.yml
   loop: "{{ al_include_confd_vars_list | json_query('[].vars') }}"
 
-- name: "Httpd-confd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"
+- name: "Httpd-confd-vhosts: Configure virtual hosts in {{ apache_conf_path ~ '/extra/' }}"
   ansible.builtin.template:
     src: vhost2.j2
     dest: "{{ apache_conf_path }}/extra/{{ item.fname }}.conf"
@@ -36,7 +36,7 @@
   loop: "{{ al_include_confd_vars_list }}"
   notify: reload apache
 
-- name: "Httpd-confd-vhosts: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
+- name: "Httpd-confd-vhosts: Incl virtual hosts in {{ apache_conf_path ~ '/httpd.conf' }}"
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: ^Include etc/apache{{ apache_version }}/extra/{{ item.fname }}.conf
