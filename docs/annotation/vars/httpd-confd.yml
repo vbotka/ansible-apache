@@ -1,11 +1,11 @@
 ---
 
-task_httpd-confd_synopsis: |
-  
+task_httpd-confd_synopsis: |2
+
   Configure virtual hosts.
 
-task_httpd-confd_description: |
-  
+task_httpd-confd_description: |2
+
   Configure virtual hosts (3) and configuration sections of the directories (7).
 
 task_httpd-confd_lines: 3,7
@@ -14,12 +14,8 @@ task_httpd-confd_seealso:
   handlers: []
   templates: []
   others:
-
-    - 'httpd-confd-vhosts.yml and httpd-confd-includes.yml'
+    - httpd-confd-vhosts.yml and httpd-confd-includes.yml
 
 task_httpd-confd_note: []
 task_httpd-confd_hint: []
 task_httpd-confd_warning: []
-
-# EOF
-...

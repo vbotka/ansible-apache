@@ -1,6 +1,5 @@
 ---
-
-- name: "httpd-vhosts: Create directories for virtual hosts"
+- name: "Httpd-vhosts: Create directories for virtual hosts"
   ansible.builtin.file:
     state: directory
     path: "{{ item.DocumentRoot }}"
@@ -12,7 +11,7 @@
     label: "{{ item.ServerName }}"
   when: item.create_document_root|default(False)
 
-- name: "httpd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"
+- name: "Httpd-vhosts: Configure virtual hosts in {{ apache_conf_path }}/extra/"
   ansible.builtin.template:
     src: vhost.j2
     dest: "{{ apache_conf_path }}/extra/{{ item.ServerName }}.conf"
@@ -25,11 +24,11 @@
     label: "{{ item.ServerName }}"
   notify: reload apache
 
-- name: "httpd-vhosts: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
+- name: "Httpd-vhosts: Incl virtual hosts in {{ apache_conf_path }}/httpd.conf"
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: "^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
-    line: "Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf"
+    regexp: ^Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf
+    line: Include etc/apache{{ apache_version }}/extra/{{ item.ServerName }}.conf
     insertbefore: BOF
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_vhost }}"
@@ -38,4 +37,3 @@
   notify: reload apache
 
 # EOF
-...

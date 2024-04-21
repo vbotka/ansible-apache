@@ -1,6 +1,5 @@
 ---
-
-- name: "samples: Copy sample files"
+- name: "Samples: Copy sample files"
   ansible.builtin.copy:
     remote_src: true
     src: "{{ apache_conf_path }}/{{ item }}.sample"
@@ -9,4 +8,3 @@
   loop: "{{ apache_samples_list }}"
 
 # EOF
-...

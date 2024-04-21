@@ -1,6 +1,5 @@
 ---
-
-- name: "httpd-confd-vhost-dirs: Create directories for virtual hosts"
+- name: "Httpd-confd-vhost-dirs: Create directories for virtual hosts"
   ansible.builtin.file:
     state: directory
     path: "{{ vhost_dir }}"
@@ -12,4 +11,3 @@
     loop_var: vhost_dir
 
 # EOF
-...

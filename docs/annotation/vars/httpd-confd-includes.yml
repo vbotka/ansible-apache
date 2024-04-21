@@ -1,11 +1,11 @@
 ---
 
-task_httpd-confd-includes_synopsis: |
-  
+task_httpd-confd-includes_synopsis: |2
+
   Configure sections using the filter encode_apache.
 
-task_httpd-confd-includes_description: |
-  
+task_httpd-confd-includes_description: |2
+
   Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (8) at master
   and create the configuration files (25) at the remote host. The created configuration files are
   included in the configuration file ``httpd.conf`` by default. For example,
@@ -27,7 +27,7 @@ task_httpd-confd-includes_description: |
 
   Use the filter ``encode_apache`` to create the configuration files (25) for the sections. See the
   template ``section2.j2``.
-  
+
 task_httpd-confd-includes_lines: 3,22
 
 task_httpd-confd-includes_seealso:
@@ -35,15 +35,10 @@ task_httpd-confd-includes_seealso:
   templates:
     - section2
   others:
-
-    - Example of the configuration file
-      `vars/conf.d/section-sample/usr-local-www-example.com.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/section-sample/usr-local-www-example.com.yml>`_
+    - Example of the configuration file `vars/conf.d/section-sample/usr-local-www-example.com.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/section-sample/usr-local-www-example.com.yml>`_
 
     - Details of the format are described in the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_
 
 task_httpd-confd-includes_note: []
 task_httpd-confd-includes_hint: []
 task_httpd-confd-includes_warning: []
-
-# EOF
-...

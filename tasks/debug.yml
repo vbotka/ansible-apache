@@ -1,5 +1,4 @@
 ---
-
 - name: Debug
   vars:
     msg: |-
@@ -52,4 +51,3 @@
     msg: "{{ '{}'.format(msg) }}"
 
 # EOF
-...

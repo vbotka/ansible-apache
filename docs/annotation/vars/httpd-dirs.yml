@@ -1,11 +1,11 @@
 ---
 
-task_httpd-dirs_synopsis: |
-  
+task_httpd-dirs_synopsis: |2
+
   Create files with the directory blocks in the Includes directory.
 
-task_httpd-dirs_description: |
-  
+task_httpd-dirs_description: |2
+
   Iterate the list ``apache_directory_blocks`` (11) and create configuration files in the directory (6).
 
 task_httpd-dirs_lines: 6,11
@@ -15,12 +15,8 @@ task_httpd-dirs_seealso:
   templates:
     - directory-block
   others:
-
     - Variable :ref:`ug_apache_directory_blocks`
 
 task_httpd-dirs_note: []
 task_httpd-dirs_hint: []
 task_httpd-dirs_warning: []
-
-# EOF
-...

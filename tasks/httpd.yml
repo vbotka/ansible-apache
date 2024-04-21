@@ -1,13 +1,11 @@
 ---
-
-- name: "httpd_conf: Configure parameters in {{ apache_conf_path }}/httpd.conf"
+- name: "Httpd_conf: Configure parameters in {{ apache_conf_path }}/httpd.conf"
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    regexp: '^{{ item.regexp }}\s(.*)$'
+    regexp: ^{{ item.regexp }}\s(.*)$
     line: "{{ item.regexp }} {{ item.line }}"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf }}"
   notify: reload apache
 
 # EOF
-...

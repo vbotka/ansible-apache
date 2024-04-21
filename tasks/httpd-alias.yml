@@ -1,9 +1,8 @@
 ---
-
-- name: "httpd-alias: Configure aliases in {{ apache_conf_path }}/httpd.conf"
+- name: "Httpd-alias: Configure aliases in {{ apache_conf_path }}/httpd.conf"
   ansible.builtin.blockinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
-    insertafter: '<IfModule alias_module>'
+    insertafter: <IfModule alias_module>
     block: |2
         {% for item in apache_alias %}
         {{ item }}
@@ -13,4 +12,3 @@
   when: apache_alias|length > 0
 
 # EOF
-...
