@@ -11,12 +11,12 @@
 - name: "Packages: Debug install packages"
   ansible.builtin.debug:
     var: result
-  when: apache_debug|bool
+  when: apache_debug | bool
 
 - name: "Packages: Install ports"
   community.general.portinstall:
     name: "{{ item }}"
-    use_packages: "{{ freebsd_use_packages|default(true) }}"
+    use_packages: "{{ freebsd_use_packages | default(true) }}"
   loop: "{{ apache_packages }}"
   register: result
   until: result is succeeded
@@ -27,6 +27,6 @@
 - name: "Packages: Debug install ports"
   ansible.builtin.debug:
     var: result
-  when: apache_debug|bool
+  when: apache_debug | bool
 
 # EOF

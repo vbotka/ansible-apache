@@ -19,11 +19,12 @@ Major Changes
 Minor Changes
 -------------
 * Bump docs version 2.6.0
-* Update ansible lint config
+* Update docs.
+* Update ansible lint config.
 * Update requirements.yml
-* Update README
+* Update README.
 * Formatting travis.yml
-* Fix Ansible lint
+* Fix Ansible lint.
 
 Bugfixes
 --------

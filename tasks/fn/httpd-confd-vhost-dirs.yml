@@ -6,7 +6,7 @@
     owner: "{{ apache_data_owner }}"
     group: "{{ apache_data_group }}"
     mode: "{{ apache_dir_mode }}"
-  loop: "{{ item|json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
+  loop: "{{ item | json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
   loop_control:
     loop_var: vhost_dir
 
