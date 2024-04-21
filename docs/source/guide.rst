@@ -90,8 +90,8 @@ Simple playbook to install and configure Apache at srv.example.com (2)
      roles:
        - vbotka.apache
 
-.. note:: * | ``gather_facts: true`` (3) must be set to collect variables
-            | needed to evaluate :ref:`ug_os_defaults` and :ref:`ug_os_custom`
+.. note:: * | ``gather_facts: true`` (3) must be set to collect variables needed to evaluate
+            | :ref:`ug_os_defaults` and :ref:`ug_os_custom`
 	    | [``ansible_distribution``, ``ansible_distribution_release``, ``ansible_os_family``]
 	  * | See :ref:`ug_variables`
 
@@ -177,10 +177,9 @@ included from the directory ``vars``
 Default variables
 -----------------
 
-* Most of the variables are self-explaining (4-9,14-15,69-70)
-* For Apache configuration (23-62,65) see `Apache HTTP Server
-  Documentation <https://httpd.apache.org/docs/>`__.
-* Other variables (75,78,81,84-85) will be explained in the next sections.
+* Most of the variables are self-explaining
+* For Apache configuration (23-58) see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_.
+* Other variables will be explained in the next sections.
 
 [`defaults/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main.yml>`_]
 
@@ -188,7 +187,7 @@ Default variables
     :linenothreshold: 5
 .. literalinclude:: ../../defaults/main.yml
     :language: yaml
-    :emphasize-lines: 4-9,14-15,69-70,75,78,81,84-85
+    :emphasize-lines: 4-9,14-15
     :linenos:
 
 .. warning:: By default SSL is turned off ``apache_sslengine: "off"`` (11).
@@ -264,8 +263,8 @@ The configuration files from the directory ``vars`` will be included in the loop
         - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
         - "{{ ansible_distribution }}.yml"
         - "{{ ansible_os_family }}.yml"
-        - "default.yml"
-        - "defaults.yml"
+        - default.yml
+        - defaults.yml
       paths: "{{ al_os_vars_path }}/vars"
 
 .. note:: * OS specific variables from the directory ``{{ al_os_vars_path }}/vars`` override OS specific default variables from the directory ``{{ al_os_vars_path }}/vars/defaults``.
@@ -505,7 +504,7 @@ directory ``{{ apache_conf_path }}/Includes/``.
 
 Example
 ^^^^^^^
-For example from the configuration file below the configuration file
+For example, from the configuration file below the configuration file
 ``usr-local-www-roundcube.conf`` will be created and stored in the
 directory ``{{ apache_conf_path }}/Includes`` (17).
 
@@ -540,13 +539,14 @@ Notes
 ^^^^^
 .. note::
 
-   * For details see :ref:`as_httpd-confd-includes.yml`. [`httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_]
+   * For details see annotated source :ref:`as_httpd-confd-includes.yml`, or
+   * GitHub `httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_
 
 Hints
 ^^^^^
 .. hint:: * | The default value is
             | ``apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/sections"``
-          * | In projects it might be convenient to change the path. For example
+          * | In projects it might be convenient to change the path. For example,
             | ``apache_confd_dir_vhosts: "{{ playbook_dir }}/apache.d/sections"``
 
 
