@@ -1,11 +1,9 @@
 ---
 
-task_samples_synopsis: |
-  
+task_samples_synopsis: |2
   <TBD>
 
-task_samples_description: |
-  
+task_samples_description: |2
   <TBD>
 
 task_samples_lines: 3
@@ -14,12 +12,8 @@ task_samples_seealso:
   handlers: []
   templates: []
   others:
-
     - <TBD>
 
 task_samples_note: []
 task_samples_hint: []
 task_samples_warning: []
-
-# EOF
-...

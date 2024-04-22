@@ -1,11 +1,9 @@
 ---
 
-task_rcconf_synopsis: |
-  
+task_rcconf_synopsis: |2
   Configure service in FreeBSD.
 
-task_rcconf_description: |
-  
+task_rcconf_description: |2
   Configure (3), enable (12) or disable (21) the service.
 
 task_rcconf_lines: 3,12,21
@@ -14,12 +12,8 @@ task_rcconf_seealso:
   handlers: []
   templates: []
   others:
-
     - <TBD>
 
 task_rcconf_note: []
 task_rcconf_hint: []
 task_rcconf_warning: []
-
-# EOF
-...

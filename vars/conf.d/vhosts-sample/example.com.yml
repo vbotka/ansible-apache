@@ -3,7 +3,7 @@ my_apache_vhost:
   content:
     - sections:
         - name: VirtualHost
-          param: '*:80'
+          param: "*:80"
           content:
             - options:
                 - DocumentRoot: /usr/local/www/www1.example.com
@@ -14,7 +14,7 @@ my_apache_vhost:
                     - common
     - sections:
         - name: VirtualHost
-          param: '*:80'
+          param: "*:80"
           content:
             - options:
                 - DocumentRoot: /usr/local/www/www2.example.com
@@ -25,7 +25,7 @@ my_apache_vhost:
                     - common
     - sections:
         - name: VirtualHost
-          param: '*:80'
+          param: "*:80"
           content:
             - options:
                 - DocumentRoot: /usr/local/www/www3.example.com
@@ -34,4 +34,3 @@ my_apache_vhost:
                 - CustomLog:
                     - /var/log/example.com-access_log
                     - common
-...

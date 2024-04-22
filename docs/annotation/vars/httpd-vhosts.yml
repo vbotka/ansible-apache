@@ -1,11 +1,9 @@
 ---
 
-task_httpd-vhosts_synopsis: |
-  
+task_httpd-vhosts_synopsis: |2
   Configure virtual hosts in extra directory.
 
-task_httpd-vhosts_description: |
-  
+task_httpd-vhosts_description: |2
   Loop the dictionary ``apache_vhost`` (10,23,35) and optionally (13) create directories
   ``DocumentRoot`` (5,6). Create configuration files with the Apache virtual hosts (18). See the
   template :ref:`as_template_vhost.j2` (17). Include created files (32) in the configuration file
@@ -19,10 +17,6 @@ task_httpd-vhosts_seealso:
     - vhost
     - vhost2
   others: []
-
 task_httpd-vhosts_note: []
 task_httpd-vhosts_hint: []
 task_httpd-vhosts_warning: []
-
-# EOF
-...

@@ -9,7 +9,7 @@ apache_backup_conf: true
 apache_sslengine: 'on'
 
 apache_httpd_conf_ssl_extra_absent:
-  - 'Listen\s*443'
+  - 'Listen\s+443'
 
 apache_httpd_conf_ssl_listen:
   - {regexp: 'Listen ', line: '443'}

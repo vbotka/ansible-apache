@@ -1,28 +1,22 @@
 ---
 
-task_httpd-modules_synopsis: |
-  
+task_httpd-modules_synopsis: |2
   Load Apache modules. Optionally configure PHP module. (TODO: General configuration of modules.)
 
-task_httpd-modules_description: |
-  
-  Iterate ``apache_httpd_conf_modules`` (10). When ``item.preset`` (12) insert line ``LoadModule
-  ...`` (7) to httpd.conf (5). Iterate ``apache_httpd_conf_modules`` (21). When ``not item.preset``
-  (23) comment line ``# LoadModule ...`` (18) in httpd.conf (16). Configure PHP (29-37) in
-  Includes/php.conf when ``apache_php`` is enabled (44).
+task_httpd-modules_description: |2
+  Iterate ``apache_httpd_conf_modules`` (9). When ``item.preset`` (11) insert line ``LoadModule
+  ...`` (6) to httpd.conf (4). Iterate ``apache_httpd_conf_modules`` (20). When ``not item.preset``
+  (22) comment line ``# LoadModule ...`` (17) in httpd.conf (15). Configure PHP (28-36) in
+  Includes/php.conf when ``apache_php`` is enabled (43).
 
-task_httpd-modules_lines: 3,10,12,14,21,23,25,29-37,44
+task_httpd-modules_lines: 2,9,11,13,20,22,24,28-36,43
 
 task_httpd-modules_seealso:
   handlers: []
   templates: []
   others:
-
     - Variable :ref:`ug_apache_httpd_conf_modules`
 
 task_httpd-modules_note: []
 task_httpd-modules_hint: []
 task_httpd-modules_warning: []
-
-# EOF
-...

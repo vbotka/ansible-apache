@@ -34,4 +34,3 @@ my_apache_sections:
                 - Options: Indexes FollowSymLinks
                 - AllowOverride: All
                 - Require: all granted
-...

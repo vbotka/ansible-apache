@@ -78,9 +78,7 @@ Description of the template.
 vhost.j2
 --------
 
-Synopsis: 
-Create virtual servers.
-
+Synopsis: Create virtual servers.
 
 
 Create both http and https servers (1,8). Optionally ``default(True)`` redirect permanent http to https (4).

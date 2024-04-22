@@ -7,17 +7,16 @@ freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
-apache_version: '24'
-apache_package: "www/apache{{ apache_version }}"
-apache_dir: "apache{{ apache_version }}"
-apache_service: "apache{{ apache_version }}"
-apache_conf_path: "/usr/local/etc/apache{{ apache_version }}"
+apache_version: "24"
+apache_package: www/apache{{ apache_version }}
+apache_dir: apache{{ apache_version }}
+apache_service: apache{{ apache_version }}
+apache_conf_path: /usr/local/etc/apache{{ apache_version }}
 apache_data_owner: www
 apache_data_group: wheel
-apache_data_mode: '0640'
-apache_dir_mode: '0750'
+apache_data_mode: "0640"
+apache_dir_mode: "0750"
 apache_packages:
   - "{{ apache_package }}"
 
 # EOF
-...

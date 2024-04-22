@@ -44,11 +44,9 @@ mytemplates:
     link: vhost.j2
     path: templates/vhost.j2
     synopsis: |
-      
       Create virtual servers.
 
     description: |
-      
       Create both http and https servers (1,8). Optionally ``default(True)`` redirect permanent http to https (4).
 
     lines: 1,4,8

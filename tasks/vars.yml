@@ -1,6 +1,5 @@
 ---
-
-- name: "vars: Include OS vars"
+- name: "Vars: Include OS vars"  # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_include_os_vars_path
@@ -8,4 +7,3 @@
     al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
 
 # EOF
-...

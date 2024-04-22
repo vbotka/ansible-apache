@@ -1,10 +1,9 @@
 ---
 
-task_httpd_synopsis: |
+task_httpd_synopsis: |2
   Configure lines in httpd.conf
 
-task_httpd_description: |
-  
+task_httpd_description: |2
   Iterate the list ``apache_httpd_conf`` (9) and add lines to the configuration file (5).
 
 task_httpd_lines: 5,9
@@ -13,12 +12,8 @@ task_httpd_seealso:
   handlers: []
   templates: []
   others:
-
     - Variable :ref:`ug_apache_httpd_conf`
 
 task_httpd_note: []
 task_httpd_hint: []
 task_httpd_warning: []
-
-# EOF
-...

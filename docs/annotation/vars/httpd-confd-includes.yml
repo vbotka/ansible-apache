@@ -1,13 +1,11 @@
 ---
 
-task_httpd-confd-includes_synopsis: |
-  
+task_httpd-confd-includes_synopsis: |2
   Configure sections using the filter encode_apache.
 
-task_httpd-confd-includes_description: |
-  
-  Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (8) at master
-  and create the configuration files (25) at the remote host. The created configuration files are
+task_httpd-confd-includes_description: |2
+  Take the YAML configuration files from the directory ``apache_confd_dir_sections`` (6) at master
+  and create the configuration files (23) at the remote host. The created configuration files are
   included in the configuration file ``httpd.conf`` by default. For example,
 
   .. code-block:: yaml
@@ -15,35 +13,32 @@ task_httpd-confd-includes_description: |
     shell> grep Includes /usr/local/etc/apache24/httpd.conf
     Include etc/apache24/Includes/*.conf
 
-  **Include data from conf.d (3-20)**
+  **Include data from conf.d (2-18)**
 
-  Include tasks from the file ``al_include_confd_vars_list`` (14) in the role ``vbotka.ansible_lib``
-  (13). This task takes as parameters the directory of the YAML configuration files (8) and the
-  type of the list (9), and returns the list with the YAML configurations of the sections stored in
-  the variable ``al_include_confd_vars_list``. The parameters (8,9) are tested inside the included
+  Include tasks from the file ``al_include_confd_vars_list`` (12) in the role ``vbotka.ansible_lib``
+  (11). This task takes as parameters the directory of the YAML configuration files (6) and the
+  type of the list (7), and returns the list with the YAML configurations of the sections stored in
+  the variable ``al_include_confd_vars_list``. The parameters (6,7) are tested inside the included
   tasks.
 
-  **Configure sections in Includes directory (22-31)**
+  **Configure sections in Includes directory (20-29)**
 
-  Use the filter ``encode_apache`` to create the configuration files (25) for the sections. See the
+  Use the filter ``encode_apache`` to create the configuration files (23) for the sections. See the
   template ``section2.j2``.
-  
-task_httpd-confd-includes_lines: 3,22
+
+task_httpd-confd-includes_lines: 2,20
 
 task_httpd-confd-includes_seealso:
   handlers: []
   templates:
     - section2
   others:
-
     - Example of the configuration file
-      `vars/conf.d/section-sample/usr-local-www-example.com.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/section-sample/usr-local-www-example.com.yml>`_
-
-    - Details of the format are described in the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_
+      `vars/conf.d/section-sample/usr-local-www-example.com.yml
+      <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/sections-sample/usr-local-www-example.com.yml>`_
+    - Details of the format are described in the filter `encode_apache
+      <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_
 
 task_httpd-confd-includes_note: []
 task_httpd-confd-includes_hint: []
 task_httpd-confd-includes_warning: []
-
-# EOF
-...
