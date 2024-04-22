@@ -19,6 +19,8 @@ Minor Changes
 -------------
 * Bump docs version.
 * Fix docs formatting.
+* Fix docs links.
+
 
 2.6.0
 =====
