@@ -20,6 +20,7 @@ Minor Changes
 * Bump docs version.
 * Fix docs formatting.
 * Fix docs links.
+* Fix handler notifications.
 
 
 2.6.0

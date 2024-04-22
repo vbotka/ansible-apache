@@ -10,6 +10,6 @@
   loop: "{{ apache_directory_blocks }}"
   loop_control:
     label: "{{ item.Directory }}"
-  notify: reload apache
+  notify: Reload apache
 
 # EOF
