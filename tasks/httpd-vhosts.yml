@@ -22,7 +22,7 @@
   loop: "{{ apache_vhost }}"
   loop_control:
     label: "{{ item.ServerName }}"
-  notify: reload apache
+  notify: Reload apache
 
 - name: "Httpd-vhosts: Incl virtual hosts in {{ apache_conf_path ~ '/httpd.conf' }}"
   ansible.builtin.lineinfile:
@@ -34,6 +34,6 @@
   loop: "{{ apache_vhost }}"
   loop_control:
     label: "{{ item.ServerName }}"
-  notify: reload apache
+  notify: Reload apache
 
 # EOF

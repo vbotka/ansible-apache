@@ -5,7 +5,7 @@
 
 User's guide
 ************
-.. contents:: Topics
+.. contents:: Contents
    :depth: 3
 
 
@@ -16,13 +16,13 @@ Introduction
 
 The role will install and configure Apache web server
 
-* Ansible role: `Apache <https://galaxy.ansible.com/vbotka/apache/>`_
+* Ansible role: `vbotka.apache <https://galaxy.ansible.com/vbotka/apache/>`_
 * Supported systems: `FreeBSD <https://www.freebsd.org/>`_
 * Requirements:
 
-    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib/>`__
-    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters/>`__
-    * `community.general <https://github.com/ansible-collections/community.general/>`__
+    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
+    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters/>`_
+    * `community.general <https://github.com/ansible-collections/community.general/>`_
 
 The user is expected to have basic knowledge of Ansible
 
@@ -47,23 +47,22 @@ and install it ::
 
     shell> ansible-galaxy role install vbotka.apache
 
-Together with the role ``vbotka.apache`` dependent role `jtyr.config_encoder_filters
-<https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ will be installed (see
+Together with the role `vbotka.apache`_ dependent role `jtyr.config_encoder_filters`_ will be installed (see
 meta/main.yml). This role provides the filter `encode_apache
 <https://github.com/jtyr/ansible-config_encoder_filters#id6>`_ used to encode YAML configuration
 data to the Apache format.
 
-Install the library `vbotka.ansible_lib  <https://galaxy.ansible.com/vbotka/ansible_lib>`_ ::
+Install the library `vbotka.ansible_lib`_, if necessary ::
 
     shell> ansible-galaxy role install vbotka.ansible_lib
 
-Install the collection `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_ ::
+Install the collection `community.general`_ ::
 
     shell> ansible-galaxy collection install community.general
 
 .. seealso::
 
-   * For details on how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
+   * For details on how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`_.
 
    * Take a look at other roles ``shell> ansible-galaxy search --author=vbotka``
 
@@ -101,10 +100,10 @@ Simple playbook to install and configure Apache at srv.example.com (2)
 .. seealso::
 
    * For details see `Connection Plugins
-     <https://docs.ansible.com/ansible/latest/plugins/connection.html>`__ (4-5) and
+     <https://docs.ansible.com/ansible/latest/plugins/connection.html>`_ (4-5) and
 
    * `Understanding Privilege Escalation
-     <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`__ (6-8).
+     <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`_ (6-8).
 
 
 .. _ug_tags:
@@ -785,8 +784,8 @@ Notes
 ^^^^^
 .. note::
 
-   * | The default value is
-     | ``apache_httpd_conf_modules:``
-     |   ``- {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}``
-   * For details see annotated source u:ref:`as_httpd-modules.yml`, or
-   * GitHub `httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_
+   | * The default value is
+   |   ``apache_httpd_conf_modules:``
+   |     ``- { module: socache_shmcb_module, mod: mod_socache_shmcb.so }``
+   | * For details see annotated source :ref:`as_httpd-modules.yml`, or
+   | * GitHub `httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_

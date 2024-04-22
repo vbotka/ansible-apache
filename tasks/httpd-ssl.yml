@@ -13,7 +13,7 @@
         # line: "{{ item.regexp }} {{ item.line }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra }}"
-      notify: reload apache
+      notify: Reload apache
 
     - name: "Httpd-ssl: Absent extra lines in {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"
       ansible.builtin.lineinfile:
@@ -22,7 +22,7 @@
         regexp: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra_absent }}"
-      notify: reload apache
+      notify: Reload apache
 
     - name: "Httpd-ssl: SSL Listen in {{ apache_conf_path ~ '/extra/httpd-ssl.conf' }}"
       ansible.builtin.lineinfile:
@@ -30,7 +30,7 @@
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_listen }}"
-      notify: reload apache
+      notify: Reload apache
 
     - name: "Httpd-ssl: SSL in {{ apache_conf_path ~ '/httpd.conf' }}"
       ansible.builtin.lineinfile:
@@ -38,6 +38,6 @@
         line: "{{ item }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl }}"
-      notify: reload apache
+      notify: Reload apache
 
 # EOF

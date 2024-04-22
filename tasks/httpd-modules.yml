@@ -1,3 +1,4 @@
+
 ---
 - name: "Httpd-modules: Load modules in {{ apache_conf_path ~ '/httpd.conf' }}"
   ansible.builtin.lineinfile:
@@ -7,7 +8,7 @@
     insertbefore: LoadModule
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  notify: restart apache
+  notify: Restart apache
   when: item.present | d(true)
 
 - name: "Httpd-modules: Unload modules in {{ apache_conf_path ~ '/httpd.conf' }}"
@@ -18,7 +19,7 @@
     insertbefore: LoadModule
     backup: "{{ apache_backup_conf }}"
   loop: "{{ apache_httpd_conf_modules }}"
-  notify: restart apache
+  notify: Restart apache
   when: not item.present | d(true)
 
 - name: "Httpd-modules: Config PHP in {{ apache_conf_path ~ '/Includes/php.conf' }}"
@@ -39,7 +40,7 @@
     mode: "0640"
     create: true
     backup: "{{ apache_backup_conf }}"
-  notify: restart apache
+  notify: Restart apache
   when: apache_php | bool
 
 # EOF

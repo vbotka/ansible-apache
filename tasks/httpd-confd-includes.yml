@@ -26,6 +26,6 @@
     mode: "{{ apache_data_mode }}"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ al_include_confd_vars_list }}"
-  notify: reload apache
+  notify: Reload apache
 
 # EOF
