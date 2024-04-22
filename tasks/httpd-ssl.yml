@@ -8,6 +8,9 @@
         dest: "{{ apache_conf_path }}/extra/httpd-ssl.conf"
         regexp: ^{{ item.regexp }}
         line: "{{ item.regexp }}{{ item.line }}"
+        # TODO: Remove trailing spaces from the attribute regexp
+        # regexp: ^{{ item.regexp }}\s+(.*)$
+        # line: "{{ item.regexp }} {{ item.line }}"
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl_extra }}"
       notify: reload apache
@@ -36,6 +39,5 @@
         backup: "{{ apache_backup_conf }}"
       loop: "{{ apache_httpd_conf_ssl }}"
       notify: reload apache
-
 
 # EOF

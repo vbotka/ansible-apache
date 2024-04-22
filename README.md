@@ -132,7 +132,7 @@ shell> ansible-lint -c .ansible-lint.local
 - [SSL/TLS Strong Encryption: 2.4: How-To](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
 - [SSL with Virtual Hosts Using SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI)
 - [Multi-Processing Modules (MPMs)](https://httpd.apache.org/docs/2.4/mpm.html)
-- [FreebSD handbook: 29.8. Apache HTTP Server](https://www.freebsd.org/doc/handbook/network-apache.html)
+- [FreeBSD handbook: 29.8. Apache HTTP Server](https://www.freebsd.org/doc/handbook/network-apache.html)
 - [Recommended Steps To Harden Apache HTTP on FreeBSD 12.0](https://www.digitalocean.com/community/tutorials/recommended-steps-to-harden-apache-http-on-freebsd-12-0)
 
 

@@ -65,7 +65,7 @@ Install the collection `community.general <https://docs.ansible.com/ansible/late
 
    * For details on how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`__.
 
-   * Take a look at other roles ``$ ansible-galaxy search --author=vbotka``
+   * Take a look at other roles ``shell> ansible-galaxy search --author=vbotka``
 
 
 .. _ug_ansible_playbook:
@@ -90,15 +90,21 @@ Simple playbook to install and configure Apache at srv.example.com (2)
      roles:
        - vbotka.apache
 
-.. note:: * | ``gather_facts: true`` (3) must be set to collect variables needed to evaluate
-            | :ref:`ug_os_defaults` and :ref:`ug_os_custom`
-	    | [``ansible_distribution``, ``ansible_distribution_release``, ``ansible_os_family``]
-	  * | See :ref:`ug_variables`
+.. note::
 
-.. seealso:: * For details see `Connection Plugins
-               <https://docs.ansible.com/ansible/latest/plugins/connection.html>`__ (4-5)
-             * and `Understanding Privilege Escalation
-               <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`__ (6-8).
+   * See :ref:`ug_variables`.
+
+   * | ``gather_facts: true`` (3) must be set to collect variables needed to evaluate
+     | :ref:`ug_os_defaults` and :ref:`ug_os_custom`:
+     | ``ansible_distribution``, ``ansible_distribution_release``, ``ansible_os_family``
+
+.. seealso::
+
+   * For details see `Connection Plugins
+     <https://docs.ansible.com/ansible/latest/plugins/connection.html>`__ (4-5) and
+
+   * `Understanding Privilege Escalation
+     <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`__ (6-8).
 
 
 .. _ug_tags:
@@ -106,8 +112,7 @@ Simple playbook to install and configure Apache at srv.example.com (2)
 Tags
 ====
 
-The tags provide very useful tool to run selected tasks of the role. To see what tags are available
-list the tags of the role with the below command
+The tags provide very useful tool to run selected tasks of the role. The below command lists the available tags
 
 .. code-block:: yaml
    :emphasize-lines: 1
@@ -126,7 +131,7 @@ list the tags of the role with the below command
       apache_httpd_vhosts, apache_packages, apache_samples,
       apache_service, apache_vars]
 
-For example see the list of the variables and their values with the tag apache-debug ::
+For example, see the list of the variables and their values with the tag apache-debug ::
 
     shell> ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
 
@@ -160,16 +165,20 @@ To see additional debug information in the output enable debug output in the con
 Variables
 =========
 
-In this guide we describe the role default variables in the directory ``defaults`` and variables
-included from the directory ``vars``
+In this section we describe default variables stored in the directory ``defaults`` and variables
+included from the directory ``vars``.
+
+Precedence:
 
 * role defaults in the directory ``{{ role_path }}/defaults``
   (precedence 2.)
 * include OS specific vars from the directory ``{{ role_path }}/vars``
   (precedence 18.)
 
-.. seealso:: `Ansible variable precedence: Where should I put a variable?
-             <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
+.. seealso::
+
+   * `Ansible variable precedence: Where should I put a variable?
+     <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
 
 
 .. _ug_defaults:
@@ -177,9 +186,7 @@ included from the directory ``vars``
 Default variables
 -----------------
 
-* Most of the variables are self-explaining
-* For Apache configuration (23-58) see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_.
-* Other variables will be explained in the next sections.
+Most of the variables are self-explaining. For Apache configuration (23-58) see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_. Other variables will be explained in the following sections.
 
 [`defaults/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main.yml>`_]
 
@@ -190,7 +197,7 @@ Default variables
     :emphasize-lines: 4-9,14-15
     :linenos:
 
-.. warning:: By default SSL is turned off ``apache_sslengine: "off"`` (11).
+.. warning:: By default, SSL is turned off ``apache_sslengine: "off"`` (11).
 
 
 .. _ug_os_defaults:
@@ -214,14 +221,18 @@ The configuration files from the directory ``vars/defaults`` will be included in
         - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
         - "{{ ansible_distribution }}.yml"
         - "{{ ansible_os_family }}.yml"
-        - "default.yml"
-        - "defaults.yml"
+        - default.yml
+        - defaults.yml
       paths: "{{ al_os_vars_path }}/vars/defaults"
 
-.. note:: * OS specific variables are included by the module ``include_var`` that has very high precedence (18 in the list of 22).
-          * See `Ansible variable precedence: Where should I put a variable?
-	    <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
-	  * To override the default variables see :ref:`ug_os_custom`
+.. note::
+
+   * OS specific variables are included by the module ``include_var`` that has very high precedence (18 in the list of 22).
+
+   * See `Ansible variable precedence: Where should I put a variable?
+     <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
+
+   * To override the default variables see :ref:`ug_os_custom`.
 
 
 .. _ug_os_defaults_freebsd:
@@ -229,7 +240,7 @@ The configuration files from the directory ``vars/defaults`` will be included in
 FreeBSD default variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default the binary packages will be installed (4). But if custom builds are available switch to
+By default, the binary packages will be installed (4). But, if custom builds are available switch to
 ``ports`` (5) and use ``freebsd_use_packages: "yes"`` (6) to speedup the installation. Under
 standard circumstances, there is no reason to change other parameters here.
 
@@ -267,8 +278,13 @@ The configuration files from the directory ``vars`` will be included in the loop
         - defaults.yml
       paths: "{{ al_os_vars_path }}/vars"
 
-.. note:: * OS specific variables from the directory ``{{ al_os_vars_path }}/vars`` override OS specific default variables from the directory ``{{ al_os_vars_path }}/vars/defaults``.
-	  * See `al_include_os_vars_path.yml <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_.
+.. note::
+
+   * OS specific variables from the directory ``{{ al_os_vars_path }}/vars``
+     override OS specific default variables from the directory ``{{ al_os_vars_path }}/vars/defaults``
+
+   * See `al_include_os_vars_path.yml
+     <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_
 
 
 .. _ug_apache_vhost:
@@ -281,7 +297,7 @@ apache_vhost
 
 Synopsis
 ^^^^^^^^
-* ``apache_vhost`` is a list of virtual hosts.
+``apache_vhost`` is a list of virtual hosts.
 
 Parameters
 ^^^^^^^^^^
@@ -322,11 +338,15 @@ Notes
 
    * The default value is an empty list ``apache_vhost: []``
 
-   * For details see :ref:`as_httpd-vhosts.yml`. [`httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
+   * For details see annotated source :ref:`as_httpd-vhosts.yml`
+
+   * GitHub `httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_
 
 See Also
 ^^^^^^^^
-.. seealso:: * It is also possible to configure virtual servers with ``apache_confd_dir_vhosts``. See :ref:`ug_apache_confd_dir_vhosts`.
+.. seealso::
+
+   * It is also possible to configure virtual servers with ``apache_confd_dir_vhosts``. See :ref:`ug_apache_confd_dir_vhosts`.
 
 
 .. _ug_apache_directory_blocks:
@@ -339,7 +359,7 @@ apache_directory_blocks
 
 Synopsis
 ^^^^^^^^
-* ``apache_directory_blocks`` is a list of directory blocks.
+``apache_directory_blocks`` is a list of directory blocks.
 
 Parameters
 ^^^^^^^^^^
@@ -362,21 +382,23 @@ Configuration file (3) will be created in the directory ``{{ apache_conf_path }}
    :linenos:
 
     apache_directory_blocks:
-      - Directory: "/usr/local/www/roundcube"
-        Includefile: "usr-local-www-roundcube.conf"
+      - Directory: /usr/local/www/roundcube
+        Includefile: usr-local-www-roundcube.conf
         Conf:
-          - "Options Indexes FollowSymLinks"
-          - "DirectoryIndex index.html"
-          - "AllowOverride All"
-          - "Require all granted"
+          - Options Indexes FollowSymLinks
+          - DirectoryIndex index.html
+          - AllowOverride All
+          - Require all granted
 
 Notes
 ^^^^^
 .. note::
 
-   * The default value is an empty dictionary ``apache_directory_blocks: {}``
+   * The default the value is an empty list ``apache_directory_blocks: []``
 
-   * For details see :ref:`as_httpd-dirs.yml`. [`httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_]
+   * For details see annotated source :ref:`as_httpd-dirs.yml`
+
+   * GitHub `httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_
 
 See Also
 ^^^^^^^^
@@ -395,7 +417,7 @@ apache_alias
 
 Synopsis
 ^^^^^^^^
-* ``apache_alias`` is a list of aliases.
+``apache_alias`` is a list of aliases.
 
 Example
 ^^^^^^^
@@ -413,7 +435,9 @@ Notes
 
    * The default value is an empty list ``apache_alias: []``
 
-   * For details see :ref:`as_httpd-alias.yml`. [`httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_]
+   * For details see annotated source :ref:`as_httpd-alias.yml`
+
+   * GitHub `httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_
 
 
 .. _ug_apache_confd_dir_vhosts:
@@ -426,26 +450,24 @@ apache_confd_dir_vhosts
 
 Synopsis
 ^^^^^^^^
-* ``apache_confd_dir_vhosts`` is path to directory with virtual hosts'
-  configuration files.
+``apache_confd_dir_vhosts`` is path to directory with virtual hosts' configuration files.
 
 Parameters
 ^^^^^^^^^^
-The parameters and format of the files are described in the filter
-`encode_apache
+The parameters and format of the files are described in the filter `encode_apache
 <https://github.com/jtyr/ansible-config_encoder_filters#id6>`_.
 
 Example
 ^^^^^^^
-From the configuration file below the configuration file ``{{
-apache_conf_path }}/extra/mail.example.net.conf`` will be created and
-the file will be included in ``{{ apache_conf_path }}/httpd.conf``.
+From the configuration file below the configuration file
+``{{ apache_conf_path }}/extra/mail.example.net.conf``
+will be created and included in ``{{ apache_conf_path }}/httpd.conf``
 
 .. code-block:: yaml
    :emphasize-lines: 3
    :linenos:
 
-    $ cat mail.example.net/apache.d/vhosts/mail.example.net.yml
+    shell> cat mail.example.net/apache.d/vhosts/mail.example.net.yml
     my_apache_vhost:
       content:
         - sections:
@@ -470,16 +492,19 @@ Notes
 ^^^^^
 .. note::
 
-   * For details see :ref:`as_httpd-confd-vhosts.yml`. [`httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
+   * For details see annotated source :ref:`as_httpd-confd-vhosts.yml`
+
+   * GitHub `httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_
 
 
 Hints
 ^^^^^
-.. hint:: * | The default value is
-            | ``apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/vhosts"``
-          * | In projects it might be convenient to change the path. For example
-            | ``apache_confd_dir_vhosts: "{{ playbook_dir }}/apache.d/vhosts"``
+.. hint::
 
+   | * The default value is
+   |   ``apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/vhosts"``
+   | * In projects it might be convenient to change the path. For example,
+   |   ``apache_confd_dir_vhosts: "{{ playbook_dir }}/apache.d/vhosts"``
 
 .. _ug_apache_confd_dir_sections:
 
@@ -491,15 +516,13 @@ apache_confd_dir_sections
 
 Synopsis
 ^^^^^^^^
-* ``apache_confd_dir_sections`` is path to directory with
-  configuration files.
+``apache_confd_dir_sections`` is path to directory with configuration files.
 
 Parameters
 ^^^^^^^^^^
 The parameters and format of the files are described in the filter
-`encode_apache
-<https://github.com/jtyr/ansible-config_encoder_filters#id6>`_. The
-content of the files will be encoded and stored in the files in the
+`encode_apache <https://github.com/jtyr/ansible-config_encoder_filters#id6>`_.
+The content of the files will be encoded and stored in the files in the
 directory ``{{ apache_conf_path }}/Includes/``.
 
 Example
@@ -512,7 +535,7 @@ directory ``{{ apache_conf_path }}/Includes`` (17).
    :emphasize-lines: 5-6,9-15,17
    :linenos:
 
-   $ cat mail.example.net/apache.d/sections/usr-local-www-roundcube.yml
+   shell> cat mail.example.net/apache.d/sections/usr-local-www-roundcube.yml
    my_apache_dir:
      content:
        - sections:
@@ -528,7 +551,7 @@ directory ``{{ apache_conf_path }}/Includes`` (17).
                        - all
                        - granted
 
-   $ cat /usr/local/etc/apache24/Includes/usr-local-www-roundcube.conf
+   shell> cat /usr/local/etc/apache24/Includes/usr-local-www-roundcube.conf
    <Directory /usr/local/www/roundcube>
      Options Indexes FollowSymLinks
      AllowOverride All
@@ -540,14 +563,18 @@ Notes
 .. note::
 
    * For details see annotated source :ref:`as_httpd-confd-includes.yml`, or
-   * GitHub `httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_
+
+   * GitHub `httpd-confd-includes.yml
+     <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_
 
 Hints
 ^^^^^
-.. hint:: * | The default value is
-            | ``apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/sections"``
-          * | In projects it might be convenient to change the path. For example,
-            | ``apache_confd_dir_vhosts: "{{ playbook_dir }}/apache.d/sections"``
+.. hint::
+
+   | * The default value is
+   |   ``apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/sections"``
+   | * In projects it might be convenient to change the path. For example,
+   |   ``apache_confd_dir_vhosts: "{{ playbook_dir }}/apache.d/sections"``
 
 
 .. _ug_apache_httpd_conf:
@@ -560,7 +587,7 @@ apache_httpd_conf
 
 Synopsis
 ^^^^^^^^
-* ``apache_httpd_conf`` is a list of lines in httpd.conf.
+``apache_httpd_conf`` is a list of lines in ``httpd.conf``
 
 Parameters
 ^^^^^^^^^^
@@ -579,20 +606,23 @@ Example
    :linenos:
 
    apache_httpd_conf:
-     - {regexp: "ServerName", line: "{{ apache_servername }}"}
-     - {regexp: "ServerAdmin", line: "{{ apache_serveradmin }}"}
-     - {regexp: "ServerRoot", line: "/usr/local"}
-     - {regexp: "MIMEMagicFile", line: "etc/apache24/magic"}
+     - { regexp: ServerName, line: "{{ apache_servername }}" }
+     - { regexp: ServerAdmin, line: "{{ apache_serveradmin }}" }
+     - { regexp: ServerRoot, line: /usr/local }
+     - { regexp: MIMEMagicFile, line: etc/apache24/magic }
 
 Notes
 ^^^^^
-.. note:: | * The default value is
-	  |   ``apache_httpd_conf:``
-          |     ``- {regexp: "ServerName", line: "{{ apache_servername }}"}``
-	  |     ``- {regexp: "ServerAdmin", line: "{{ apache_serveradmin }}"}``
-	  | * The argument line must be quoted if it contains spaces
-	  |     ``- {regexp: "ErrorDocument 500", line: "\"The server made a boo boo.\""}``
-          | * For details see :ref:`as_httpd.yml`. [`httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]
+.. note::
+
+   | * The default value is
+   |   ``apache_httpd_conf:``
+   |     ``- {regexp: ServerName, line: "{{ apache_servername }}"}``
+   |     ``- {regexp: ServerAdmin, line: "{{ apache_serveradmin }}"}``
+   | * Because of the escaped quotes the argument line must be quoted
+   |     ``- {regexp: ErrorDocument 500, line: "\"The server made a boo boo.\""}``
+   | * For details see annotated source :ref:`as_httpd.yml`, or
+   | * GitHub `httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_
 
 
 .. _ug_apache_httpd_conf_ssl:
@@ -605,7 +635,7 @@ apache_httpd_conf_ssl
 
 Synopsis
 ^^^^^^^^
-* ``apache_httpd_conf_ssl`` is a list of lines that configure SSL in httpd.conf.
+``apache_httpd_conf_ssl`` is a list of lines that configure SSL in ``httpd.conf``
 
 Parameters
 ^^^^^^^^^^
@@ -618,10 +648,13 @@ Parameters
 
 Notes
 ^^^^^
-.. note:: | * The default value is
-	  |   ``apache_httpd_conf_ssl:``
-          |     ``- "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf``
-          | * For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+.. note::
+
+   | * The default value is
+   |   ``apache_httpd_conf_ssl:``
+   |     ``- "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"``
+   | * For details see annotated source :ref:`as_httpd-ssl.yml`, or
+   | * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
 
 
 .. _ug_apache_httpd_conf_ssl_extra:
@@ -634,7 +667,7 @@ apache_httpd_conf_ssl_extra
 
 Synopsis
 ^^^^^^^^
-* ``apache_httpd_conf_ssl_extra`` is a list of lines that configure SSL in extra/httpd-ssl.conf.
+``apache_httpd_conf_ssl_extra`` is a list of lines that configure SSL in ``extra/httpd-ssl.conf``
 
 Parameters
 ^^^^^^^^^^
@@ -649,8 +682,11 @@ Parameters
 
 Notes
 ^^^^^
-.. note:: * See the default value in :ref:`ug_defaults`
-          * For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+.. note::
+
+   * See the default value in :ref:`ug_defaults`
+   * For details see annotated source :ref:`as_httpd-ssl.yml`, or
+   * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
 
 
 .. _ug_apache_httpd_conf_ssl_extra_absent:
@@ -663,7 +699,7 @@ apache_httpd_conf_ssl_extra_absent
 
 Synopsis
 ^^^^^^^^
-* ``apache_httpd_conf_ssl_extra_absent`` is a list of lines that will be removed from extra/httpd-ssl.conf.
+``apache_httpd_conf_ssl_extra_absent`` is a list of lines that will be removed from ``extra/httpd-ssl.conf``
 
 Parameters
 ^^^^^^^^^^
@@ -676,8 +712,11 @@ Parameters
 
 Notes
 ^^^^^
-.. note:: * The default value is empty list ``apache_httpd_conf_ssl_extra_absent: []``
-          * For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+.. note::
+
+   * The default value is empty list ``apache_httpd_conf_ssl_extra_absent: []``
+   * For details see annotated source :ref:`as_httpd-ssl.yml`, or
+   * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
 
 
 .. _ug_apache_httpd_conf_ssl_listen:
@@ -690,16 +729,18 @@ apache_httpd_conf_ssl_listen
 
 Synopsis
 ^^^^^^^^
-* ``apache_httpd_conf_ssl_listen`` is a list of addresses and ports that the server will bind to.
+``apache_httpd_conf_ssl_listen`` is a list of addresses and ports that the server will bind to.
 
 Notes
 ^^^^^
-.. note:: * | The default value is
-	    | ``apache_httpd_conf_ssl_listen:``
-	    |   ``- "Listen 443"``
-	  * | Overlapping Listen directives will result in a fatal error which
-	    | will prevent the server from starting up.
-          * | For details see :ref:`as_httpd-ssl.yml`. [`httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+.. note::
+
+   | * The default value is
+   |   ``apache_httpd_conf_ssl_listen:``
+   |     ``- Listen 443``
+   | * Overlapping Listen directives will result in a fatal error.
+   | * For details see annotated source :ref:`as_httpd-ssl.yml`, or
+   | * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
 
 
 .. _ug_apache_httpd_conf_modules:
@@ -712,7 +753,7 @@ apache_httpd_conf_modules
 
 Synopsis
 ^^^^^^^^
-* ``apache_httpd_conf_modules`` is a list of modules to be loaded.
+``apache_httpd_conf_modules`` is a list of modules to be loaded.
 
 Parameters
 ^^^^^^^^^^
@@ -736,13 +777,16 @@ Example
    :linenos:
 
    apache_httpd_conf_modules:
-     - {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}
-     - {module: "ssl_module", mod: "mod_ssl.so"}
-     - {module: "php5_module", mod: "libphp5.so"}
+     - { module: socache_shmcb_module, mod: mod_socache_shmcb.so }
+     - { module: ssl_module, mod: mod_ssl.so }
+     - { module: php5_module, mod: libphp5.so }
 
 Notes
 ^^^^^
-.. note:: * | The default value is
-	    | ``apache_httpd_conf_modules:``
-            |   ``- {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}``
-          * For details see :ref:`as_httpd-modules.yml`. [`httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
+.. note::
+
+   * | The default value is
+     | ``apache_httpd_conf_modules:``
+     |   ``- {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}``
+   * For details see annotated source u:ref:`as_httpd-modules.yml`, or
+   * GitHub `httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_

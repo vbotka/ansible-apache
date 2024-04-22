@@ -7,17 +7,17 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: apache_debug|bool
+  when: apache_debug | bool
   tags: apache_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: apache_install|bool
+  when: apache_install | bool
   tags: apache_packages
 
 - name: Import samples.yml
   ansible.builtin.import_tasks: samples.yml
-  when: apache_samples|bool
+  when: apache_samples | bool
   tags: apache_samples
 
 - name: Import httpd.yml
