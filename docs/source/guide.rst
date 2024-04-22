@@ -785,8 +785,8 @@ Notes
 ^^^^^
 .. note::
 
-   * | The default value is
-     | ``apache_httpd_conf_modules:``
-     |   ``- {module: "socache_shmcb_module", mod: "mod_socache_shmcb.so"}``
-   * For details see annotated source u:ref:`as_httpd-modules.yml`, or
-   * GitHub `httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_
+   | * The default value is
+   |   ``apache_httpd_conf_modules:``
+   |     ``- { module: socache_shmcb_module, mod: mod_socache_shmcb.so }``
+   | * For details see annotated source :ref:`as_httpd-modules.yml`, or
+   | * GitHub `httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_

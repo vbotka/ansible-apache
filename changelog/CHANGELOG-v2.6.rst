@@ -17,8 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Bump docs version
-
+* Bump docs version.
+* Fix docs formatting.
 
 2.6.0
 =====
