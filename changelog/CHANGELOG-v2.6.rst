@@ -18,6 +18,8 @@ Major Changes
 Minor Changes
 -------------
 * Bump docs version.
+* Use default rules in local ansible-lint
+* Fix Ansible lint empty-lines
 
 
 2.6.1
