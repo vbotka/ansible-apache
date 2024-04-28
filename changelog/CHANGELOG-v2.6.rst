@@ -5,6 +5,25 @@ vbotka.apache 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.2
+=====
+
+Release Summary
+---------------
+Bugfix release with updated docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Bump docs version.
+* Update docs.
+* Fix Ansible lint empty-lines
+* Use default rules in local ansible-lint config.
+* Update skip_list in local ansible-lint config.
+
+
 2.6.1
 =====
 

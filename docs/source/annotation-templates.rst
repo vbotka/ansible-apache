@@ -1,3 +1,5 @@
+.. _as_tamplates:
+
 Templates
 =========
 
@@ -20,7 +22,6 @@ Description of the template.
     :language: jinja
     :emphasize-lines: 1
     :linenos:
-
 
 
 
@@ -48,7 +49,6 @@ Description of the template.
 
 
 
-
 .. _as_template_vhost2.j2:
 
 vhost2.j2
@@ -68,7 +68,6 @@ Description of the template.
     :language: jinja
     :emphasize-lines: 1
     :linenos:
-
 
 
 
@@ -95,7 +94,6 @@ Create both http and https servers (1,8). Optionally ``default(True)`` redirect 
 
 .. seealso:: 
    * Variable :ref:`ug_apache_vhost`
-
 
 
 

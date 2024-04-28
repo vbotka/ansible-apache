@@ -1,3 +1,5 @@
+.. _as_tasks:
+
 Tasks
 =====
 
@@ -58,8 +60,8 @@ variables, that will override default values, can be loaded from the files in th
    * Because of the precedence (15.role vars), there are limited options to override these variables.
 
 .. hint::
-   * It might be more convenient to maintain the variables incrementally.
-   * See `al_include_os_vars_path_incr.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path_incr.yml>`_
+   * Put OS specific variables here.
+   * Because of the precedence (15.role vars), there are limited options to override these variables.
 
 .. warning::
    * Put customized OS specific variables into the files in the dictionary *vars/*

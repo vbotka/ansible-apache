@@ -1,4 +1,3 @@
-
 ---
 - name: "Httpd-modules: Load modules in {{ apache_conf_path ~ '/httpd.conf' }}"
   ansible.builtin.lineinfile:
