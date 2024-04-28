@@ -1,3 +1,5 @@
+.. _as_tamplates:
+
 Templates
 =========
 
@@ -22,12 +24,6 @@ Synopsis: {{ i.synopsis }}
 
 {% if i.seealso|length > 0 %}
 .. seealso:: 
-{% for ii in i.seealso.handlers|default([]) %}
-   * Handler :ref:`as_handler_{{ ii }}.yml`
-{% endfor %}
-{% for ii in i.seealso.templates|default([]) %}
-   * Template :ref:`as_template_{{ ii }}.j2`
-{% endfor %}
 {% for ii in i.seealso.others|default([]) %}
    * {{ ii }}
 {% endfor %}
@@ -53,5 +49,4 @@ Synopsis: {{ i.synopsis }}
    * {{ warning }}
 {% endfor %}
 {% endif %}
-
 {% endfor %}
