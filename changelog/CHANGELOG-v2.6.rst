@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Bump docs 2.6.3
 * Remove obsolete comment from docs/source/conf.py
+* Update README
 
 
 2.6.2
