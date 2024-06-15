@@ -10,10 +10,11 @@ vbotka.apache 2.6 Release Notes
 
 Release Summary
 ---------------
-Bugfix release with updated docs.
+Maintenance and bugfix release with updated docs.
 
 Major Changes
 -------------
+* Add support of 14.1
 
 Minor Changes
 -------------
