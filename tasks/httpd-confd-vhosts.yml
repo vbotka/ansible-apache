@@ -1,14 +1,17 @@
 ---
 - name: "Httpd-confd-vhosts: Include variables from {{ apache_confd_dir_vhosts }}"
   block:
+
     - name: "Httpd-confd-vhosts: Set variables for al_include_confd_vars_list"
       ansible.builtin.set_fact:
         al_include_confd_dir: "{{ apache_confd_dir_vhosts }}"
         al_include_confd_vars_list_type: fname
+
     - name: "Httpd-confd-vhosts: Include al_include_confd_vars_list"
       ansible.builtin.include_role:
         name: vbotka.ansible_lib
         tasks_from: al_include_confd_vars_list
+
     - name: "Httpd-confd-vhosts: Debug al_include_confd_vars_list"
       ansible.builtin.debug:
         var: item

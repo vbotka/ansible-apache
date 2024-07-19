@@ -2,35 +2,41 @@
 # handlers for vbotka.apache
 
 - name: Enable and start apache
+  listen: enable and start apache
   ansible.builtin.service:
     name: "{{ apache_service }}"
     state: started
     enabled: true
 
 - name: Disable and stop apache
+  listen: disable and stop apache
   ansible.builtin.service:
     name: "{{ apache_service }}"
     state: stopped
     enabled: false
 
 - name: Restart apache
+  listen: restart apache
   ansible.builtin.service:
     name: "{{ apache_service }}"
     state: restarted
   when: apache_enable | bool
 
 - name: Reload apache
+  listen: reload apache
   ansible.builtin.service:
     name: "{{ apache_service }}"
     state: reloaded
   when: apache_enable | bool
 
 - name: Graceful apache  # noqa: no-changed-when
+  listen: graceful apache
   ansible.builtin.command:
     cmd: /usr/local/etc/rc.d/{{ apache_service }} graceful
   when: apache_enable | bool
 
 - name: Gracefulstop apache  # noqa: no-changed-when
+  listen: gracefulstop apache
   ansible.builtin.command:
     cmd: /usr/local/etc/rc.d/{{ apache_service }} gracefulstop
   when: apache_enable | bool
