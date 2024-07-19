@@ -10,7 +10,7 @@ vbotka.apache 2.6 Release Notes
 
 Release Summary
 ---------------
-Maintenance and bugfix release with updated docs.
+Ansible 2.17 maintenance and bugfix update with updated docs.
 
 Major Changes
 -------------
@@ -21,6 +21,8 @@ Minor Changes
 * Bump docs 2.6.3
 * Remove obsolete comment from docs/source/conf.py
 * Update README
+* Add var apache_role_version
+* Add var apache_sslciphersuite_list
 
 
 2.6.2

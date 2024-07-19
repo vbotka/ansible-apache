@@ -185,7 +185,7 @@ Precedence:
 Default variables
 -----------------
 
-Most of the variables are self-explaining. For Apache configuration (23-58) see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_. Other variables will be explained in the following sections.
+Most of the variables are self-explaining. For Apache configuration (23-65) see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_. Other variables will be explained in the following sections.
 
 [`defaults/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main.yml>`_]
 
@@ -193,10 +193,10 @@ Most of the variables are self-explaining. For Apache configuration (23-58) see 
     :linenothreshold: 5
 .. literalinclude:: ../../defaults/main.yml
     :language: yaml
-    :emphasize-lines: 4-9,14-15
+    :emphasize-lines: 5-10,15-16
     :linenos:
 
-.. warning:: By default, SSL is turned off ``apache_sslengine: "off"`` (11).
+.. warning:: By default, SSL is turned off ``apache_sslengine: "off"`` (12).
 
 
 .. _ug_os_defaults:

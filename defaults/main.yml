@@ -1,5 +1,6 @@
 ---
 # defaults for vbotka.apache
+apache_role_version: 2.6.3
 
 apache_install: true
 apache_enable: true
@@ -26,8 +27,18 @@ apache_sslcertificatekeyfile: /usr/local/etc/apache{{ apache_version }}/server.k
 apache_sslprotocol: all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
 # apache_sslciphersuite: HIGH:!aNULL:!MD5
 # apache_sslciphersuite: RC4-SHA:AES128-SHA:HIGH:!aNULL:!MD5
-apache_sslciphersuite:
-  ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+apache_sslciphersuite: "{{ apache_sslciphersuite_list | join(':') }}"
+apache_sslciphersuite_list:
+  - ECDHE-ECDSA-AES256-GCM-SHA384
+  - ECDHE-RSA-AES256-GCM-SHA384
+  - ECDHE-ECDSA-CHACHA20-POLY1305
+  - ECDHE-RSA-CHACHA20-POLY1305
+  - ECDHE-ECDSA-AES128-GCM-SHA256
+  - ECDHE-RSA-AES128-GCM-SHA256
+  - ECDHE-ECDSA-AES256-SHA384
+  - ECDHE-RSA-AES256-SHA384
+  - ECDHE-ECDSA-AES128-SHA256
+  - ECDHE-RSA-AES128-SHA256
 apache_sslhonorcipherorder: "on"
 apache_sslcompression: "off"
 apache_sslsessiontickets: "off"
