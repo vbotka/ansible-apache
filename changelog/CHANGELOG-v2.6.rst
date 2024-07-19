@@ -5,6 +5,22 @@ vbotka.apache 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.4
+=====
+
+Release Summary
+---------------
+Maintenance and bugfix update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Bump docs and defaults to 2.6.4
+* Update README
+
+
 2.6.3
 =====
 
