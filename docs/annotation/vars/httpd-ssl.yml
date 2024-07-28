@@ -4,13 +4,13 @@ task_httpd-ssl_synopsis: |2
   Configure SSL in extra/httpd-ssl.conf
 
 task_httpd-ssl_description: |2
-  Iterate ``apache_httpd_conf_ssl_extra`` (10) and configure lines in
-  ``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_extra_absent`` (19) and remove lines
-  from ``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_listen`` (27) and add configuration lines
-  in ``extra/httpd-ssl.conf``). Iterate ``apache_httpd_conf_ssl`` (35) and configure lines in
+  Iterate ``apache_httpd_conf_ssl_extra`` (16) and configure lines in
+  ``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_extra_absent`` (24) and remove lines
+  from ``extra/httpd-ssl.conf``. Iterate ``apache_httpd_conf_ssl_listen`` (31) and add configuration lines
+  in ``extra/httpd-ssl.conf``). Iterate ``apache_httpd_conf_ssl`` (38) and configure lines in
   ``httpd.conf``.
 
-task_httpd-ssl_lines: 2,10,19,27,35
+task_httpd-ssl_lines: 4,16,24,31,38
 
 task_httpd-ssl_seealso:
   handlers: []

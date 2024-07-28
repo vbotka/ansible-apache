@@ -68,10 +68,6 @@ apache_httpd_conf_ssl_listen:
 apache_httpd_conf_modules:
   - { module: socache_shmcb_module, mod: mod_socache_shmcb.so }
 
-# PHP
-apache_php_version: "81"
-apache_php_package: www/mod_php{{ apache_php_version }}
-
 # vhosts
 # Virtual hosts need apache_ssl. Port 80 is redirected permanently to
 # 443 for vhosts.

@@ -10,10 +10,12 @@ vbotka.apache 2.6 Release Notes
 
 Release Summary
 ---------------
-Maintenance and bugfix update.
+Maintenance including docs update.
 
 Major Changes
 -------------
+* Upgrade default apache_php_version: "83"
+* If apache_php add package apache_php_package to apache_packages
 
 Minor Changes
 -------------
