@@ -16,7 +16,14 @@ apache_data_owner: www
 apache_data_group: wheel
 apache_data_mode: "0640"
 apache_dir_mode: "0750"
-apache_packages:
+
+apache_php_version: "83"
+apache_php_package: www/mod_php{{ apache_php_version }}
+
+apache_packages: "{{ apache_php | ternary(apache_pkg + apache_pkg_php, apache_pkg) }}"
+apache_pkg:
   - "{{ apache_package }}"
+apache_pkg_php:
+  - "{{ apache_php_package }}"
 
 # EOF

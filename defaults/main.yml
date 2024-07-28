@@ -1,6 +1,6 @@
 ---
 # defaults for vbotka.apache
-apache_role_version: 2.6.3
+apache_role_version: 2.6.4
 
 apache_install: true
 apache_enable: true
@@ -67,10 +67,6 @@ apache_httpd_conf_ssl_listen:
 # Modules
 apache_httpd_conf_modules:
   - { module: socache_shmcb_module, mod: mod_socache_shmcb.so }
-
-# PHP
-apache_php_version: "81"
-apache_php_package: www/mod_php{{ apache_php_version }}
 
 # vhosts
 # Virtual hosts need apache_ssl. Port 80 is redirected permanently to

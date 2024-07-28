@@ -1,6 +1,7 @@
 ---
 - name: Include sections from apache_confd_dir_sections
   block:
+
     - name: "Httpd-confd-includes: Set variables for al_include_confd_vars_list"
       ansible.builtin.set_fact:
         al_include_confd_dir: "{{ apache_confd_dir_sections }}"
@@ -11,7 +12,7 @@
         name: vbotka.ansible_lib
         tasks_from: al_include_confd_vars_list
 
-    - name: "Httpd-confd-includes: Debug al_include_confd_vars_list"
+    - name: "Httpd-confd-includes: Debug al_include_confd_vars_list apache_debug={{ apache_debug }}"
       ansible.builtin.debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"

@@ -36,13 +36,13 @@ This role has been developed and tested with
 
 Review defaults and examples in vars. By default SSL is off.
 
-```
+```yaml
 apache_ssl: False
 ```
 
 Certificates are needed to enable SSL.
 
-```
+```yaml
 apache_ssl: True
 apache_version: "24"
 apache_SSLCertificateFile: "/usr/local/etc/apache{{ apache_version }}/server.crt"
@@ -56,27 +56,23 @@ permanently redirected to 443. Example is available in vars.
 
 ## Workflow
 
-1) Change shell to /bin/sh.
+1) Change shell to /bin/sh if necessary
 
-```
+```sh
 shell> ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
-2) Install role.
+2) Install role
 
-```
+```sh
 shell> ansible-galaxy install vbotka.apache
 ```
 
-3) Fit variables.
+3) Fit variables
 
-```
-shell> editor vbotka.apache/vars/main.yml
-```
+4) Create playbook and inventory
 
-4) Create playbook and inventory.
-
-```
+```yaml
 shell> cat apache.yml
 ---
 - hosts: webserver
@@ -84,34 +80,51 @@ shell> cat apache.yml
     - vbotka.apache
 ```
 
-```
+```ini
 shell> cat hosts
 [webserver]
 <webserver-ip-or-fqdn>
 [webserver:vars]
 ansible_connection=ssh
 ansible_user=freebsd
-ansible_become=yes
+ansible_become=true
 ansible_become_method=sudo
 ansible_python_interpreter=/usr/local/bin/python3.9
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
 
-5) Install and configure apache.
+5) Test syntax
 
+```sh
+shell> ansible-playbook apache.yml --syntax-check
 ```
+
+6) Show variables
+
+```sh
+shell> ansible-playbook apache.yml -t apache_debug -e apache_debug=true
+```
+
+7) Install packages
+
+```sh
+shell> ansible-playbook apache.yml -t apache_packages -e apache_install=true
+```
+
+8) Dry run and show differences
+
+```sh
+shell> ansible-playbook apache.yml --check --diff
+```
+
+9) Install and configure apache
+
+```sh
 shell> ansible-playbook apache.yml
 ```
 
-6) Syntax check.
 
-It's a good idea to run the playbook with "--syntax-check" first to
-see potential problems. But, before running the playbook it's
-necessary to install required packages (see
-[defaults](https://github.com/vbotka/ansible-apache/tree/master/vars/defaults)). Otherwise
-the role will complain about missing configuration files.
-
-7) Consider to test the webserver.
+10) Optionally test the webserver
 
    - http://validator.w3.org
    - https://www.ssllabs.com
@@ -123,7 +136,7 @@ Use the configuration file *.ansible-lint.local* when running
 *ansible-lint*. Some rules might be disabled and some warnings might
 be ignored. See the notes in the configuration file.
 
-```bash
+```sh
 shell> ansible-lint -c .ansible-lint.local
 ```
 

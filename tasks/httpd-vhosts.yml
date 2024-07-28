@@ -1,5 +1,5 @@
 ---
-- name: "Httpd-vhosts: Create directories for virtual hosts"
+- name: "Httpd-vhosts: Create documnent roots for virtual hosts."
   ansible.builtin.file:
     state: directory
     path: "{{ item.DocumentRoot }}"
