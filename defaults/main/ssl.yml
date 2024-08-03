@@ -1,26 +1,7 @@
 ---
 # defaults for vbotka.apache
-apache_role_version: 2.6.4
-
-apache_install: true
-apache_enable: true
-apache_debug: false
 apache_ssl: false
-apache_php: false
-apache_backup_conf: false
-
 apache_sslengine: "off"
-
-# httpd.conf
-apache_servername: www.example.com
-apache_serveradmin: admin@example.com
-apache_servertokens: Prod
-apache_httpd_conf:
-  - { regexp: ServerName, line: "{{ apache_servername }}" }
-  - { regexp: ServerAdmin, line: "{{ apache_serveradmin }}" }
-  - { regexp: ServerTokens, line: "{{ apache_servertokens }}" }
-
-# SSL
 apache_ssllisten: ""
 apache_sslcertificatefile: /usr/local/etc/apache{{ apache_version }}/server.crt
 apache_sslcertificatekeyfile: /usr/local/etc/apache{{ apache_version }}/server.key
@@ -64,40 +45,4 @@ apache_httpd_conf_ssl_extra_absent: []
 apache_httpd_conf_ssl_listen:
   - Listen 443
 
-# Modules
-apache_httpd_conf_modules:
-  - { module: socache_shmcb_module, mod: mod_socache_shmcb.so }
-
-# vhosts
-# Virtual hosts need apache_ssl. Port 80 is redirected permanently to
-# 443 for vhosts.
-apache_vhost: []
-# dirs
-apache_directory_blocks: []
-# aliases
-apache_alias: []
-# conf.d
-apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/vhosts"
-apache_confd_dir_sections: "{{ role_path }}/vars/conf.d/sections"
-
-# samples
-apache_samples: false
-apache_samples_list:
-  - httpd.conf
-  - magic
-  - mime.types
-  - extra/httpd-autoindex.conf
-  - extra/httpd-dav.conf
-  - extra/httpd-default.conf
-  - extra/httpd-info.conf
-  - extra/httpd-languages.conf
-  - extra/httpd-manual.conf
-  - extra/httpd-mpm.conf
-  - extra/httpd-multilang-errordoc.conf
-  - extra/httpd-ssl.conf
-  - extra/httpd-userdir.conf
-  - extra/httpd-vhosts.conf
-  - extra/proxy-html.conf
-
-# rc.conf
-apache_rcconf: []
+# EOF

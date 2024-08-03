@@ -18,7 +18,7 @@ task_httpd-confd-includes_description: |2
   Include tasks from the file ``al_include_confd_vars_list`` (13) in the role ``vbotka.ansible_lib``
   (12). This task takes as parameters the directory of the YAML configuration files (7) and the
   type of the list (8), and returns the list with the YAML configurations of the sections stored in
-  the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
+  the variable ``al_include_confd_vars_list``. The parameters (7, 8) are tested inside the included
   tasks.
 
   **Configure sections in Includes directory (21-30)**

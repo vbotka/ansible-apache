@@ -91,54 +91,74 @@ Description of the task.
 
 
 
-.. _as_packages.yml:
+.. _as_sanity.yml:
 
-packages.yml
-------------
+sanity.yml
+----------
 
-Synopsis: Install packages for supported OS.
-
-
-<TBD>
+Synopsis: Configure sanity.
 
 
-[`tasks/packages.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/packages.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/packages.yml
-    :language: Yaml
-    :emphasize-lines: 3
-    :linenos:
-
-.. seealso::
-   * <TBD>
+Description of the task.
 
 
-
-
-.. _as_packages-freebsd.yml:
-
-packages-freebsd.yml
---------------------
-
-Synopsis: <TBD>
-
-
-<TBD>
-
-
-[`tasks/packages-freebsd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/packages-freebsd.yml>`_]
+[`tasks/sanity.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/sanity.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
-.. literalinclude:: ../../tasks/packages-freebsd.yml
+.. literalinclude:: ../../tasks/sanity.yml
     :language: Yaml
-    :emphasize-lines: 3,17
+    :emphasize-lines: 1,2
     :linenos:
 
-.. seealso::
-   * <TBD>
+
+
+
+
+.. _as_pkg.yml:
+
+pkg.yml
+-------
+
+Synopsis: Configure pkg.
+
+
+Description of the task.
+
+
+[`tasks/pkg.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/pkg.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/pkg.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_pkg-freebsd.yml:
+
+pkg-freebsd.yml
+---------------
+
+Synopsis: Configure pkg-freebsd.
+
+
+Description of the task.
+
+
+[`tasks/pkg-freebsd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/pkg-freebsd.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/pkg-freebsd.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
 
 
 
@@ -227,13 +247,12 @@ Iterate the list ``apache_directory_blocks`` (10) and create configuration files
 httpd-modules.yml
 -----------------
 
-Synopsis: Load Apache modules. Optionally configure PHP module. (TODO: General configuration of modules.)
+Synopsis: Load Apache modules.
 
 
-Iterate ``apache_httpd_conf_modules`` (9). When ``item.preset`` (11) insert line ``LoadModule
-...`` (6) to httpd.conf (4). Iterate ``apache_httpd_conf_modules`` (20). When ``not item.preset``
-(22) comment line ``# LoadModule ...`` (17) in httpd.conf (15). Configure PHP (28-36) in
-Includes/php.conf when ``apache_php`` is enabled (43).
+Iterate ``apache_httpd_conf_modules`` (13). When ``item.preset`` (14) insert line ``LoadModule
+...`` (10) to httpd.conf (8). Iterate ``apache_httpd_conf_modules`` (23). When ``not item.preset``
+(24) comment line ``# LoadModule ...`` (19) in httpd.conf (18).
 
 
 [`tasks/httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
@@ -242,11 +261,35 @@ Includes/php.conf when ``apache_php`` is enabled (43).
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-modules.yml
     :language: Yaml
-    :emphasize-lines: 2,9,11,13,20,22,24,28-36,43
+    :emphasize-lines: 6,16
     :linenos:
 
 .. seealso::
    * Variable :ref:`ug_apache_httpd_conf_modules`
+
+
+
+
+.. _as_httpd-php.yml:
+
+httpd-php.yml
+-------------
+
+Synopsis: Configure httpd-php.
+
+
+Description of the task.
+
+
+[`tasks/httpd-php.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-php.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/httpd-php.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
 
 
 
@@ -318,7 +361,7 @@ httpd-vhosts.yml
 Synopsis: Configure virtual hosts in extra directory.
 
 
-Loop the dictionary ``apache_vhost`` (9,22,34) and optionally (12) create directories
+Loop the dictionary ``apache_vhost`` (9, 22, 34) and optionally (12) create directories
 ``DocumentRoot`` (5). Create configuration files with the Apache virtual hosts (17). See the
 template :ref:`as_template_vhost.j2` (16). Include created files (31) in the configuration file
 (29).
@@ -376,9 +419,9 @@ Synopsis: Configure virtual hosts. Create files.
 
 Use the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ to
 configure virtual hosts. See the template vhost2.j2.  Take the YAML configuration files from the
-directory ``apache_confd_dir_vhosts`` (6) at master and create files with the Apache virtual hosts
-in the directory (31) at the remote host. The created files will be included in the configuration
-file (41).
+directory ``apache_confd_dir_vhosts`` (7) at master and create files with the Apache virtual hosts
+in the directory (41) at the remote host. The created files will be included in the configuration
+file (51).
 
 
 **Include data from conf.d (2-19)**
@@ -387,7 +430,7 @@ Include tasks from the file ``al_include_confd_vars_list`` (13) in the role ``vb
 (12). This task takes as parameters the directory with the YAML configuration files (7) and the
 type of the list (8), and returns the list with the YAML configurations of the virtual hosts
 stored in the variable ``al_include_confd_vars_list``. The variable can be printed (15) when debug
-is enabled ``apache_debug: true`` (19). The parameters (7,8) are tested inside the included tasks.
+is enabled ``apache_debug: true`` (19). The parameters (7, 8) are tested inside the included tasks.
 
 
 **Create directories for virtual hosts (21-32)**
@@ -407,7 +450,7 @@ filter. Store the configuration file (41). Include virtual hosts in httpd.conf (
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-vhosts.yml
     :language: Yaml
-    :emphasize-lines: 2,21,34,41,50
+    :emphasize-lines: 7,41,51
     :linenos:
 
 .. seealso::
@@ -466,7 +509,7 @@ included in the configuration file ``httpd.conf`` by default. For example,
 Include tasks from the file ``al_include_confd_vars_list`` (13) in the role ``vbotka.ansible_lib``
 (12). This task takes as parameters the directory of the YAML configuration files (7) and the
 type of the list (8), and returns the list with the YAML configurations of the sections stored in
-the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
+the variable ``al_include_confd_vars_list``. The parameters (7, 8) are tested inside the included
 tasks.
 
 **Configure sections in Includes directory (21-30)**
@@ -500,7 +543,7 @@ service.yml
 Synopsis: Configure service.
 
 
-At the moment, only configuration of FreeBSD is implemented (2).
+At the moment, only the configuration of FreeBSD is implemented (2).
 
 
 [`tasks/service.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/service.yml>`_]

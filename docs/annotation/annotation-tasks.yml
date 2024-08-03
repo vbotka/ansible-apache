@@ -44,32 +44,41 @@ mytasks:
     hints: []
     warnings: []
 
-  - file: packages.yml
-    link: packages.yml
-    path: tasks/packages.yml
+  - file: sanity.yml
+    link: sanity.yml
+    path: tasks/sanity.yml
     synopsis: |
-      Install packages for supported OS.
-
+      Configure sanity.
     description: |
-      <TBD>
-
-    lines: 3
-    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+      Description of the task.
+    lines: 1,2
+    seealso: []
     notes: []
     hints: []
     warnings: []
 
-  - file: packages-freebsd.yml
-    link: packages-freebsd.yml
-    path: tasks/packages-freebsd.yml
+  - file: pkg.yml
+    link: pkg.yml
+    path: tasks/pkg.yml
     synopsis: |
-      <TBD>
-
+      Configure pkg.
     description: |
-      <TBD>
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
 
-    lines: 3,17
-    seealso: {'handlers': [], 'templates': [], 'others': ['<TBD>']}
+  - file: pkg-freebsd.yml
+    link: pkg-freebsd.yml
+    path: tasks/pkg-freebsd.yml
+    synopsis: |
+      Configure pkg-freebsd.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
     notes: []
     hints: []
     warnings: []
@@ -123,16 +132,28 @@ mytasks:
     link: httpd-modules.yml
     path: tasks/httpd-modules.yml
     synopsis: |
-      Load Apache modules. Optionally configure PHP module. (TODO: General configuration of modules.)
+      Load Apache modules.
 
     description: |
-      Iterate ``apache_httpd_conf_modules`` (9). When ``item.preset`` (11) insert line ``LoadModule
-      ...`` (6) to httpd.conf (4). Iterate ``apache_httpd_conf_modules`` (20). When ``not item.preset``
-      (22) comment line ``# LoadModule ...`` (17) in httpd.conf (15). Configure PHP (28-36) in
-      Includes/php.conf when ``apache_php`` is enabled (43).
+      Iterate ``apache_httpd_conf_modules`` (13). When ``item.preset`` (14) insert line ``LoadModule
+      ...`` (10) to httpd.conf (8). Iterate ``apache_httpd_conf_modules`` (23). When ``not item.preset``
+      (24) comment line ``# LoadModule ...`` (19) in httpd.conf (18).
 
-    lines: 2,9,11,13,20,22,24,28-36,43
+    lines: 6,16
     seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_httpd_conf_modules`']}
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: httpd-php.yml
+    link: httpd-php.yml
+    path: tasks/httpd-php.yml
+    synopsis: |
+      Configure httpd-php.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
     notes: []
     hints: []
     warnings: []
@@ -178,7 +199,7 @@ mytasks:
       Configure virtual hosts in extra directory.
 
     description: |
-      Loop the dictionary ``apache_vhost`` (9,22,34) and optionally (12) create directories
+      Loop the dictionary ``apache_vhost`` (9, 22, 34) and optionally (12) create directories
       ``DocumentRoot`` (5). Create configuration files with the Apache virtual hosts (17). See the
       template :ref:`as_template_vhost.j2` (16). Include created files (31) in the configuration file
       (29).
@@ -213,9 +234,9 @@ mytasks:
     description: |
       Use the filter `encode_apache <https://galaxy.ansible.com/jtyr/config_encoder_filters>`_ to
       configure virtual hosts. See the template vhost2.j2.  Take the YAML configuration files from the
-      directory ``apache_confd_dir_vhosts`` (6) at master and create files with the Apache virtual hosts
-      in the directory (31) at the remote host. The created files will be included in the configuration
-      file (41).
+      directory ``apache_confd_dir_vhosts`` (7) at master and create files with the Apache virtual hosts
+      in the directory (41) at the remote host. The created files will be included in the configuration
+      file (51).
 
 
       **Include data from conf.d (2-19)**
@@ -224,7 +245,7 @@ mytasks:
       (12). This task takes as parameters the directory with the YAML configuration files (7) and the
       type of the list (8), and returns the list with the YAML configurations of the virtual hosts
       stored in the variable ``al_include_confd_vars_list``. The variable can be printed (15) when debug
-      is enabled ``apache_debug: true`` (19). The parameters (7,8) are tested inside the included tasks.
+      is enabled ``apache_debug: true`` (19). The parameters (7, 8) are tested inside the included tasks.
 
 
       **Create directories for virtual hosts (21-32)**
@@ -237,7 +258,7 @@ mytasks:
       Create the Apache configuration files for the virtual hosts with the help of ``encode_apache``
       filter. Store the configuration file (41). Include virtual hosts in httpd.conf (50).
 
-    lines: 2,21,34,41,50
+    lines: 7,41,51
     seealso: {'handlers': [], 'templates': ['vhost2'], 'others': ['Example of the configuration file `vars/conf.d/vhosts-sample/example.com.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/conf.d/vhosts-sample/example.com.yml>`_', 'Included task `al_include_confd_vars_list.yml <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_confd_vars_list.yml>`_.']}
     notes: []
     hints: []
@@ -279,7 +300,7 @@ mytasks:
       Include tasks from the file ``al_include_confd_vars_list`` (13) in the role ``vbotka.ansible_lib``
       (12). This task takes as parameters the directory of the YAML configuration files (7) and the
       type of the list (8), and returns the list with the YAML configurations of the sections stored in
-      the variable ``al_include_confd_vars_list``. The parameters (7,8) are tested inside the included
+      the variable ``al_include_confd_vars_list``. The parameters (7, 8) are tested inside the included
       tasks.
 
       **Configure sections in Includes directory (21-30)**
@@ -300,7 +321,7 @@ mytasks:
       Configure service.
 
     description: |
-      At the moment, only configuration of FreeBSD is implemented (2).
+      At the moment, only the configuration of FreeBSD is implemented (2).
 
     lines: 2
     seealso: {'handlers': [], 'templates': [], 'others': ['rcconf.yml']}
