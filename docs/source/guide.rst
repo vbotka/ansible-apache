@@ -126,21 +126,21 @@ The tags provide very useful tool to run selected tasks of the role. The below c
       TASK TAGS: [always, apache_debug, apache_httpd,
       apache_httpd_alias, apache_httpd_confd,
       apache_httpd_confd_includes, apache_httpd_confd_vhosts,
-      apache_httpd_dirs, apache_httpd_modules, apache_httpd_ssl,
-      apache_httpd_vhosts, apache_packages, apache_samples,
-      apache_service, apache_vars]
+      apache_httpd_dirs, apache_httpd_modules, apache_httpd_php,
+      apache_httpd_ssl, apache_httpd_vhosts, apache_pkg,
+      apache_samples, apache_sanity, apache_service, apache_vars]
 
-For example, see the list of the variables and their values with the tag apache-debug ::
+For example, display the variables ::
 
-    shell> ansible-playbook apache.yml -t apache_debug -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -t apache_debug -e apache_debug=true
 
-See what packages will be installed ::
+Display what packages will be installed ::
 
-    shell> ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true' --check
+    shell> ansible-playbook apache.yml -t apache_pkg -e apache_debug=true --check
 
-Install packages only and exit the play. Enable the debug output ::
+Install packages and exit the play. Enable the debug output ::
 
-    shell> ansible-playbook apache.yml -t apache_packages -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -t apache_pkg -e apache_debug=true
 
 
 .. _ug_debug:
@@ -154,7 +154,7 @@ To see additional debug information in the output enable debug output in the con
 
 , or set the extra variable in the command ::
 
-    shell> ansible-playbook apache.yml -e 'apache_debug=true'
+    shell> ansible-playbook apache.yml -e apache_debug=true
 
 .. seealso:: * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
 
@@ -185,19 +185,66 @@ Precedence:
 Default variables
 -----------------
 
-Most of the variables are self-explaining. For Apache configuration (23-65) see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_. Other variables will be explained in the following sections.
+Most of the variables are self-explaining. For Apache configuration see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_.
 
-[`defaults/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main.yml>`_]
+main.yml
+^^^^^^^^
+
+[`defaults/main/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
-.. literalinclude:: ../../defaults/main.yml
+.. literalinclude:: ../../defaults/main/main.yml
     :language: yaml
-    :emphasize-lines: 5-10,15-16
+    :emphasize-lines: 5-8,13-20
     :linenos:
 
-.. warning:: By default, SSL is turned off ``apache_sslengine: "off"`` (12).
+ssl.yml
+^^^^^^^
 
+Configure `SSL/TLS <https://httpd.apache.org/docs/current/ssl/>`_ when enabled (3)
+
+[`defaults/main/ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/ssl.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../defaults/main/ssl.yml
+    :language: yaml
+    :emphasize-lines: 3,4
+    :linenos:
+
+.. warning:: By default, SSL is turned off ``apache_sslengine: "off"`` (4).
+
+php.yml
+^^^^^^^
+
+Install and configure `PHP
+<https://www.php.net/manual/en/book.apache.php>`_ when enabled
+(3). Install and configure `FastCGI Process Manager (FPM)
+<https://www.php.net/manual/en/install.fpm.php>`_ when enabled (4).
+
+[`defaults/main/php.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/php.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../defaults/main/php.yml
+    :language: yaml
+    :emphasize-lines: 3,4
+    :linenos:
+
+samples.yml
+^^^^^^^^^^^
+
+Copy samples when enabled (3)
+
+[`defaults/main/samples.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/samples.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../defaults/main/samples.yml
+    :language: yaml
+    :emphasize-lines: 3
+    :linenos:
 
 .. _ug_os_defaults:
 

@@ -10,13 +10,20 @@ vbotka.apache 2.6 Release Notes
 
 Release Summary
 ---------------
-Maintenance including docs update.
+Maintenance and features including docs update.
 
 Major Changes
 -------------
+* Add tasks sanity.yml, httpd-php.yml
+* Add var apache_sanity default=true
+* Add var apache_php_fpm default=false
+* Add vars apache_php_include and apache_php_fpm_include
 
 Minor Changes
 -------------
+* Update debug.yml, httpd-modules.yml
+* Split defaults/main.yml to defaults/main/*
+* Update docs
 
 Bugfixes
 --------

@@ -2,6 +2,7 @@
 - name: Debug
   vars:
     msg: |-
+      apache_role_version: {{ apache_role_version }}
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
       ansible_distribution: {{ ansible_distribution }}
@@ -10,17 +11,16 @@
       ansible_distribution_release: {{ ansible_distribution_release }}
       ansible_python_version: {{ ansible_python_version }}
 
-      apache_install: {{ apache_install }}
+      apache_backup_conf: {{ apache_backup_conf | bool }}
+      apache_install: {{ apache_install | bool }}
       apache_version: {{ apache_version }}
       apache_packages:
         {{ apache_packages | to_nice_yaml(indent=2) | indent(2) }}
-      apache_enable: {{ apache_enable }}
+      apache_enable: {{ apache_enable | bool }}
       apache_rcconf:
         {{ apache_rcconf | to_yaml(indent=2) | indent(2) }}
-      apache_ssl: {{ apache_ssl }}
+      apache_ssl: {{ apache_ssl | bool }}
       apache_sslengine: {{ apache_sslengine }}
-      apache_php: {{ apache_php }}
-      apache_backup_conf: {{ apache_backup_conf }}
       apache_servername: {{ apache_servername }}
       apache_serveradmin: {{ apache_serveradmin }}
       apache_dir: {{ apache_dir }}
@@ -44,9 +44,15 @@
         {{ apache_alias | to_nice_yaml(indent=2) | indent(2) }}
       apache_confd_dir_vhosts: {{ apache_confd_dir_vhosts }}
       apache_confd_dir_sections: {{ apache_confd_dir_sections }}
-      apache_samples: {{ apache_samples }}
+
+      apache_samples: {{ apache_samples | bool }}
       apache_samples_list:
         {{ apache_samples_list | to_nice_yaml(indent=2) | indent(2) }}
+      apache_php: {{ apache_php | bool }}
+      apache_php_fpm: {{ apache_php_fpm | bool }}
+      apache_php_blocks:
+        {{ apache_php_blocks | to_nice_yaml(indent=2) | indent(2) }}
+      apache_sanity: {{ apache_sanity | bool }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 

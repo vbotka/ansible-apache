@@ -10,10 +10,15 @@
   when: apache_debug | bool
   tags: apache_debug
 
-- name: Import packages.yml
-  ansible.builtin.import_tasks: packages.yml
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: apache_sanity | bool
+  tags: apache_sanity
+
+- name: Import pkg.yml
+  ansible.builtin.import_tasks: pkg.yml
   when: apache_install | bool
-  tags: apache_packages
+  tags: apache_pkg
 
 - name: Import samples.yml
   ansible.builtin.import_tasks: samples.yml
@@ -31,6 +36,10 @@
 - name: Import httpd-modules.yml
   ansible.builtin.import_tasks: httpd-modules.yml
   tags: apache_httpd_modules
+
+- name: Import httpd-php.yml
+  ansible.builtin.import_tasks: httpd-php.yml
+  tags: apache_httpd_php
 
 - name: Import httpd-alias.yml
   ansible.builtin.import_tasks: httpd-alias.yml

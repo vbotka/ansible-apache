@@ -4,7 +4,7 @@ task_service_synopsis: |2
   Configure service.
 
 task_service_description: |2
-  At the moment, only configuration of FreeBSD is implemented (2).
+  At the moment, only the configuration of FreeBSD is implemented (2).
 
 task_service_lines: 2
 
