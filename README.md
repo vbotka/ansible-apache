@@ -108,7 +108,7 @@ shell> ansible-playbook apache.yml -t apache_debug -e apache_debug=true
 7) Install packages
 
 ```sh
-shell> ansible-playbook apache.yml -t apache_packages -e apache_install=true
+shell> ansible-playbook apache.yml -t apache_pkg -e apache_install=true
 ```
 
 8) Dry run and show differences
