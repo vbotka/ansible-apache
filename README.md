@@ -65,7 +65,7 @@ shell> ansible webserver -e 'ansible_shell_type=csh ansible_shell_executable=/bi
 2) Install role
 
 ```sh
-shell> ansible-galaxy install vbotka.apache
+shell> ansible-galaxy role install vbotka.apache
 ```
 
 3) Fit variables
