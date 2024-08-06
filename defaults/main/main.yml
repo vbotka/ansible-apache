@@ -1,6 +1,6 @@
 ---
 # defaults for vbotka.apache
-apache_role_version: 2.6.5
+apache_role_version: 2.6.6
 
 apache_install: true
 apache_enable: true
