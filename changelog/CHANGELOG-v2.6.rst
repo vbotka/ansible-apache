@@ -3,6 +3,26 @@ vbotka.apache 2.6 Release Notes
 ===============================
 
 .. contents:: Topics
+# BEGIN Commits 2.6.6
+- Format meta/main.yml
+- Update README.
+- Update README
+- Start 2.6.6 devel.
+# END Commits 2.6.6
+# BEGIN Release notes 2.6.6
+2.6.6
+=====
+Release Summary
+---------------
+Major Changes
+-------------
+Minor Changes
+-------------
+Bugfixes
+--------
+Breaking Changes / Porting Guide
+--------------------------------
+# END Release notes 2.6.6
 
 
 2.6.6
