@@ -3,12 +3,6 @@ vbotka.apache 2.6 Release Notes
 ===============================
 
 .. contents:: Topics
-# BEGIN Commits 2.6.6
-- Format meta/main.yml
-- Update README.
-- Update README
-- Start 2.6.6 devel.
-# END Commits 2.6.6
 # BEGIN Release notes 2.6.6
 2.6.6
 =====
@@ -18,6 +12,12 @@ Major Changes
 -------------
 Minor Changes
 -------------
+- Update python 3.11 in .travis.yml
+- Format meta/main.yml
+- Update README.
+- Update README
+- Start 2.6.6 devel.
+
 Bugfixes
 --------
 Breaking Changes / Porting Guide
@@ -37,7 +37,10 @@ Major Changes
 
 Minor Changes
 -------------
-* Update README
+- Update README
+- Update python 3.11 in .travis.yml
+- Format meta/main.yml
+- Update README
 
 Bugfixes
 --------
