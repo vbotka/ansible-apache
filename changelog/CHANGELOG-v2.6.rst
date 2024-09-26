@@ -5,6 +5,30 @@ vbotka.apache 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.6
+=====
+
+Release Summary
+---------------
+Maintenance including docs update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+- Update README
+- Update python 3.11 in .travis.yml
+- Format meta/main.yml
+- Update README
+
+Bugfixes
+--------
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 2.6.5
 =====
 
