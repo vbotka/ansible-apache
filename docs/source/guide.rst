@@ -6,8 +6,8 @@
 User's guide
 ************
 .. contents:: Contents
-   :depth: 3
-
+   :local:
+   :depth: 2
 
 .. _ug_introduction:
 
@@ -16,20 +16,19 @@ Introduction
 
 The role will install and configure Apache web server
 
-* Ansible role: `vbotka.apache <https://galaxy.ansible.com/vbotka/apache/>`_
-* Supported systems: `FreeBSD <https://www.freebsd.org/>`_
+* Ansible role: `vbotka.apache`_
+* Supported systems: `FreeBSD`_
 * Requirements:
 
-    * `vbotka.ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
-    * `jtyr.config_encoder_filters <https://galaxy.ansible.com/jtyr/config_encoder_filters/>`_
-    * `community.general <https://github.com/ansible-collections/community.general/>`_
+    * `vbotka.ansible_lib`_
+    * `jtyr.config_encoder_filters`_
+    * `community.general`_
 
 The user is expected to have basic knowledge of Ansible
 
-* `Basic Concepts <https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html>`_
-* `Roles <https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html>`_
-* `Working With Playbooks <https://docs.ansible.com/ansible/latest/user_guide/playbooks.html>`_
-
+* `Basic Concepts`_
+* `Roles`_
+* `Working With Playbooks`_
 
 .. _ug_installation:
 
@@ -47,12 +46,11 @@ and install it ::
 
     shell> ansible-galaxy role install vbotka.apache
 
-Together with the role `vbotka.apache`_ dependent role `jtyr.config_encoder_filters`_ will be installed (see
-meta/main.yml). This role provides the filter `encode_apache
-<https://github.com/jtyr/ansible-config_encoder_filters#id6>`_ used to encode YAML configuration
-data to the Apache format.
+Together with the role `vbotka.apache`_ dependent role `jtyr.config_encoder_filters`_ will be
+installed (see meta/main.yml). This role provides the filter `encode_apache`_ used to encode YAML
+configuration data to the Apache format.
 
-Install the library `vbotka.ansible_lib`_, if necessary ::
+Install the library `vbotka.ansible_lib`_ if necessary ::
 
     shell> ansible-galaxy role install vbotka.ansible_lib
 
@@ -62,10 +60,9 @@ Install the collection `community.general`_ ::
 
 .. seealso::
 
-   * For details on how to install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`_.
+   * For details on how to install specific versions from various sources see `Installing content`_.
 
    * Take a look at other roles ``shell> ansible-galaxy search --author=vbotka``
-
 
 .. _ug_ansible_playbook:
 
@@ -99,12 +96,8 @@ Simple playbook to install and configure Apache at srv.example.com (2)
 
 .. seealso::
 
-   * For details see `Connection Plugins
-     <https://docs.ansible.com/ansible/latest/plugins/connection.html>`_ (4-5) and
-
-   * `Understanding Privilege Escalation
-     <https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation>`_ (6-8).
-
+   * For details see `Connection Plugins`_ (4-5) and
+   * `Understanding Privilege Escalation`_ (6-8).
 
 .. _ug_tags:
 
@@ -142,7 +135,6 @@ Install packages and exit the play. Enable the debug output ::
 
     shell> ansible-playbook apache.yml -t apache_pkg -e apache_debug=true
 
-
 .. _ug_debug:
 
 Debug
@@ -156,8 +148,9 @@ To see additional debug information in the output enable debug output in the con
 
     shell> ansible-playbook apache.yml -e apache_debug=true
 
-.. seealso:: * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
+.. seealso::
 
+   * `Playbook Debugger`_
 
 .. _ug_variables:
 
@@ -176,21 +169,19 @@ Precedence:
 
 .. seealso::
 
-   * `Ansible variable precedence: Where should I put a variable?
-     <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
-
+   * `Ansible variable precedence. Where should I put a variable?`_
 
 .. _ug_defaults:
 
 Default variables
 -----------------
 
-Most of the variables are self-explaining. For Apache configuration see `Apache HTTP Server Documentation <https://httpd.apache.org/docs/>`_.
+Most of the variables are self-explaining. For Apache configuration see `Apache HTTP Server Documentation`_.
 
 main.yml
 ^^^^^^^^
 
-[`defaults/main/main.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/main.yml>`_]
+[`defaults/main/main.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -202,9 +193,9 @@ main.yml
 ssl.yml
 ^^^^^^^
 
-Configure `SSL/TLS <https://httpd.apache.org/docs/current/ssl/>`_ when enabled (3)
+Configure `SSL/TLS`_ when enabled (3)
 
-[`defaults/main/ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/ssl.yml>`_]
+[`defaults/main/ssl.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -218,15 +209,14 @@ Configure `SSL/TLS <https://httpd.apache.org/docs/current/ssl/>`_ when enabled (
 php.yml
 ^^^^^^^
 
-Install and configure `PHP
-<https://www.php.net/manual/en/book.apache.php>`_ when enabled
-(3). Install and configure `FastCGI Process Manager (FPM)
-<https://www.php.net/manual/en/install.fpm.php>`_ when enabled (4).
+Install and configure `PHP`_ when enabled (3). Install and configure `FastCGI Process Manager
+(FPM)`_ when enabled (4).
 
-[`defaults/main/php.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/php.yml>`_]
+[`defaults/main/php.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
+
 .. literalinclude:: ../../defaults/main/php.yml
     :language: yaml
     :emphasize-lines: 3,4
@@ -237,7 +227,7 @@ samples.yml
 
 Copy samples when enabled (3)
 
-[`defaults/main/samples.yml <https://github.com/vbotka/ansible-apache/blob/master/defaults/main/samples.yml>`_]
+[`defaults/main/samples.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -254,9 +244,8 @@ OS specific default variables
 The configuration files from the directory ``vars/defaults`` will be included in the loop
 ``with_first_found`` (1). At least empty ``default.yml`` (6) shall be present.
 
-* [`tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]
-* [`al_include_os_vars_path.yml
-  <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_]
+* [`tasks/vars.yml`_]
+* [`al_include_os_vars_path.yml`_]
 
 .. code-block:: yaml
    :emphasize-lines: 1,6
@@ -273,13 +262,12 @@ The configuration files from the directory ``vars/defaults`` will be included in
 
 .. note::
 
-   * OS specific variables are included by the module ``include_var`` that has very high precedence (18 in the list of 22).
+   * OS specific variables are included by the module ``include_var`` that has very high precedence
+     (18 in the list of 22).
 
-   * See `Ansible variable precedence: Where should I put a variable?
-     <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable>`_
+   * See `Ansible variable precedence. Where should I put a variable?`_
 
    * To override the default variables see :ref:`ug_os_custom`.
-
 
 .. _ug_os_defaults_freebsd:
 
@@ -290,13 +278,12 @@ By default, the binary packages will be installed (4). But, if custom builds are
 ``ports`` (5) and use ``freebsd_use_packages: "yes"`` (6) to speedup the installation. Under
 standard circumstances, there is no reason to change other parameters here.
 
-[`vars/defaults/FreeBSD.yml <https://github.com/vbotka/ansible-apache/blob/master/vars/defaults/FreeBSD.yml>`_]
+[`vars/defaults/FreeBSD.yml`_]
 
 .. literalinclude:: ../../vars/defaults/FreeBSD.yml
     :language: yaml
     :emphasize-lines: 4-6
     :linenos:
-
 
 .. _ug_os_custom:
 
@@ -307,9 +294,8 @@ The configuration files from the directory ``vars`` will be included in the loop
 ``with_first_found`` (1) and will override the default values of the variables. At least empty
 ``default.yml`` (6) shall be present here.
 
-* [`tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]
-* [`al_include_os_vars_path.yml
-  <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_]
+* [`tasks/vars.yml`_]
+* [`al_include_os_vars_path.yml`_]
 
 .. code-block:: yaml
    :emphasize-lines: 1,6
@@ -329,8 +315,7 @@ The configuration files from the directory ``vars`` will be included in the loop
    * OS specific variables from the directory ``{{ al_os_vars_path }}/vars``
      override OS specific default variables from the directory ``{{ al_os_vars_path }}/vars/defaults``
 
-   * See `al_include_os_vars_path.yml
-     <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml>`_
+   * See `al_include_os_vars_path.yml`_
 
 
 .. _ug_apache_vhost:
@@ -386,7 +371,7 @@ Notes
 
    * For details see annotated source :ref:`as_httpd-vhosts.yml`
 
-   * GitHub `httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_
+   * GitHub `tasks/httpd-vhosts.yml`_
 
 See Also
 ^^^^^^^^
@@ -444,7 +429,7 @@ Notes
 
    * For details see annotated source :ref:`as_httpd-dirs.yml`
 
-   * GitHub `httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_
+   * GitHub `tasks/httpd-dirs.yml`_
 
 See Also
 ^^^^^^^^
@@ -483,8 +468,7 @@ Notes
 
    * For details see annotated source :ref:`as_httpd-alias.yml`
 
-   * GitHub `httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_
-
+   * GitHub `tasks/httpd-alias.yml`_
 
 .. _ug_apache_confd_dir_vhosts:
 
@@ -540,7 +524,7 @@ Notes
 
    * For details see annotated source :ref:`as_httpd-confd-vhosts.yml`
 
-   * GitHub `httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_
+   * GitHub `tasks/httpd-confd-vhosts.yml`_
 
 
 Hints
@@ -562,20 +546,22 @@ apache_confd_dir_sections
 
 Synopsis
 ^^^^^^^^
+
 ``apache_confd_dir_sections`` is path to directory with configuration files.
 
 Parameters
 ^^^^^^^^^^
-The parameters and format of the files are described in the filter
-`encode_apache <https://github.com/jtyr/ansible-config_encoder_filters#id6>`_.
-The content of the files will be encoded and stored in the files in the
-directory ``{{ apache_conf_path }}/Includes/``.
+
+The parameters and format of the files are described in the filter `encode_apache`_.  The content of
+the files will be encoded and stored in the files in the directory ``{{ apache_conf_path
+}/Includes/``.
 
 Example
 ^^^^^^^
+
 For example, from the configuration file below the configuration file
-``usr-local-www-roundcube.conf`` will be created and stored in the
-directory ``{{ apache_conf_path }}/Includes`` (17).
+``usr-local-www-roundcube.conf`` will be created and stored in the directory ``{{ apache_conf_path
+}}/Includes`` (17).
 
 .. code-block:: yaml
    :emphasize-lines: 5-6,9-15,17
@@ -606,22 +592,21 @@ directory ``{{ apache_conf_path }}/Includes`` (17).
 
 Notes
 ^^^^^
+
 .. note::
 
    * For details see annotated source :ref:`as_httpd-confd-includes.yml`, or
-
-   * GitHub `httpd-confd-includes.yml
-     <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_
+   * GitHub `tasks/httpd-confd-includes.yml`_
 
 Hints
 ^^^^^
+
 .. hint::
 
    | * The default value is
    |   ``apache_confd_dir_vhosts: "{{ role_path }}/vars/conf.d/sections"``
    | * In projects it might be convenient to change the path. For example,
    |   ``apache_confd_dir_vhosts: "{{ playbook_dir }}/apache.d/sections"``
-
 
 .. _ug_apache_httpd_conf:
 
@@ -668,7 +653,7 @@ Notes
    | * Because of the escaped quotes the argument line must be quoted
    |     ``- {regexp: ErrorDocument 500, line: "\"The server made a boo boo.\""}``
    | * For details see annotated source :ref:`as_httpd.yml`, or
-   | * GitHub `httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_
+   | * GitHub `tasks/httpd.yml`_
 
 
 .. _ug_apache_httpd_conf_ssl:
@@ -700,8 +685,7 @@ Notes
    |   ``apache_httpd_conf_ssl:``
    |     ``- "Include etc/apache{{ apache_version }}/extra/httpd-ssl.conf"``
    | * For details see annotated source :ref:`as_httpd-ssl.yml`, or
-   | * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
-
+   | * GitHub `tasks/httpd-ssl.yml`_
 
 .. _ug_apache_httpd_conf_ssl_extra:
 
@@ -732,8 +716,7 @@ Notes
 
    * See the default value in :ref:`ug_defaults`
    * For details see annotated source :ref:`as_httpd-ssl.yml`, or
-   * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
-
+   * GitHub `tasks/httpd-ssl.yml`_
 
 .. _ug_apache_httpd_conf_ssl_extra_absent:
 
@@ -762,8 +745,7 @@ Notes
 
    * The default value is empty list ``apache_httpd_conf_ssl_extra_absent: []``
    * For details see annotated source :ref:`as_httpd-ssl.yml`, or
-   * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
-
+   * GitHub `tasks/httpd-ssl.yml`_
 
 .. _ug_apache_httpd_conf_ssl_listen:
 
@@ -786,8 +768,7 @@ Notes
    |     ``- Listen 443``
    | * Overlapping Listen directives will result in a fatal error.
    | * For details see annotated source :ref:`as_httpd-ssl.yml`, or
-   | * GitHub `httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_
-
+   | * GitHub `tasks/httpd-ssl.yml`_
 
 .. _ug_apache_httpd_conf_modules:
 
@@ -835,4 +816,45 @@ Notes
    |   ``apache_httpd_conf_modules:``
    |     ``- { module: socache_shmcb_module, mod: mod_socache_shmcb.so }``
    | * For details see annotated source :ref:`as_httpd-modules.yml`, or
-   | * GitHub `httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_
+   | * GitHub `tasks/httpd-modules.yml`_
+
+.. _vbotka.apache: https://galaxy.ansible.com/vbotka/apache
+.. _FreeBSD: https://www.freebsd.org
+.. _vbotka.ansible_lib: https://galaxy.ansible.com/vbotka/ansible_lib
+.. _jtyr.config_encoder_filters: https://galaxy.ansible.com/jtyr/config_encoder_filters
+.. _community.general: https://github.com/ansible-collections/community.general
+
+.. _Basic Concepts: https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.htm
+.. _Roles: https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
+.. _Working With Playbooks: https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+
+.. _encode_apache: https://github.com/jtyr/ansible-config_encoder_filters#id6
+.. _Installing content: https://galaxy.ansible.com/docs/using/installing.html
+.. _Connection Plugins: https://docs.ansible.com/ansible/latest/plugins/connection.html
+.. _Understanding Privilege Escalation: https://docs.ansible.com/ansible/latest/user_guide/become.html#understanding-privilege-escalation
+.. _Playbook Debugger: https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html
+.. _Ansible variable precedence. Where should I put a variable?: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
+.. _Apache HTTP Server Documentation: https://httpd.apache.org/docs
+
+.. _defaults/main/main.yml: https://github.com/vbotka/ansible-apache/blob/master/defaults/main/main.yml
+.. _defaults/main/php.yml: https://github.com/vbotka/ansible-apache/blob/master/defaults/main/php.yml
+.. _defaults/main/samples.yml: https://github.com/vbotka/ansible-apache/blob/master/defaults/main/samples.yml
+.. _defaults/main/ssl.yml: https://github.com/vbotka/ansible-apache/blob/master/defaults/main/ssl.yml
+
+.. _tasks/httpd.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml
+.. _tasks/httpd-alias.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml
+.. _tasks/httpd-confd-includes.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml
+.. _tasks/httpd-confd-vhosts.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml
+.. _tasks/httpd-dirs.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml
+.. _tasks/httpd-modules.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml
+.. _tasks/httpd-ssl.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml
+.. _tasks/httpd-vhosts.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml
+.. _tasks/vars.yml: https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml
+
+.. _vars/defaults/FreeBSD.yml: https://github.com/vbotka/ansible-apache/blob/master/vars/defaults/FreeBSD.yml
+
+.. _SSL/TLS:  https://httpd.apache.org/docs/current/ssl
+.. _PHP: https://www.php.net/manual/en/book.apache.php
+.. _FastCGI Process Manager (FPM): https://www.php.net/manual/en/install.fpm.php
+
+.. _al_include_os_vars_path.yml: <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_include_os_vars_path.yml

@@ -14,12 +14,12 @@ Synopsis: Main task.
 Import tasks if enabled.
 
 
-[`tasks/main.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/main.yml>`_]
+[`tasks/main.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -42,12 +42,12 @@ variables, that will override default values, can be loaded from the files in th
 <https://github.com/vbotka/ansible-apache/blob/master/vars/>`_.
 
 
-[`tasks/vars.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/vars.yml>`_]
+[`tasks/vars.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/vars.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4-5
     :linenos:
 
@@ -60,8 +60,8 @@ variables, that will override default values, can be loaded from the files in th
    * Because of the precedence (15.role vars), there are limited options to override these variables.
 
 .. hint::
-   * Put OS specific variables here.
-   * Because of the precedence (15.role vars), there are limited options to override these variables.
+   * It might be more convenient to maintain the variables incrementally.
+   * See `al_include_os_vars_path_incr.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path_incr.yml>`_
 
 .. warning::
    * Put customized OS specific variables into the files in the dictionary *vars/*
@@ -72,19 +72,19 @@ variables, that will override default values, can be loaded from the files in th
 debug.yml
 ---------
 
-Synopsis: Configure debug.
+Synopsis: Configure debug
 
 
 Description of the task.
 
 
-[`tasks/debug.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/debug.yml>`_]
+[`tasks/debug.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/debug.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -96,19 +96,19 @@ Description of the task.
 sanity.yml
 ----------
 
-Synopsis: Configure sanity.
+Synopsis: Configure sanity
 
 
 Description of the task.
 
 
-[`tasks/sanity.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/sanity.yml>`_]
+[`tasks/sanity.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/sanity.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -120,19 +120,19 @@ Description of the task.
 pkg.yml
 -------
 
-Synopsis: Configure pkg.
+Synopsis: Configure pkg
 
 
 Description of the task.
 
 
-[`tasks/pkg.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/pkg.yml>`_]
+[`tasks/pkg.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/pkg.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pkg.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -144,19 +144,19 @@ Description of the task.
 pkg-freebsd.yml
 ---------------
 
-Synopsis: Configure pkg-freebsd.
+Synopsis: Configure pkg-freebsd
 
 
 Description of the task.
 
 
-[`tasks/pkg-freebsd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/pkg-freebsd.yml>`_]
+[`tasks/pkg-freebsd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/pkg-freebsd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pkg-freebsd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -174,12 +174,12 @@ Synopsis: <TBD>
 <TBD>
 
 
-[`tasks/samples.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/samples.yml>`_]
+[`tasks/samples.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/samples.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/samples.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 3
     :linenos:
 
@@ -200,12 +200,12 @@ Synopsis: Configure lines in httpd.conf
 Iterate the list ``apache_httpd_conf`` (8) and add lines to the configuration file (4).
 
 
-[`tasks/httpd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd.yml>`_]
+[`tasks/httpd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4,8
     :linenos:
 
@@ -226,12 +226,12 @@ Synopsis: Create files with the directory blocks in the Includes directory.
 Iterate the list ``apache_directory_blocks`` (10) and create configuration files in the directory (5).
 
 
-[`tasks/httpd-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-dirs.yml>`_]
+[`tasks/httpd-dirs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-dirs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-dirs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 5,10
     :linenos:
 
@@ -255,12 +255,12 @@ Iterate ``apache_httpd_conf_modules`` (13). When ``item.preset`` (14) insert lin
 (24) comment line ``# LoadModule ...`` (19) in httpd.conf (18).
 
 
-[`tasks/httpd-modules.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-modules.yml>`_]
+[`tasks/httpd-modules.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-modules.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-modules.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 6,16
     :linenos:
 
@@ -275,19 +275,19 @@ Iterate ``apache_httpd_conf_modules`` (13). When ``item.preset`` (14) insert lin
 httpd-php.yml
 -------------
 
-Synopsis: Configure httpd-php.
+Synopsis: Configure httpd-php
 
 
 Description of the task.
 
 
-[`tasks/httpd-php.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-php.yml>`_]
+[`tasks/httpd-php.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-php.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-php.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -305,12 +305,12 @@ Synopsis: Configure aliases in httpd.conf
 When not an empty list (12) iterate ``apache_alias`` (7-9) and update blocks in the configuration file (4).
 
 
-[`tasks/httpd-alias.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-alias.yml>`_]
+[`tasks/httpd-alias.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-alias.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-alias.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,7-9,12
     :linenos:
 
@@ -335,12 +335,12 @@ in ``extra/httpd-ssl.conf``). Iterate ``apache_httpd_conf_ssl`` (38) and configu
 ``httpd.conf``.
 
 
-[`tasks/httpd-ssl.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-ssl.yml>`_]
+[`tasks/httpd-ssl.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-ssl.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-ssl.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4,16,24,31,38
     :linenos:
 
@@ -367,12 +367,12 @@ template :ref:`as_template_vhost.j2` (16). Include created files (31) in the con
 (29).
 
 
-[`tasks/httpd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-vhosts.yml>`_]
+[`tasks/httpd-vhosts.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-vhosts.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-vhosts.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 3,15,28
     :linenos:
 
@@ -394,12 +394,12 @@ Synopsis: Configure virtual hosts.
 Configure virtual hosts (2) and configuration sections of the directories (6).
 
 
-[`tasks/httpd-confd.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd.yml>`_]
+[`tasks/httpd-confd.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-confd.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,6
     :linenos:
 
@@ -444,12 +444,12 @@ Create the Apache configuration files for the virtual hosts with the help of ``e
 filter. Store the configuration file (41). Include virtual hosts in httpd.conf (50).
 
 
-[`tasks/httpd-confd-vhosts.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-vhosts.yml>`_]
+[`tasks/httpd-confd-vhosts.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-confd-vhosts.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-vhosts.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 7,41,51
     :linenos:
 
@@ -472,12 +472,12 @@ Synopsis: Create ``DocumentRoot`` directories for vhosts.
 <TBD>
 
 
-[`tasks/fn/httpd-confd-vhost-dirs.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/fn/httpd-confd-vhost-dirs.yml>`_]
+[`tasks/fn/httpd-confd-vhost-dirs.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/fn/httpd-confd-vhost-dirs.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/httpd-confd-vhost-dirs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 3
     :linenos:
 
@@ -518,12 +518,12 @@ Use the filter ``encode_apache`` to create the configuration files (24) for the 
 template ``section2.j2``.
 
 
-[`tasks/httpd-confd-includes.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/httpd-confd-includes.yml>`_]
+[`tasks/httpd-confd-includes.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/httpd-confd-includes.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-includes.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,21
     :linenos:
 
@@ -546,12 +546,12 @@ Synopsis: Configure service.
 At the moment, only the configuration of FreeBSD is implemented (2).
 
 
-[`tasks/service.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/service.yml>`_]
+[`tasks/service.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/service.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/service.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2
     :linenos:
 
@@ -572,12 +572,12 @@ Synopsis: Configure service in FreeBSD.
 Configure (2), enable (11) or disable (20) the service.
 
 
-[`tasks/rcconf.yml <https://github.com/vbotka/ansible-apache/blob/master/tasks/rcconf.yml>`_]
+[`tasks/rcconf.yml <https://github.com/__GITHUB_USERNAME__/__PROJECT__/blob/__BRANCH__/tasks/rcconf.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/rcconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,11,20
     :linenos:
 

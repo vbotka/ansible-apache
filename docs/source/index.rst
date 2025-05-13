@@ -17,14 +17,13 @@ Role version 2.7.0
 | SPDX-License-Identifier: `BSD-2-Clause`_
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    guide
    annotation
    examples
    references
-   collection-bsd
    copyright
    legalnotice
 
