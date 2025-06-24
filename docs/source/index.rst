@@ -3,7 +3,7 @@ Ansible role Apache
 
 `vbotka.apache`_
 
-Role version 2.7.0
+version |release|
 
 | This `role`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues`_.
@@ -21,9 +21,9 @@ Role version 2.7.0
    :caption: Contents:
 
    guide
-   annotation
    examples
    references
+   annotation
    copyright
    legalnotice
 
