@@ -5,37 +5,64 @@ mytemplates:
     link: directory-block.j2
     path: templates/directory-block.j2
     synopsis: |
-      Template directory-block.
+      Configure directory-block
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
-    note: []
-    warning: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: section2.j2
     link: section2.j2
     path: templates/section2.j2
     synopsis: |
-      Template section2.
+      Configure section2
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
-    note: []
-    warning: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: vhost2.j2
     link: vhost2.j2
     path: templates/vhost2.j2
     synopsis: |
-      Template vhost2.
+      Configure vhost2
     description: |
-      Description of the template.
+      Description of the task.
     lines: 1
-    seealso: []
-    note: []
-    warning: []
+    seealso:
+      {}
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
   - file: vhost.j2
     link: vhost.j2
@@ -47,8 +74,20 @@ mytemplates:
       Create both http and https servers (1,8). Optionally ``default(True)`` redirect permanent http to https (4).
 
     lines: 1,4,8
-    seealso: {'handlers': [], 'templates': [], 'others': ['Variable :ref:`ug_apache_vhost`']}
-    note: []
-    warning: []
+    seealso:
+      handlers: []
+      others:
+      - Variable :ref:`ug_apache_vhost`
+      templates: []
+
+    notes:
+      []
+
+    hints:
+      []
+
+    warnings:
+      []
+
 
 ...

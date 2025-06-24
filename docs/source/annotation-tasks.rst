@@ -19,7 +19,7 @@ Import tasks if enabled.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -47,7 +47,7 @@ variables, that will override default values, can be loaded from the files in th
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4-5
     :linenos:
 
@@ -60,8 +60,8 @@ variables, that will override default values, can be loaded from the files in th
    * Because of the precedence (15.role vars), there are limited options to override these variables.
 
 .. hint::
-   * Put OS specific variables here.
-   * Because of the precedence (15.role vars), there are limited options to override these variables.
+   * It might be more convenient to maintain the variables incrementally.
+   * See `al_include_os_vars_path_incr.yml <https://raw.githubusercontent.com/vbotka/ansible-lib/devel/tasks/al_include_os_vars_path_incr.yml>`_
 
 .. warning::
    * Put customized OS specific variables into the files in the dictionary *vars/*
@@ -72,7 +72,7 @@ variables, that will override default values, can be loaded from the files in th
 debug.yml
 ---------
 
-Synopsis: Configure debug.
+Synopsis: Configure debug
 
 
 Description of the task.
@@ -83,8 +83,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -96,7 +96,7 @@ Description of the task.
 sanity.yml
 ----------
 
-Synopsis: Configure sanity.
+Synopsis: Configure sanity
 
 
 Description of the task.
@@ -107,8 +107,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -120,7 +120,7 @@ Description of the task.
 pkg.yml
 -------
 
-Synopsis: Configure pkg.
+Synopsis: Configure pkg
 
 
 Description of the task.
@@ -131,8 +131,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pkg.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -144,7 +144,7 @@ Description of the task.
 pkg-freebsd.yml
 ---------------
 
-Synopsis: Configure pkg-freebsd.
+Synopsis: Configure pkg-freebsd
 
 
 Description of the task.
@@ -155,8 +155,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pkg-freebsd.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -179,7 +179,7 @@ Synopsis: <TBD>
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/samples.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 3
     :linenos:
 
@@ -205,7 +205,7 @@ Iterate the list ``apache_httpd_conf`` (8) and add lines to the configuration fi
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4,8
     :linenos:
 
@@ -231,7 +231,7 @@ Iterate the list ``apache_directory_blocks`` (10) and create configuration files
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-dirs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 5,10
     :linenos:
 
@@ -260,7 +260,7 @@ Iterate ``apache_httpd_conf_modules`` (13). When ``item.preset`` (14) insert lin
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-modules.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 6,16
     :linenos:
 
@@ -275,7 +275,7 @@ Iterate ``apache_httpd_conf_modules`` (13). When ``item.preset`` (14) insert lin
 httpd-php.yml
 -------------
 
-Synopsis: Configure httpd-php.
+Synopsis: Configure httpd-php
 
 
 Description of the task.
@@ -286,8 +286,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-php.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -310,7 +310,7 @@ When not an empty list (12) iterate ``apache_alias`` (7-9) and update blocks in 
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-alias.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,7-9,12
     :linenos:
 
@@ -340,7 +340,7 @@ in ``extra/httpd-ssl.conf``). Iterate ``apache_httpd_conf_ssl`` (38) and configu
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-ssl.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 4,16,24,31,38
     :linenos:
 
@@ -372,7 +372,7 @@ template :ref:`as_template_vhost.j2` (16). Include created files (31) in the con
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-vhosts.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 3,15,28
     :linenos:
 
@@ -399,7 +399,7 @@ Configure virtual hosts (2) and configuration sections of the directories (6).
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,6
     :linenos:
 
@@ -449,7 +449,7 @@ filter. Store the configuration file (41). Include virtual hosts in httpd.conf (
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-vhosts.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 7,41,51
     :linenos:
 
@@ -477,7 +477,7 @@ Synopsis: Create ``DocumentRoot`` directories for vhosts.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/httpd-confd-vhost-dirs.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 3
     :linenos:
 
@@ -523,7 +523,7 @@ template ``section2.j2``.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/httpd-confd-includes.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,21
     :linenos:
 
@@ -551,7 +551,7 @@ At the moment, only the configuration of FreeBSD is implemented (2).
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/service.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2
     :linenos:
 
@@ -577,7 +577,7 @@ Configure (2), enable (11) or disable (20) the service.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/rcconf.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 2,11,20
     :linenos:
 

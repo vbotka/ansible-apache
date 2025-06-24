@@ -8,10 +8,10 @@ Templates
 directory-block.j2
 ------------------
 
-Synopsis: Template directory-block.
+Synopsis: Configure directory-block
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/directory-block.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/directory-block.j2>`_]
@@ -26,15 +26,16 @@ Description of the template.
 
 
 
+
 .. _as_template_section2.j2:
 
 section2.j2
 -----------
 
-Synopsis: Template section2.
+Synopsis: Configure section2
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/section2.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/section2.j2>`_]
@@ -49,15 +50,16 @@ Description of the template.
 
 
 
+
 .. _as_template_vhost2.j2:
 
 vhost2.j2
 ---------
 
-Synopsis: Template vhost2.
+Synopsis: Configure vhost2
 
 
-Description of the template.
+Description of the task.
 
 
 [`templates/vhost2.j2 <https://github.com/vbotka/ansible-apache/blob/master/templates/vhost2.j2>`_]
@@ -68,6 +70,7 @@ Description of the template.
     :language: jinja
     :emphasize-lines: 1
     :linenos:
+
 
 
 
@@ -94,6 +97,7 @@ Create both http and https servers (1,8). Optionally ``default(True)`` redirect 
 
 .. seealso:: 
    * Variable :ref:`ug_apache_vhost`
+
 
 
 
