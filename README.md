@@ -5,6 +5,8 @@
 [![Documentation Status](https://readthedocs.org/projects/ansible-apache/badge/?version=latest)](https://ansible-apache.readthedocs.io/en/latest/?badge=latest)
 [![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-apache)](https://github.com/vbotka/ansible-apache/tags)
 
+This role is included in the collection [vbotka.freebsd](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/) as [vbotka.freebsd.apache](https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache)
+
 [Ansible role.](https://galaxy.ansible.com/vbotka/apache/) Install and configure Apache.
 
 [Documentation at readthedocs.io](https://ansible-apache.readthedocs.io)
