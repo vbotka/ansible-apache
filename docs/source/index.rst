@@ -11,6 +11,7 @@ version |release|
 
 | GitHub: `ansible-apache`_
 | Ansible Galaxy: `vbotka.apache`_
+| Ansible collection: `vbotka.freebsd.apache`_
 
 | This role is licensed and distributed as a whole under
 | **BSD 2-Clause "Simplified" License**
@@ -35,8 +36,11 @@ Indices and tables
 * :ref:`search`
 
 .. _role: https://galaxy.ansible.com/vbotka/apache
+.. _vbotka.apache: https://galaxy.ansible.com/vbotka/apache
+.. _vbotka.freebsd.apache: https://galaxy.ansible.com/ui/repo/published/vbotka/freebsd/content/role/apache/
+
+.. _ansible-apache: https://github.com/vbotka/ansible-apache
+
 .. _share your feedback and report issues: https://github.com/vbotka/ansible-apache/issues
 .. _Contributions are welcome: https://github.com/firstcontributions/first-contributions
-.. _ansible-apache: https://github.com/vbotka/ansible-apache
-.. _vbotka.apache: https://galaxy.ansible.com/vbotka/apache
 .. _BSD-2-Clause: https://spdx.org/licenses/BSD-2-Clause.html

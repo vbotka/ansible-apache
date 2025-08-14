@@ -1,29 +1,23 @@
 ---
-- name: "Rc_conf: configure /etc/rc.conf"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ item.key }}\s*=(.*)$
-    line: '{{ item.key }}="{{ item.value }}"'
-    backup: "{{ apache_backup_conf }}"
+- name: "Rc_conf: Configure /etc/rc.conf"
+  notify: graceful apache
+  community.general.sysrc:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
   loop: "{{ apache_rcconf }}"
-  notify: Graceful apache
 
 - name: "Rc_conf: Enable and Start Apache"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ apache_service }}_enable\s*=(.*)$
-    line: '{{ apache_service }}_enable="YES"'
-    backup: "{{ apache_backup_conf }}"
-  notify: Enable and start apache
   when: apache_enable | bool
+  notify: enable and start apache
+  community.general.sysrc:
+    name: "{{ apache_service }}_enable"
+    value: "YES"
 
 - name: "Rc_conf: Disable and Stop Apache"
-  ansible.builtin.lineinfile:
-    dest: /etc/rc.conf
-    regexp: ^\s*{{ apache_service }}_enable\s*=(.*)$
-    line: '{{ apache_service }}_enable="NO"'
-    backup: "{{ apache_backup_conf }}"
-  notify: Disable and stop apache
   when: not apache_enable | bool
+  notify: disable and stop apache
+  community.general.sysrc:
+    name: "{{ apache_service }}_enable"
+    value: "NO"
 
 # EOF

@@ -1,6 +1,6 @@
 ---
 # defaults for vbotka.apache
-apache_role_version: 2.7.0
+apache_role_version: 2.7.1
 
 apache_install: true
 apache_enable: true
@@ -15,13 +15,13 @@ apache_servername: www.example.com
 apache_serveradmin: admin@example.com
 apache_servertokens: Prod
 apache_httpd_conf:
-  - { regexp: ServerName, line: "{{ apache_servername }}" }
-  - { regexp: ServerAdmin, line: "{{ apache_serveradmin }}" }
-  - { regexp: ServerTokens, line: "{{ apache_servertokens }}" }
+  - {regexp: ServerName, line: "{{ apache_servername }}"}
+  - {regexp: ServerAdmin, line: "{{ apache_serveradmin }}"}
+  - {regexp: ServerTokens, line: "{{ apache_servertokens }}"}
 
 # Modules
 apache_httpd_conf_modules:
-  - { module: socache_shmcb_module, mod: mod_socache_shmcb.so }
+  - {module: socache_shmcb_module, mod: mod_socache_shmcb.so}
 
 # vhosts
 # Virtual hosts need apache_ssl. Port 80 is redirected permanently to

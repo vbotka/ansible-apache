@@ -1,5 +1,5 @@
 ---
-- name: Include variables for virtual hosts
+- name: Include variables for virtual hosts.
   block:
 
     - name: "Httpd-confd-vhosts: Set variables for al_include_confd_vars_list"
@@ -13,21 +13,21 @@
         tasks_from: al_include_confd_vars_list
 
     - name: "Httpd-confd-vhosts: Debug al_include_confd_vars_list apache_debug={{ apache_debug }}"
+      when: apache_debug | bool
       ansible.builtin.debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"
-      when: apache_debug | bool
 
-- name: Create directories for virtual hosts
+- name: Create directories for virtual hosts.
   block:
 
     - name: "Httpd-confd-vhosts: Debug list directories for virtual hosts apache_debug={{ apache_debug }}"
+      when: apache_debug | bool
       ansible.builtin.debug:
         msg: "{{ item | json_query('[].content[].sections[].content[].options[].DocumentRoot') }}"
       loop: "{{ al_include_confd_vars_list | json_query('[].vars') }}"
-      when: apache_debug | bool
 
-    - name: "Httpd-confd-vhosts: Create directories for virtual hosts"
+    - name: "Httpd-confd-vhosts: Create directories for virtual hosts."
       ansible.builtin.include_tasks: fn/httpd-confd-vhost-dirs.yml
       loop: "{{ al_include_confd_vars_list | json_query('[].vars') }}"
 

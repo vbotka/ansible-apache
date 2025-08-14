@@ -13,12 +13,13 @@
         tasks_from: al_include_confd_vars_list
 
     - name: "Httpd-confd-includes: Debug al_include_confd_vars_list apache_debug={{ apache_debug }}"
+      when: apache_debug | bool
       ansible.builtin.debug:
         var: item
       loop: "{{ al_include_confd_vars_list }}"
-      when: apache_debug | bool
 
 - name: "Httpd-confd-includes: Configure sections in {{ apache_conf_path ~ '/Includes/' }}"
+  notify: reload apache
   ansible.builtin.template:
     src: section2.j2
     dest: "{{ apache_conf_path }}/Includes/{{ item.fname }}.conf"
@@ -27,6 +28,5 @@
     mode: "{{ apache_data_mode }}"
     backup: "{{ apache_backup_conf }}"
   loop: "{{ al_include_confd_vars_list }}"
-  notify: Reload apache
 
 # EOF
