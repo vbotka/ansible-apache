@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Add ansible_role_name to debug.yml
+* Update docs.
 
 
 2.7.0
