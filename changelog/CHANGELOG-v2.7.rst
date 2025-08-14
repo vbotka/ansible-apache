@@ -19,6 +19,7 @@ Minor Changes
 * Add ansible_role_name to debug.yml
 * Use community.general.sysrc to configure rc.conf
 * Use vbotka.freebsd.lib in the collection vbotka.freebsd
+* Handlers use vbotka.freebsd.service in the collection vbotka.freebsd
 * Update tasks names and formatting.
 * Update docs.
 
