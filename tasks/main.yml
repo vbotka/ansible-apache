@@ -1,63 +1,63 @@
 ---
 # tasks for vbotka.apache
 
-- name: Import vars.yml
+- name: Include OS vars.
   ansible.builtin.import_tasks: vars.yml
   tags: [apache_vars, always]
 
-- name: Import debug.yml
+- name: Display variables.
   ansible.builtin.import_tasks: debug.yml
   when: apache_debug | bool
   tags: apache_debug
 
-- name: Import sanity.yml
+- name: Sanity.
   ansible.builtin.import_tasks: sanity.yml
   when: apache_sanity | bool
   tags: apache_sanity
 
-- name: Import pkg.yml
+- name: Install packages.
   ansible.builtin.import_tasks: pkg.yml
   when: apache_install | bool
   tags: apache_pkg
 
-- name: Import samples.yml
+- name: Copy sample files.
   ansible.builtin.import_tasks: samples.yml
   when: apache_samples | bool
   tags: apache_samples
 
-- name: Import httpd.yml
+- name: Configure httpd.conf
   ansible.builtin.import_tasks: httpd.yml
   tags: apache_httpd
 
-- name: Import httpd-dirs.yml
+- name: Configure Includes
   ansible.builtin.import_tasks: httpd-dirs.yml
   tags: apache_httpd_dirs
 
-- name: Import httpd-modules.yml
+- name: Configure LoadModule in httpd.conf
   ansible.builtin.import_tasks: httpd-modules.yml
   tags: apache_httpd_modules
 
-- name: Import httpd-php.yml
+- name: Configure PHP in Includes
   ansible.builtin.import_tasks: httpd-php.yml
   tags: apache_httpd_php
 
-- name: Import httpd-alias.yml
+- name: Configure aliases in httpd.conf
   ansible.builtin.import_tasks: httpd-alias.yml
   tags: apache_httpd_alias
 
-- name: Import httpd-ssl.yml
+- name: Configure SSL.
   ansible.builtin.import_tasks: httpd-ssl.yml
   tags: apache_httpd_ssl
 
-- name: Import httpd-vhosts.yml
+- name: Configure virtual hosts.
   ansible.builtin.import_tasks: httpd-vhosts.yml
   tags: apache_httpd_vhosts
 
-- name: Import httpd-confd.yml
+- name: Configure virtual hosts from vars/conf.d
   ansible.builtin.import_tasks: httpd-confd.yml
   tags: apache_httpd_confd
 
-- name: Import service.yml
+- name: Configure service.
   ansible.builtin.import_tasks: service.yml
   tags: apache_service
 

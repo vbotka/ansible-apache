@@ -17,6 +17,7 @@ Major Changes
 Minor Changes
 -------------
 * Add ansible_role_name to debug.yml
+* Update tasks names and formatting.
 * Update docs.
 
 
