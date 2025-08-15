@@ -1,22 +1,17 @@
 ---
-- name: Include variables for virtual hosts.
-  block:
+- name: "Httpd-confd-vhosts: Include al_include_confd_vars_list"
+  vars:
+    al_include_confd_dir: "{{ apache_confd_dir_vhosts }}"
+    al_include_confd_vars_list_type: fname
+  ansible.builtin.include_role:
+    name: "{{ apache_ansible_lib[ansible_role_name] }}"
+    tasks_from: al_include_confd_vars_list
 
-    - name: "Httpd-confd-vhosts: Set variables for al_include_confd_vars_list"
-      ansible.builtin.set_fact:
-        al_include_confd_dir: "{{ apache_confd_dir_vhosts }}"
-        al_include_confd_vars_list_type: fname
-
-    - name: "Httpd-confd-vhosts: Include al_include_confd_vars_list"
-      ansible.builtin.include_role:
-        name: vbotka.ansible_lib
-        tasks_from: al_include_confd_vars_list
-
-    - name: "Httpd-confd-vhosts: Debug al_include_confd_vars_list apache_debug={{ apache_debug }}"
-      when: apache_debug | bool
-      ansible.builtin.debug:
-        var: item
-      loop: "{{ al_include_confd_vars_list }}"
+- name: "Httpd-confd-vhosts: Debug al_include_confd_vars_list apache_debug={{ apache_debug }}"
+  when: apache_debug | bool
+  ansible.builtin.debug:
+    var: item
+  loop: "{{ al_include_confd_vars_list }}"
 
 - name: Create directories for virtual hosts.
   block:

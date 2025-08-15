@@ -16,7 +16,8 @@ Major Changes
 
 Minor Changes
 -------------
-
+* Add dictionary apache_ansible_lib; Import vbotka.freebsd.lib in
+  collection vbotka.freebsd
 
 2.7.1
 =====
