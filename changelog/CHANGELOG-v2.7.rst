@@ -5,11 +5,25 @@ vbotka.apache 2.7 Release Notes
 .. contents:: Topics
 
 
+2.7.2
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+
+
 2.7.1
 =====
 
 Release Summary
 ---------------
+Include this role in the collection vbotka.freebsd
 
 Major Changes
 -------------
