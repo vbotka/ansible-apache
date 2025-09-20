@@ -1,90 +1,87 @@
 ---
-- name: Handlers for vbotka.apache
-  when: ansible_role_name == "vbotka.apache"
-  block:
 
-    - name: Enable and start apache
-      listen: enable and start apache
-      ansible.builtin.service:
-        name: "{{ apache_service }}"
-        state: started
-        enabled: true
+# standalone role vbotka.apache
 
-    - name: Disable and stop apache
-      listen: disable and stop apache
-      ansible.builtin.service:
-        name: "{{ apache_service }}"
-        state: stopped
-        enabled: false
+- name: Enable and start vbotka.apache
+  listen: enable and start vbotka.apache
+  ansible.builtin.service:
+    name: "{{ apache_service }}"
+    state: started
+    enabled: true
 
-    - name: Restart apache
-      listen: restart apache
-      when: apache_enable | bool
-      ansible.builtin.service:
-        name: "{{ apache_service }}"
-        state: restarted
+- name: Disable and stop vbotka.apache
+  listen: disable and stop vbotka.apache
+  ansible.builtin.service:
+    name: "{{ apache_service }}"
+    state: stopped
+    enabled: false
 
-    - name: Reload apache
-      listen: reload apache
-      when: apache_enable | bool
-      ansible.builtin.service:
-        name: "{{ apache_service }}"
-        state: reloaded
+- name: Restart vbotka.apache
+  listen: restart vbotka.apache
+  when: apache_enable | bool
+  ansible.builtin.service:
+    name: "{{ apache_service }}"
+    state: restarted
 
-    - name: Graceful apache  # noqa: no-changed-when
-      listen: graceful apache
-      when: apache_enable | bool
-      ansible.builtin.command:
-        cmd: /usr/local/etc/rc.d/{{ apache_service }} graceful
+- name: Reload vbotka.apache
+  listen: reload vbotka.apache
+  when: apache_enable | bool
+  ansible.builtin.service:
+    name: "{{ apache_service }}"
+    state: reloaded
 
-    - name: Gracefulstop apache  # noqa: no-changed-when
-      listen: gracefulstop apache
-      when: apache_enable | bool
-      ansible.builtin.command:
-        cmd: /usr/local/etc/rc.d/{{ apache_service }} gracefulstop
+- name: Graceful vbotka.apache  # noqa: no-changed-when
+  listen: graceful vbotka.apache
+  when: apache_enable | bool
+  ansible.builtin.command:
+    cmd: /usr/local/etc/rc.d/{{ apache_service }} graceful
 
-- name: Handlers for vbotka.freebsd.apache
-  when: ansible_role_name == "vbotka.freebsd.apache"
-  block:
+- name: Gracefulstop vbotka.apache  # noqa: no-changed-when
+  listen: gracefulstop vbotka.apache
+  when: apache_enable | bool
+  ansible.builtin.command:
+    cmd: /usr/local/etc/rc.d/{{ apache_service }} gracefulstop
 
-    - name: Enable and start apache
-      listen: enable and start apache
-      vbotka.freebsd.service:
-        script: "{{ apache_service }}"
-        command: start
+# collection role vbotka.freebsd.apache
 
-    - name: Disable and stop apache
-      listen: disable and stop apache
-      vbotka.freebsd.service:
-        script: "{{ apache_service }}"
-        command: stop
+- name: Enable and start vbotka.freebsd.apache
+  listen: enable and start vbotka.freebsd.apache
+  vbotka.freebsd.service:
+    script: "{{ apache_service }}"
+    command: start
 
-    - name: Restart apache
-      listen: restart apache
-      when: apache_enable | bool
-      vbotka.freebsd.service:
-        script: "{{ apache_service }}"
-        command: restart
+- name: Disable and stop vbotka.freebsd.apache
+  listen: disable and stop vbotka.freebsd.apache
+  vbotka.freebsd.service:
+    script: "{{ apache_service }}"
+    command: stop
 
-    - name: Reload apache
-      listen: reload apache
-      when: apache_enable | bool
-      vbotka.freebsd.service:
-        script: "{{ apache_service }}"
-        command: reload
+- name: Restart vbotka.freebsd.apache
+  listen: restart vbotka.freebsd.apache
+  when: apache_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ apache_service }}"
+    command: restart
 
-    - name: Graceful apache
-      listen: graceful apache
-      when: apache_enable | bool
-      vbotka.freebsd.service:
-        script: "{{ apache_service }}"
-        command: graceful
+- name: Reload vbotka.freebsd.apache
+  listen: reload vbotka.freebsd.apache
+  when: apache_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ apache_service }}"
+    command: reload
 
-    - name: Gracefulstop apache
-      listen: gracefulstop apache
-      when: apache_enable | bool
-      vbotka.freebsd.service:
-        script: "{{ apache_service }}"
-        command: gracefulstop
+- name: Graceful vbotka.freebsd.apache
+  listen: graceful vbotka.freebsd.apache
+  when: apache_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ apache_service }}"
+    command: graceful
+
+- name: Gracefulstop vbotka.freebsd.apache
+  listen: gracefulstop vbotka.freebsd.apache
+  when: apache_enable | bool
+  vbotka.freebsd.service:
+    script: "{{ apache_service }}"
+    command: gracefulstop
 
 # EOF

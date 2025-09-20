@@ -1,6 +1,6 @@
 ---
 - name: "Httpd-dirs: Configure directories in {{ apache_conf_path ~ '/Includes/' }}"
-  notify: reload apache
+  notify: "reload {{ ansible_role_name }}"
   ansible.builtin.template:
     src: directory-block.j2
     dest: "{{ apache_conf_path }}/Includes/{{ item.Includefile }}"

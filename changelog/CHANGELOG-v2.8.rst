@@ -18,6 +18,9 @@ Major Changes
 Minor Changes
 -------------
 
+* Update handlers for vbotka.apache and vbotka.freebsd.apache; Use module
+  vbotka.freebsd.service in the collection.
+
 Bugfixes
 --------
 
