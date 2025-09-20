@@ -14,7 +14,7 @@
   loop: "{{ al_include_confd_vars_list }}"
 
 - name: "Httpd-confd-includes: Configure sections in {{ apache_conf_path ~ '/Includes/' }}"
-  notify: reload apache
+  notify: "reload {{ ansible_role_name }}"
   ansible.builtin.template:
     src: section2.j2
     dest: "{{ apache_conf_path }}/Includes/{{ item.fname }}.conf"

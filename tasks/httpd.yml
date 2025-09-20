@@ -1,6 +1,6 @@
 ---
 - name: "Httpd-conf: Configure parameters in {{ apache_conf_path ~ '/httpd.conf' }}"
-  notify: reload apache
+  notify: "reload {{ ansible_role_name }}"
   ansible.builtin.lineinfile:
     dest: "{{ apache_conf_path }}/httpd.conf"
     regexp: ^{{ item.regexp }}\s+(.*)$

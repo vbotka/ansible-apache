@@ -1,6 +1,6 @@
 ---
 - name: Load modules in httpd.conf
-  notify: restart apache
+  notify: "restart {{ ansible_role_name }}"
   block:
 
     - name: "Httpd-modules: Load modules in {{ apache_conf_path ~ '/httpd.conf' }}"
