@@ -17,6 +17,7 @@ Major Changes
 
 Minor Changes
 -------------
+Fix docs annotation/vars/httpd-confd-vhosts.yml
 
 
 2.8.1
