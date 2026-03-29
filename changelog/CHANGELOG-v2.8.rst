@@ -5,6 +5,22 @@ vbotka.apache 2.8 Release Notes
 .. contents:: Topics
 
 
+2.8.2
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+Fix docs annotation/vars/httpd-confd-vhosts.yml
+Fix handlers notification.
+
+
 2.8.1
 =====
 
