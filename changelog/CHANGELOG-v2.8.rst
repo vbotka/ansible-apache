@@ -18,6 +18,7 @@ Major Changes
 Minor Changes
 -------------
 Fix docs annotation/vars/httpd-confd-vhosts.yml
+Fix handlers notification.
 
 
 2.8.1
