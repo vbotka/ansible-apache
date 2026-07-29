@@ -15,6 +15,7 @@ Ansible 2.21 upgrade.
 Major Changes
 -------------
 * Supported versions FreeBSD 14.4, 15.0 and 15.1
+* Update versions of requirements.
 
 Minor Changes
 -------------
